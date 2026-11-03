@@ -13,10 +13,11 @@ Thumbs.db
 *.swp
 *.swo
 
-# Source PDFs (not needed in web deployment)
+# Source PDFs & backups (not needed in web deployment)
 New Folder With Items/
 wetransfer_*/
 *.pdf
+*-original.*
 
 # Node (in case added later)
 node_modules/
