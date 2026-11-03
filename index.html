@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fair Home Decor — Coming Soon</title>
+  <meta name="description" content="Fair Home Decor — Curated furniture and home decor. Launching soon." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========= CSS Variables ========= */
+    :root {
+      --color-bg:        #FAF8F5;
+      --color-cream:     #F5F0E8;
+      --color-warm-tan:  #E8DFD0;
+      --color-dark:      #2B2520;
+      --color-brown:     #5C4B3A;
+      --color-sage:      #7C8C6E;
+      --color-sage-dark: #5A6B4E;
+      --color-border:    #DDD5C5;
+      --color-white:     #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Montserrat', 'Helvetica Neue', sans-serif;
+      --transition: 0.35s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========= Background Layers ========= */
+    .bg-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Warm ambient gradient */
+    .bg-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(232,223,208,0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(124,140,110,0.18) 0%, transparent 65%),
+        linear-gradient(160deg, #FAF8F5 0%, #F0EAE0 50%, #E8DFD0 100%);
+    }
+
+    /* Decorative lines (subtle) */
+    .bg-wrap::after {
+      content: '';
+      position: absolute;
+      top: -5%;
+      right: -5%;
+      width: 55%;
+      height: 110%;
+      background: url("data:image/svg+xml,%3Csvg width='600' height='800' viewBox='0 0 600 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='600' height='800' fill='%23E8DFD0' opacity='0.35'/%3E%3C/svg%3E") right center / cover no-repeat;
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    /* ========= Main Layout ========= */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========= Header ========= */
+    header {
+      padding: 40px 60px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-wrap img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .header-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .header-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-brown);
+      transition: all var(--transition);
+    }
+
+    .header-social a:hover {
+      border-color: var(--color-sage);
+      background: var(--color-sage);
+      color: white;
+    }
+
+    /* ========= Hero ========= */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 60px 80px;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      text-align: center;
+    }
+
+    /* Eyebrow label */
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      display: inline-block;
+      margin-bottom: 28px;
+      padding: 8px 20px;
+      border: 1px solid rgba(124,140,110,0.4);
+      border-radius: 40px;
+    }
+
+    /* Main title */
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-brown);
+    }
+
+    /* Decorative rule */
+    .title-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 28px auto;
+    }
+
+    .title-rule span {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .title-rule .rule-icon {
+      width: 6px;
+      height: 6px;
+      background: var(--color-sage);
+      border-radius: 50%;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-brown);
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .hero-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(43,37,32,0.65);
+      letter-spacing: 0.04em;
+      line-height: 1.9;
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ========= CTA Buttons ========= */
+    .cta-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 16px 44px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--color-dark);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-brown);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(43,37,32,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-dark);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-dark);
+      color: var(--color-white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(43,37,32,0.15);
+    }
+
+    /* ========= Decorative Bottom Accent ========= */
+    .accent-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent 0%, var(--color-sage) 30%, var(--color-warm-tan) 60%, transparent 100%);
+    }
+
+    /* ========= Footer ========= */
+    footer {
+      background: rgba(43,37,32,0.96);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.55);
+      padding: 28px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 2;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+
+    footer a:hover { color: var(--color-sage); }
+
+    .footer-links { display: flex; gap: 28px; }
+
+    /* ========= Decorative panel shapes (right side) ========= */
+    .deco-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 42%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* Inner warm panel */
+    .deco-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--color-warm-tan) 0%, var(--color-cream) 100%);
+      clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+      opacity: 0.6;
+    }
+
+    /* Vertical line accent */
+    .deco-panel::after {
+      content: '';
+      position: absolute;
+      left: 10%;
+      top: 15%;
+      width: 1px;
+      height: 70%;
+      background: linear-gradient(to bottom, transparent, var(--color-border), transparent);
+    }
+
+    /* ========= Responsive ========= */
+    @media (max-width: 900px) {
+      .deco-panel { display: none; }
+      header { padding: 28px 28px 0; }
+      .hero { padding: 40px 28px 60px; }
+      footer { padding: 20px 28px; flex-direction: column; gap: 12px; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-wrap img { height: 52px; }
+      .hero-title { font-size: 2.6rem; }
+      .btn { padding: 14px 28px; }
+    }
+
+    /* ========= Fade-in animation ========= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.6s; }
+    .hero-content > *:nth-child(6) { animation-delay: 0.75s; }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative Background Panel -->
+  <div class="deco-panel" aria-hidden="true"></div>
+
+  <div class="page-wrap">
+
+    <!-- Header -->
+    <header>
+      <div class="logo-wrap">
+        <img src="assets/images/logo.png" alt="Fair Home Decor" />
+      </div>
+      <div class="header-social">
+        <!-- Instagram -->
+        <a href="#" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+        <!-- Pinterest -->
+        <a href="#" aria-label="Pinterest">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero">
+      <div class="hero-content">
+
+        <span class="eyebrow">Coming Soon</span>
+
+        <h1 class="hero-title">
+          Website Under<br /><em>Maintenance</em>
+        </h1>
+
+        <div class="title-rule" aria-hidden="true">
+          <span></span>
+          <div class="rule-icon"></div>
+          <span></span>
+        </div>
+
+        <p class="hero-subtitle">Something beautiful is on its way.</p>
+
+        <p class="hero-text">
+          We are crafting a refined experience for you. Our curated collection of 
+          furniture and home decor will be available very soon. In the meantime, 
+          browse our catalogue or reach out to us directly.
+        </p>
+
+        <div class="cta-group">
+          <a href="pages/catalogue.html" class="btn btn-primary">Catalogue</a>
+          <a href="pages/contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+
+      </div>
+    </main>
+
+    <div class="accent-bar" aria-hidden="true"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>&copy; 2025 Fair Home Decor. All rights reserved.</span>
+    <nav class="footer-links">
+      <a href="pages/catalogue.html">Catalogue</a>
+      <a href="pages/contact.html">Contact</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

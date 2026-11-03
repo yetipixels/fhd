@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Source PDFs (not needed in web deployment)
+New Folder With Items/
+wetransfer_*/
+*.pdf
+
+# Node (in case added later)
+node_modules/

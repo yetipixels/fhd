@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue — Fair Home Decor</title>
+  <meta name="description" content="Browse our curated catalogue of furniture, decorative items, and home accessories." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg:        #FAF8F5;
+      --color-cream:     #F5F0E8;
+      --color-warm-tan:  #E8DFD0;
+      --color-dark:      #2B2520;
+      --color-brown:     #5C4B3A;
+      --color-sage:      #7C8C6E;
+      --color-sage-dark: #5A6B4E;
+      --color-border:    #DDD5C5;
+      --color-white:     #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Montserrat', 'Helvetica Neue', sans-serif;
+      --transition: 0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Nav ---- */
+    nav {
+      position: sticky;
+      top: 0; z-index: 200;
+      background: rgba(250,248,245,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 60px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo img { height: 56px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 36px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-brown);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-dark); }
+    .nav-enquire {
+      background: var(--color-dark);
+      color: white;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .nav-enquire:hover { background: var(--color-sage); }
+
+    /* ---- Page Hero ---- */
+    .page-hero {
+      background: linear-gradient(135deg, var(--color-warm-tan) 0%, var(--color-cream) 100%);
+      padding: 80px 60px 64px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      color: var(--color-dark);
+    }
+    .page-hero h1 em { font-style: italic; color: var(--color-brown); }
+    .page-hero p {
+      margin-top: 18px;
+      font-size: 0.86rem;
+      color: rgba(43,37,32,0.6);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.9;
+    }
+
+    /* ---- Category Nav Bar ---- */
+    .cat-nav {
+      background: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 80px;
+      z-index: 150;
+    }
+    .cat-nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 60px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 18px 28px;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--color-brown);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .cat-btn:hover { color: var(--color-dark); }
+    .cat-btn.active {
+      color: var(--color-sage-dark);
+      border-bottom-color: var(--color-sage);
+    }
+
+    /* ---- Main Layout ---- */
+    .catalogue-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 60px 60px 100px;
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    /* ---- Sidebar Filters ---- */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 140px;
+    }
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .sidebar-header h3 {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-dark);
+    }
+    .clear-btn {
+      font-size: 0.7rem;
+      color: var(--color-sage);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      letter-spacing: 0.08em;
+      transition: color var(--transition);
+    }
+    .clear-btn:hover { color: var(--color-sage-dark); }
+
+    .filter-group { margin-bottom: 28px; }
+    .filter-group h4 {
+      font-family: var(--font-sans);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      margin-bottom: 14px;
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .filter-option input[type="checkbox"] {
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 3px;
+      appearance: none;
+      cursor: pointer;
+      background: white;
+      position: relative;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .filter-option input[type="checkbox"]:checked {
+      background: var(--color-sage);
+      border-color: var(--color-sage);
+    }
+    .filter-option input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px; top: 1px;
+      width: 5px; height: 9px;
+      border: 2px solid white;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+    .filter-option label {
+      font-size: 0.8rem;
+      color: var(--color-dark);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .filter-separator {
+      height: 1px;
+      background: var(--color-border);
+      margin: 20px 0;
+    }
+
+    /* Sort Radio */
+    .sort-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .sort-option input[type="radio"] {
+      width: 16px; height: 16px;
+      accent-color: var(--color-sage);
+      cursor: pointer;
+    }
+    .sort-option label { font-size: 0.8rem; color: var(--color-dark); cursor: pointer; }
+
+    /* ---- Product Grid Area ---- */
+    .product-area { flex: 1; min-width: 0; }
+
+    /* Category section */
+    .cat-section {
+      display: none;
+      animation: fadeIn 0.4s ease both;
+    }
+    .cat-section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .cat-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .cat-section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--color-dark);
+    }
+    .cat-section-header h2 span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: 6px;
+    }
+    .result-count {
+      font-size: 0.76rem;
+      color: rgba(43,37,32,0.45);
+      white-space: nowrap;
+    }
+
+    /* Sub-category grid (furniture subcats) */
+    .subcat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .subcat-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .subcat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(43,37,32,0.12);
+      border-color: var(--color-sage);
+    }
+    .subcat-card.active {
+      border-color: var(--color-sage);
+      box-shadow: 0 0 0 2px rgba(124,140,110,0.3);
+    }
+    .subcat-img {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, var(--color-warm-tan), var(--color-cream));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .subcat-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .subcat-img .img-placeholder {
+      font-size: 2.5rem;
+      opacity: 0.35;
+    }
+    .subcat-body {
+      padding: 16px 18px;
+    }
+    .subcat-body h4 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 4px;
+    }
+    .subcat-body p {
+      font-size: 0.72rem;
+      color: rgba(43,37,32,0.5);
+    }
+
+    /* Product Cards Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(43,37,32,0.12);
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-warm-tan) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-img img { transform: scale(1.04); }
+    .product-img .img-icon {
+      font-size: 3rem;
+      opacity: 0.2;
+    }
+    .product-img .img-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(43,37,32,0.75);
+      color: white;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+    .product-body {
+      padding: 20px;
+    }
+    .product-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .product-desc {
+      font-size: 0.76rem;
+      color: rgba(43,37,32,0.55);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border);
+    }
+    .product-material {
+      font-size: 0.68rem;
+      color: rgba(43,37,32,0.45);
+      letter-spacing: 0.06em;
+    }
+    .enquire-link {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      text-decoration: none;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .enquire-link:hover { color: var(--color-dark); }
+    .enquire-link svg { transition: transform var(--transition); }
+    .enquire-link:hover svg { transform: translateX(3px); }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--color-border);
+    }
+    .page-btn {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--color-border);
+      background: white;
+      border-radius: 50%;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--color-brown);
+      cursor: pointer;
+      transition: all var(--transition);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover, .page-btn.active {
+      border-color: var(--color-sage);
+      background: var(--color-sage);
+      color: white;
+    }
+    .page-btn.arrow { border-radius: 6px; width: auto; padding: 0 14px; gap: 6px; font-size: 0.7rem; }
+
+    /* Banner CTA */
+    .banner-cta {
+      margin-top: 64px;
+      background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-brown) 100%);
+      border-radius: 16px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .banner-cta-text h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .banner-cta-text h3 em { font-style: italic; color: rgba(232,223,208,0.9); }
+    .banner-cta-text p { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 400px; }
+    .btn-light {
+      background: white;
+      color: var(--color-dark);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all var(--transition);
+    }
+    .btn-light:hover { background: var(--color-warm-tan); transform: translateY(-2px); }
+
+    /* ---- Footer ---- */
+    footer {
+      background: var(--color-dark);
+      color: rgba(255,255,255,0.55);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color var(--transition); }
+    footer a:hover { color: var(--color-sage); }
+    .footer-links { display: flex; gap: 28px; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1100px) {
+      .catalogue-wrap { gap: 32px; padding: 40px; }
+      .subcat-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .cat-nav-inner { padding: 0 20px; }
+      .catalogue-wrap { flex-direction: column; padding: 24px 20px 60px; }
+      .sidebar { width: 100%; position: static; }
+      .page-hero { padding: 48px 20px 36px; }
+      .banner-cta { flex-direction: column; text-align: center; padding: 36px 28px; }
+      footer { flex-direction: column; gap: 14px; text-align: center; padding: 24px 20px; }
+    }
+    @media (max-width: 520px) {
+      .subcat-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/images/logo.png" alt="Fair Home Decor" />
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="catalogue.html" class="active">Catalogue</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-enquire">Enquire</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <span class="eyebrow">Fair Home Decor</span>
+    <h1>Our <em>Catalogue</em></h1>
+    <p>Explore our thoughtfully curated collection of handcrafted furniture, decorative items, and home accessories.</p>
+  </section>
+
+  <!-- Category Navigation Bar -->
+  <div class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-btn active" data-cat="furniture">Furniture</button>
+      <button class="cat-btn" data-cat="decorative">Decorative Items</button>
+      <button class="cat-btn" data-cat="frames">Photo Frames</button>
+    </div>
+  </div>
+
+  <!-- Catalogue Main -->
+  <div class="catalogue-wrap">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>Filters</h3>
+        <button class="clear-btn" id="clearFilters">Clear all</button>
+      </div>
+
+      <!-- Filter: Availability -->
+      <div class="filter-group">
+        <h4>Availability</h4>
+        <label class="filter-option">
+          <input type="checkbox" checked /> <span>In Stock</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Made to Order</span>
+        </label>
+      </div>
+
+      <div class="filter-separator"></div>
+
+      <!-- Filter: Sort -->
+      <div class="filter-group">
+        <h4>Sort By</h4>
+        <label class="sort-option">
+          <input type="radio" name="sort" checked /> <span>Featured</span>
+        </label>
+        <label class="sort-option">
+          <input type="radio" name="sort" /> <span>Newest</span>
+        </label>
+        <label class="sort-option">
+          <input type="radio" name="sort" /> <span>Name A–Z</span>
+        </label>
+      </div>
+
+      <div class="filter-separator"></div>
+
+      <!-- Filter: Material -->
+      <div class="filter-group">
+        <h4>Material</h4>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Solid Wood</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Engineered Wood</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Metal</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Rattan / Cane</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Ceramic</span>
+        </label>
+      </div>
+
+      <div class="filter-separator"></div>
+
+      <!-- Filter: Finish -->
+      <div class="filter-group">
+        <h4>Finish</h4>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Natural Wood</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Walnut</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>White / Cream</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" /> <span>Dark Stain</span>
+        </label>
+      </div>
+    </aside>
+
+    <!-- Product Area -->
+    <main class="product-area">
+
+      <!-- ============ FURNITURE SECTION ============ -->
+      <section class="cat-section active" id="cat-furniture">
+        <div class="cat-section-header">
+          <h2>
+            <span>Category</span>
+            Wooden Furniture
+          </h2>
+          <span class="result-count" id="furnitureCount">6 subcategories</span>
+        </div>
+
+        <!-- Sub-category Cards -->
+        <div class="subcat-grid" id="subcatGrid">
+
+          <div class="subcat-card" data-subcat="console-tables" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">🪵</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Console Tables</h4>
+              <p>Entryway &amp; wall tables</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="side-tables" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">🪑</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Side Tables</h4>
+              <p>Accent &amp; end tables</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="round-tables" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">⭕</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Round Tables</h4>
+              <p>Dining &amp; centre tables</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="bedside-tables" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">🛏️</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Bedside Tables</h4>
+              <p>Nightstands &amp; bedside units</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="bookshelves" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">📚</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Bookshelves</h4>
+              <p>Open &amp; closed shelving</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="accent-cabinets" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">🗄️</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Accent Cabinets</h4>
+              <p>Storage &amp; display cabinets</p>
+            </div>
+          </div>
+
+          <div class="subcat-card" data-subcat="study-tables" onclick="openSubcat(this)">
+            <div class="subcat-img">
+              <span class="img-placeholder">🖥️</span>
+            </div>
+            <div class="subcat-body">
+              <h4>Study Tables</h4>
+              <p>Desks &amp; work tables</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Products Grid (shown after sub-cat is selected) -->
+        <div id="productDisplay" style="display:none;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;">
+            <h3 id="subcatTitle" style="font-family:var(--font-serif); font-size:1.6rem; font-weight:400;"></h3>
+            <button onclick="backToSubcats()" style="background:none;border:1.5px solid var(--color-border);padding:8px 18px;border-radius:4px;font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;color:var(--color-brown);transition:all 0.3s ease;" onmouseover="this.style.borderColor='var(--color-sage)'" onmouseout="this.style.borderColor='var(--color-border)'">
+              ← All Categories
+            </button>
+          </div>
+          <div class="products-grid" id="subcatProducts">
+            <!-- Products injected by JS -->
+          </div>
+        </div>
+
+        <!-- Banner CTA -->
+        <div class="banner-cta">
+          <div class="banner-cta-text">
+            <h3>Looking for something <em>specific?</em></h3>
+            <p>Can't find what you're looking for? We also take custom orders — get in touch with us and we'll craft it for you.</p>
+          </div>
+          <a href="contact.html" class="btn-light">Get In Touch</a>
+        </div>
+      </section>
+
+      <!-- ============ DECORATIVE ITEMS SECTION ============ -->
+      <section class="cat-section" id="cat-decorative">
+        <div class="cat-section-header">
+          <h2>
+            <span>Category</span>
+            Decorative Items
+          </h2>
+          <span class="result-count">Coming soon</span>
+        </div>
+
+        <div class="products-grid">
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🏺</span>
+              <span class="img-label">Decorative</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Vases &amp; Pots</p>
+              <h3 class="product-name">Artisan Ceramic Vase</h3>
+              <p class="product-desc">Handcrafted ceramic with natural glaze finish. Perfect for dried or fresh florals.</p>
+              <div class="product-footer">
+                <span class="product-material">Ceramic · Natural</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🕯️</span>
+              <span class="img-label">Decorative</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Candle Holders</p>
+              <h3 class="product-name">Brass Pillar Holder</h3>
+              <p class="product-desc">Elegant brass-finished pillar candle holder. Adds warmth to any living space.</p>
+              <div class="product-footer">
+                <span class="product-material">Brass · Gold</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🪴</span>
+              <span class="img-label">Decorative</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Planters</p>
+              <h3 class="product-name">Woven Rattan Planter</h3>
+              <p class="product-desc">Natural rattan weave planter basket. Pairs beautifully with indoor plants.</p>
+              <div class="product-footer">
+                <span class="product-material">Rattan · Natural</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center; margin-top:48px; padding:48px 0; border-top:1px solid var(--color-border);">
+          <p style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; color:var(--color-brown); margin-bottom:16px;">Full decorative collection launching soon.</p>
+          <p style="font-size:0.8rem; color:rgba(43,37,32,0.5); margin-bottom:28px;">Contact us to enquire about current stock and availability.</p>
+          <a href="contact.html" class="btn-light" style="background:var(--color-dark); color:white; padding:14px 36px; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:4px; text-decoration:none; display:inline-block; transition:all 0.3s ease;">Contact Us</a>
+        </div>
+      </section>
+
+      <!-- ============ PHOTO FRAMES SECTION ============ -->
+      <section class="cat-section" id="cat-frames">
+        <div class="cat-section-header">
+          <h2>
+            <span>Category</span>
+            Wooden Photo Frames
+          </h2>
+          <span class="result-count">Coming soon</span>
+        </div>
+
+        <div class="products-grid">
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🖼️</span>
+              <span class="img-label">Photo Frame</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Classic Frames</p>
+              <h3 class="product-name">Walnut Wood Frame</h3>
+              <p class="product-desc">Solid walnut frame with natural grain finish. Available in multiple sizes.</p>
+              <div class="product-footer">
+                <span class="product-material">Solid Walnut</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🖼️</span>
+              <span class="img-label">Photo Frame</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Gallery Frames</p>
+              <h3 class="product-name">Oak Gallery Frame Set</h3>
+              <p class="product-desc">Set of 3 matching oak frames for gallery wall arrangements. Light natural finish.</p>
+              <div class="product-footer">
+                <span class="product-material">Solid Oak · Set of 3</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img">
+              <span class="img-icon">🖼️</span>
+              <span class="img-label">Photo Frame</span>
+            </div>
+            <div class="product-body">
+              <p class="product-tag">Floating Frames</p>
+              <h3 class="product-name">Reclaimed Wood Frame</h3>
+              <p class="product-desc">Rustic reclaimed wood frame with a weathered character and unique grain patterns.</p>
+              <div class="product-footer">
+                <span class="product-material">Reclaimed Wood</span>
+                <a href="contact.html" class="enquire-link">
+                  Enquire
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align:center; margin-top:48px; padding:48px 0; border-top:1px solid var(--color-border);">
+          <p style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; color:var(--color-brown); margin-bottom:16px;">Full frames collection launching soon.</p>
+          <a href="contact.html" class="btn-light" style="background:var(--color-dark); color:white; padding:14px 36px; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:4px; text-decoration:none; display:inline-block;">Contact Us</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>&copy; 2025 Fair Home Decor. All rights reserved.</span>
+    <nav class="footer-links">
+      <a href="../index.html">Home</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script>
+    // ============ Product Data ============
+    const subcatData = {
+      'console-tables': {
+        title: 'Console Tables',
+        items: [
+          { name: 'Narrow Hallway Console', tag: 'Console Table', desc: 'Slimline console table ideal for entryways. Solid wood with clean, minimal lines.', material: 'Solid Wood · Natural' },
+          { name: 'Two-Drawer Console', tag: 'Console Table', desc: 'Console table with two drawers for practical storage. Dovetail joinery.', material: 'Solid Wood · Walnut' },
+          { name: 'Open Shelf Console', tag: 'Console Table', desc: 'Console with lower open shelf. Perfect for books, baskets or decorative objects.', material: 'Solid Wood · Oak' },
+          { name: 'Tapered Leg Console', tag: 'Console Table', desc: 'Mid-century inspired console with tapered solid wood legs and apron detail.', material: 'Solid Wood · Teak' },
+          { name: 'Modern Plank Console', tag: 'Console Table', desc: 'Simple plank-top console with hairpin-inspired legs. Contemporary and clean.', material: 'Solid Wood · Natural' },
+          { name: 'Rustic Console Table', tag: 'Console Table', desc: 'Chunky, rustic console with live-edge top and handcrafted wooden frame.', material: 'Live Edge Wood' },
+        ]
+      },
+      'side-tables': {
+        title: 'Side Tables',
+        items: [
+          { name: 'Round Top Side Table', tag: 'Side Table', desc: 'Classic round-top side table with slender solid wood legs. Timeless design.', material: 'Solid Wood · Natural' },
+          { name: 'Drum Side Table', tag: 'Side Table', desc: 'Cylindrical drum-shaped side table. Doubles as extra seating in a pinch.', material: 'Solid Wood · Walnut' },
+          { name: 'Nesting Side Tables', tag: 'Side Table', desc: 'Set of two nesting tables that slide neatly together. Space-saving and stylish.', material: 'Solid Wood · Set of 2' },
+          { name: 'C-Shape Side Table', tag: 'Side Table', desc: 'Slide-under sofa table with C-shaped frame. Practical for sofas and beds.', material: 'Solid Wood · Dark Stain' },
+          { name: 'Rattan Accent Table', tag: 'Side Table', desc: 'Rattan-wrapped accent table with wood legs. Adds natural texture to any room.', material: 'Rattan &amp; Wood' },
+          { name: 'Tripod Side Table', tag: 'Side Table', desc: 'Elegant tripod-legged side table with a round top. Sculptural and functional.', material: 'Solid Wood · Oak' },
+        ]
+      },
+      'round-tables': {
+        title: 'Round Tables',
+        items: [
+          { name: 'Round Dining Table', tag: 'Round Table', desc: 'Solid wood round dining table. Seats 4–6. Pedestal base with sturdy construction.', material: 'Solid Wood · Natural' },
+          { name: 'Small Bistro Table', tag: 'Round Table', desc: 'Compact round table for 2. Perfect for breakfast nooks or small dining spaces.', material: 'Solid Wood · Walnut' },
+          { name: 'Coffee Table Round', tag: 'Round Table', desc: 'Low-profile round coffee table for living rooms. Wide top with lower shelf.', material: 'Solid Wood · Oak' },
+          { name: 'Pedestal Accent Table', tag: 'Round Table', desc: 'Decorative pedestal side table. Suitable as a plant stand or accent piece.', material: 'Solid Wood · Teak' },
+        ]
+      },
+      'bedside-tables': {
+        title: 'Bedside Tables',
+        items: [
+          { name: 'Single Drawer Bedside', tag: 'Bedside Table', desc: 'Compact bedside table with one drawer. Clean lines and solid construction.', material: 'Solid Wood · Natural' },
+          { name: 'Two-Drawer Nightstand', tag: 'Bedside Table', desc: 'Practical two-drawer nightstand with ample storage for bedroom essentials.', material: 'Solid Wood · Walnut' },
+          { name: 'Open Shelf Bedside', tag: 'Bedside Table', desc: 'Open shelf bedside table for books and morning essentials. Minimalist design.', material: 'Solid Wood · Oak' },
+          { name: 'Floating Bedside Shelf', tag: 'Bedside Table', desc: 'Wall-mounted floating bedside shelf. Saves floor space with a modern look.', material: 'Solid Wood · Dark Stain' },
+          { name: 'Cane Bedside Table', tag: 'Bedside Table', desc: 'Solid wood frame with cane panel detail. Adds a natural, warm texture to bedrooms.', material: 'Wood &amp; Cane' },
+        ]
+      },
+      'bookshelves': {
+        title: 'Bookshelves',
+        items: [
+          { name: 'Tall Bookshelf Unit', tag: 'Bookshelf', desc: 'Tall 5-tier solid wood bookshelf. Sturdy and spacious for books and display items.', material: 'Solid Wood · Natural' },
+          { name: 'Low-Profile Bookcase', tag: 'Bookshelf', desc: 'Low 3-shelf bookcase ideal below windows or as a room divider element.', material: 'Solid Wood · Walnut' },
+          { name: 'Ladder Bookshelf', tag: 'Bookshelf', desc: 'Leaning ladder shelf with 5 tiers. Compact footprint, asymmetric charm.', material: 'Solid Wood · Oak' },
+          { name: 'Cube Shelving Unit', tag: 'Bookshelf', desc: 'Modular cube shelving unit. Highly versatile — stack and arrange as needed.', material: 'Engineered Wood · White' },
+          { name: 'Open Box Shelf', tag: 'Bookshelf', desc: 'Wall-mounted open box shelf set. Mix and match arrangements for any room.', material: 'Solid Wood · Natural' },
+          { name: 'Bookshelf with Cabinet', tag: 'Bookshelf', desc: 'Combination bookshelf with lower closed cabinet for hidden storage.', material: 'Solid Wood · Dark Stain' },
+        ]
+      },
+      'accent-cabinets': {
+        title: 'Accent Cabinets',
+        items: [
+          { name: 'Sideboard Cabinet', tag: 'Accent Cabinet', desc: 'Wide low sideboard with two doors. Perfect for dining rooms and living areas.', material: 'Solid Wood · Natural' },
+          { name: 'Tall Display Cabinet', tag: 'Accent Cabinet', desc: 'Tall cabinet with glass panel doors. Showcase collectibles and fine items.', material: 'Solid Wood · Walnut' },
+          { name: 'Media Console Cabinet', tag: 'Accent Cabinet', desc: 'Low TV unit with shelves and closed storage. Clean, functional design.', material: 'Solid Wood · Oak' },
+          { name: 'Bar Cabinet', tag: 'Accent Cabinet', desc: 'Compact bar cabinet with inner shelving and stemware rack. Elegant entertainer.', material: 'Solid Wood · Dark Stain' },
+          { name: 'Cane Front Cabinet', tag: 'Accent Cabinet', desc: 'Cabinet with cane-webbing door panels. Natural warmth meets storage function.', material: 'Wood &amp; Cane' },
+        ]
+      },
+      'study-tables': {
+        title: 'Study Tables',
+        items: [
+          { name: 'Minimalist Study Desk', tag: 'Study Table', desc: 'Clean-lined solid wood study table. Ample surface for a productive workspace.', material: 'Solid Wood · Natural' },
+          { name: 'Desk with Drawers', tag: 'Study Table', desc: 'Study desk with two side drawers. Keeps your workspace tidy and organized.', material: 'Solid Wood · Walnut' },
+          { name: 'Corner Study Desk', tag: 'Study Table', desc: 'L-shaped corner desk for maximizing corner space in a home office.', material: 'Solid Wood · Oak' },
+          { name: 'Standing Desk', tag: 'Study Table', desc: 'Adjustable height standing desk. Solid wood top with height-adjustable frame.', material: 'Solid Wood · Natural' },
+          { name: 'Writing Table', tag: 'Study Table', desc: 'Elegant writing table with slim profile. Ideal for study nooks or home offices.', material: 'Solid Wood · Dark Stain' },
+        ]
+      }
+    };
+
+    // ============ Category Switching ============
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.cat-section').forEach(s => s.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('cat-' + this.dataset.cat).classList.add('active');
+        // Reset any open subcat
+        backToSubcats();
+      });
+    });
+
+    // ============ Sub-category Opening ============
+    function openSubcat(card) {
+      const key = card.dataset.subcat;
+      const data = subcatData[key];
+      if (!data) return;
+
+      document.querySelectorAll('.subcat-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      // Set title
+      document.getElementById('subcatTitle').textContent = data.title;
+
+      // Render products
+      const grid = document.getElementById('subcatProducts');
+      grid.innerHTML = data.items.map(item => `
+        <div class="product-card">
+          <div class="product-img">
+            <span class="img-icon">🪵</span>
+            <span class="img-label">${item.tag}</span>
+          </div>
+          <div class="product-body">
+            <p class="product-tag">${item.tag}</p>
+            <h3 class="product-name">${item.name}</h3>
+            <p class="product-desc">${item.desc}</p>
+            <div class="product-footer">
+              <span class="product-material">${item.material}</span>
+              <a href="contact.html" class="enquire-link">
+                Enquire
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Show product display, hide subcat grid
+      document.getElementById('subcatGrid').style.display = 'none';
+      document.getElementById('productDisplay').style.display = 'block';
+      document.getElementById('furnitureCount').textContent = data.items.length + ' products';
+
+      // Smooth scroll to products
+      document.getElementById('productDisplay').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function backToSubcats() {
+      document.getElementById('subcatGrid').style.display = 'grid';
+      document.getElementById('productDisplay').style.display = 'none';
+      document.querySelectorAll('.subcat-card').forEach(c => c.classList.remove('active'));
+      document.getElementById('furnitureCount').textContent = '7 subcategories';
+    }
+
+    // Sticky nav shadow
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.boxShadow =
+        window.scrollY > 10 ? '0 2px 20px rgba(43,37,32,0.08)' : '';
+    });
+  </script>
+</body>
+</html>
