@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catalogue — Fair Home Decor</title>
-  <meta name="description" content="Browse our curated catalogue of furniture, decorative items, and home accessories." />
+  <title>Product Catalogue — Fair Home Decor</title>
+  <meta name="description" content="Explore the Fair Home Decor 2027 collection of handcrafted solid wood furniture, accent cabinets, tables, bookshelves, and decor." />
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    /* ========================================================
+       Theme Variables & Resets
+       ======================================================== */
     :root {
       --color-bg:        #FAF8F5;
       --color-cream:     #F5F0E8;
@@ -17,12 +23,19 @@
       --color-brown:     #5C4B3A;
       --color-sage:      #7C8C6E;
       --color-sage-dark: #5A6B4E;
+      --color-sage-light:#92A185;
       --color-border:    #DDD5C5;
+      --color-border-light: #ECE5D8;
       --color-white:     #FFFFFF;
+      --color-gold:      #B38D4F;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans:  'Montserrat', 'Helvetica Neue', sans-serif;
-      --transition: 0.3s ease;
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm: 0 2px 8px rgba(43,37,32,0.06);
+      --shadow-md: 0 8px 24px rgba(43,37,32,0.09);
+      --shadow-lg: 0 16px 40px rgba(43,37,32,0.14);
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -30,340 +43,492 @@
       background-color: var(--color-bg);
       color: var(--color-dark);
       -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
     }
 
-    /* ---- Nav ---- */
-    nav {
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    /* ========================================================
+       Top Navigation
+       ======================================================== */
+    .top-nav {
       position: sticky;
-      top: 0; z-index: 200;
-      background: rgba(250,248,245,0.97);
+      top: 0;
+      z-index: 300;
+      background: rgba(250, 248, 245, 0.98);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--color-border);
-      padding: 0 60px;
-      height: 80px;
+      padding: 0 48px;
+      height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
-    .nav-logo img { height: 56px; width: auto; }
-    .nav-right { display: flex; align-items: center; gap: 36px; }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a {
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .brand-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-menu-links a {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-brown);
-      text-decoration: none;
       transition: color var(--transition);
+      position: relative;
+      padding: 4px 0;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--color-dark); }
-    .nav-enquire {
-      background: var(--color-dark);
-      color: white;
+
+    .nav-menu-links a:hover,
+    .nav-menu-links a.active {
+      color: var(--color-dark);
+    }
+
+    .nav-menu-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--color-sage);
+    }
+
+    .nav-center-search {
+      flex: 1;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .nav-center-search input {
+      width: 100%;
+      height: 40px;
+      padding: 0 16px 0 42px;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-white);
       font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--color-dark);
+      outline: none;
+      transition: all var(--transition);
+    }
+
+    .nav-center-search input:focus {
+      border-color: var(--color-sage);
+      box-shadow: 0 0 0 3px rgba(124, 140, 110, 0.15);
+    }
+
+    .nav-center-search svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(92, 75, 58, 0.6);
+      pointer-events: none;
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-contact-nav {
+      background: var(--color-dark);
+      color: var(--color-white);
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 10px 24px;
+      padding: 10px 22px;
       border-radius: 3px;
-      text-decoration: none;
       transition: all var(--transition);
-    }
-    .nav-enquire:hover { background: var(--color-sage); }
-
-    /* ---- Page Hero ---- */
-    .page-hero {
-      background: linear-gradient(135deg, var(--color-warm-tan) 0%, var(--color-cream) 100%);
-      padding: 80px 60px 64px;
-      text-align: center;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .eyebrow {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-sage);
-      display: block;
-      margin-bottom: 16px;
-    }
-    .page-hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 400;
-      color: var(--color-dark);
-    }
-    .page-hero h1 em { font-style: italic; color: var(--color-brown); }
-    .page-hero p {
-      margin-top: 18px;
-      font-size: 0.86rem;
-      color: rgba(43,37,32,0.6);
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.9;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* ---- Category Nav Bar ---- */
-    .cat-nav {
-      background: var(--color-white);
-      border-bottom: 1px solid var(--color-border);
+    .btn-contact-nav:hover {
+      background: var(--color-sage);
+      color: var(--color-white);
+    }
+
+    /* ========================================================
+       Olive / Sage Category Navigation Ribbon
+       ======================================================== */
+    .category-ribbon {
+      background: var(--color-sage-dark);
+      color: var(--color-white);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
       position: sticky;
-      top: 80px;
-      z-index: 150;
+      top: 78px;
+      z-index: 250;
+      box-shadow: 0 2px 10px rgba(43,37,32,0.06);
     }
-    .cat-nav-inner {
-      max-width: 1300px;
+
+    .category-ribbon-inner {
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 60px;
+      padding: 0 48px;
       display: flex;
-      gap: 0;
+      align-items: center;
+      gap: 32px;
       overflow-x: auto;
       scrollbar-width: none;
     }
-    .cat-nav-inner::-webkit-scrollbar { display: none; }
-    .cat-btn {
-      background: none;
-      border: none;
+    .category-ribbon-inner::-webkit-scrollbar { display: none; }
+
+    .ribbon-item {
+      padding: 14px 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      white-space: nowrap;
+      cursor: pointer;
       border-bottom: 3px solid transparent;
-      padding: 18px 28px;
-      font-family: var(--font-sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--color-brown);
-      cursor: pointer;
       transition: all var(--transition);
-      white-space: nowrap;
-    }
-    .cat-btn:hover { color: var(--color-dark); }
-    .cat-btn.active {
-      color: var(--color-sage-dark);
-      border-bottom-color: var(--color-sage);
     }
 
-    /* ---- Main Layout ---- */
-    .catalogue-wrap {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 60px 60px 100px;
-      display: flex;
-      gap: 48px;
-      align-items: flex-start;
-    }
-
-    /* ---- Sidebar Filters ---- */
-    .sidebar {
-      width: 240px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 140px;
-    }
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .sidebar-header h3 {
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
+    .ribbon-item:hover,
+    .ribbon-item.active {
+      color: #FFFFFF;
       font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-dark);
-    }
-    .clear-btn {
-      font-size: 0.7rem;
-      color: var(--color-sage);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      letter-spacing: 0.08em;
-      transition: color var(--transition);
-    }
-    .clear-btn:hover { color: var(--color-sage-dark); }
-
-    .filter-group { margin-bottom: 28px; }
-    .filter-group h4 {
-      font-family: var(--font-sans);
-      font-size: 0.66rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--color-sage-dark);
-      margin-bottom: 14px;
-    }
-    .filter-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .filter-option input[type="checkbox"] {
-      width: 16px; height: 16px;
-      border: 1.5px solid var(--color-border);
-      border-radius: 3px;
-      appearance: none;
-      cursor: pointer;
-      background: white;
-      position: relative;
-      transition: all var(--transition);
-      flex-shrink: 0;
-    }
-    .filter-option input[type="checkbox"]:checked {
-      background: var(--color-sage);
-      border-color: var(--color-sage);
-    }
-    .filter-option input[type="checkbox"]:checked::after {
-      content: '';
-      position: absolute;
-      left: 4px; top: 1px;
-      width: 5px; height: 9px;
-      border: 2px solid white;
-      border-top: none; border-left: none;
-      transform: rotate(45deg);
-    }
-    .filter-option label {
-      font-size: 0.8rem;
-      color: var(--color-dark);
-      cursor: pointer;
-      line-height: 1.4;
-    }
-    .filter-separator {
-      height: 1px;
-      background: var(--color-border);
-      margin: 20px 0;
+      border-bottom-color: #FFFFFF;
     }
 
-    /* Sort Radio */
-    .sort-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .sort-option input[type="radio"] {
-      width: 16px; height: 16px;
-      accent-color: var(--color-sage);
-      cursor: pointer;
-    }
-    .sort-option label { font-size: 0.8rem; color: var(--color-dark); cursor: pointer; }
-
-    /* ---- Product Grid Area ---- */
-    .product-area { flex: 1; min-width: 0; }
-
-    /* Category section */
-    .cat-section {
-      display: none;
-      animation: fadeIn 0.4s ease both;
-    }
-    .cat-section.active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ========================================================
+       Subcategory Feature Showcase (4 Cards as in design reference)
+       ======================================================== */
+    .feature-showcase {
+      max-width: 1400px;
+      margin: 40px auto 32px;
+      padding: 0 48px;
     }
 
-    .cat-section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 36px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .cat-section-header h2 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
-      color: var(--color-dark);
-    }
-    .cat-section-header h2 span {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--color-sage);
-      margin-bottom: 6px;
-    }
-    .result-count {
-      font-size: 0.76rem;
-      color: rgba(43,37,32,0.45);
-      white-space: nowrap;
-    }
-
-    /* Sub-category grid (furniture subcats) */
-    .subcat-grid {
+    .showcase-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      margin-bottom: 48px;
     }
 
-    .subcat-card {
+    .showcase-card {
       background: var(--color-white);
       border: 1px solid var(--color-border);
-      border-radius: 10px;
+      border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
       transition: all var(--transition);
-    }
-    .subcat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(43,37,32,0.12);
-      border-color: var(--color-sage);
-    }
-    .subcat-card.active {
-      border-color: var(--color-sage);
-      box-shadow: 0 0 0 2px rgba(124,140,110,0.3);
-    }
-    .subcat-img {
-      width: 100%;
-      height: 140px;
-      background: linear-gradient(135deg, var(--color-warm-tan), var(--color-cream));
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
-      overflow: hidden;
     }
-    .subcat-img img {
+
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-sage);
+    }
+
+    .showcase-card.active {
+      border-color: var(--color-sage-dark);
+      box-shadow: 0 0 0 2px var(--color-sage);
+    }
+
+    .showcase-img-wrap {
+      height: 180px;
+      background: #ECE5D8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .showcase-img-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      padding: 12px;
+      transition: transform 0.4s ease;
     }
-    .subcat-img .img-placeholder {
-      font-size: 2.5rem;
-      opacity: 0.35;
+
+    .showcase-card:hover .showcase-img-wrap img {
+      transform: scale(1.05);
     }
-    .subcat-body {
-      padding: 16px 18px;
+
+    .showcase-content {
+      padding: 16px;
+      text-align: center;
+      background: var(--color-white);
+      border-top: 1px solid var(--color-border-light);
     }
-    .subcat-body h4 {
+
+    .showcase-content h4 {
       font-family: var(--font-serif);
-      font-size: 1.1rem;
-      font-weight: 400;
+      font-size: 1.15rem;
+      font-weight: 500;
       color: var(--color-dark);
       margin-bottom: 4px;
     }
-    .subcat-body p {
-      font-size: 0.72rem;
-      color: rgba(43,37,32,0.5);
+
+    .showcase-content span {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-sage);
+      font-weight: 600;
     }
 
-    /* Product Cards Grid */
-    .products-grid {
+    /* ========================================================
+       Main Catalogue Area (Sidebar + Grid)
+       ======================================================== */
+    .catalogue-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ---- Sidebar ---- */
+    .filter-sidebar {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 28px 24px;
+      position: sticky;
+      top: 142px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 24px;
+    }
+
+    .filter-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    .btn-clear-filters {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-sage);
+      transition: color var(--transition);
+    }
+    .btn-clear-filters:hover { color: var(--color-dark); text-decoration: underline; }
+
+    /* Switch toggles */
+    .toggle-group {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--color-dark);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 38px;
+      height: 20px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #D3CBC0;
+      transition: 0.3s;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--color-sage); }
+    input:checked + .slider:before { transform: translateX(18px); }
+
+    /* Filter sections */
+    .filter-section {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .filter-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .filter-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-brown);
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .radio-list, .checkbox-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--color-dark);
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 3px;
+      transition: background var(--transition);
+    }
+    .filter-option:hover {
+      background: var(--color-cream);
+    }
+
+    .filter-option input {
+      margin-right: 8px;
+      accent-color: var(--color-sage-dark);
+      cursor: pointer;
+    }
+
+    .filter-count {
+      font-size: 0.68rem;
+      color: rgba(92, 75, 58, 0.65);
+      background: var(--color-cream);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    /* ---- Main Content Column ---- */
+    .main-catalogue-view {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Top control bar */
+    .catalogue-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 16px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .results-info {
+      font-size: 0.78rem;
+      color: var(--color-brown);
+    }
+    .results-info strong {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    .view-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .items-per-page-select {
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 0.74rem;
+      background: var(--color-white);
+      color: var(--color-dark);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Active filter badges */
+    .active-filters-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-pill {
+      background: var(--color-warm-tan);
+      border: 1px solid var(--color-border);
+      color: var(--color-dark);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill button {
+      font-size: 0.9rem;
+      line-height: 1;
+      color: var(--color-brown);
+    }
+    .filter-pill button:hover { color: #A03B26; }
+
+    /* ---- Product Grid ---- */
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
@@ -372,747 +537,1388 @@
     .product-card {
       background: var(--color-white);
       border: 1px solid var(--color-border);
-      border-radius: 10px;
+      border-radius: 6px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: all var(--transition);
-      cursor: pointer;
+      position: relative;
     }
+
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(43,37,32,0.12);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-sage);
     }
-    .product-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-warm-tan) 100%);
+
+    .product-image-wrap {
+      height: 270px;
+      background: #F2EDE4;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
+      padding: 16px;
     }
-    .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+
+    .product-image-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
     }
-    .product-card:hover .product-img img { transform: scale(1.04); }
-    .product-img .img-icon {
-      font-size: 3rem;
-      opacity: 0.2;
+
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.06);
     }
-    .product-img .img-label {
+
+    .product-badge-subcat {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(43,37,32,0.75);
-      color: white;
+      top: 14px;
+      left: 14px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--color-border);
       font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--color-sage-dark);
       padding: 4px 10px;
       border-radius: 3px;
     }
-    .product-body {
-      padding: 20px;
-    }
-    .product-tag {
+
+    .product-badge-code {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--color-dark);
+      color: #FFFFFF;
       font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+
+    /* Hover overlay quick view button */
+    .quick-view-overlay {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      transition: all var(--transition);
+      pointer-events: none;
+    }
+
+    .product-card:hover .quick-view-overlay {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .btn-quick-view {
+      background: rgba(43, 37, 32, 0.92);
+      color: #FFFFFF;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--color-sage);
-      margin-bottom: 8px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      transition: background var(--transition);
+      white-space: nowrap;
     }
-    .product-name {
+    .btn-quick-view:hover {
+      background: var(--color-sage);
+    }
+
+    .product-card-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .product-card-title {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 400;
+      font-size: 1.25rem;
+      font-weight: 500;
       color: var(--color-dark);
-      margin-bottom: 6px;
-      line-height: 1.3;
+      margin-bottom: 8px;
+      line-height: 1.25;
     }
-    .product-desc {
-      font-size: 0.76rem;
-      color: rgba(43,37,32,0.55);
-      line-height: 1.7;
+
+    .product-dimensions-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--color-brown);
+      background: var(--color-cream);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .product-dimensions-box svg { color: var(--color-sage); }
+
+    .product-card-desc {
+      font-size: 0.74rem;
+      color: rgba(43,37,32,0.65);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .product-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-border-light);
+      margin-top: auto;
+    }
+
+    .card-material-info {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--color-sage-dark);
+    }
+
+    .btn-enquire-card {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition);
+    }
+
+    .btn-enquire-card:hover {
+      background: var(--color-sage);
+      color: #FFFFFF;
+    }
+
+    /* ---- Empty State ---- */
+    .empty-state {
+      background: var(--color-white);
+      border: 1px dashed var(--color-border);
+      border-radius: 6px;
+      padding: 60px 40px;
+      text-align: center;
+      display: none;
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--color-dark);
+    }
+
+    .empty-state p {
+      font-size: 0.85rem;
+      color: var(--color-brown);
+      margin-bottom: 20px;
+    }
+
+    /* ---- Pagination ---- */
+    .pagination-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 36px;
+      user-select: none;
+    }
+
+    .page-btn {
+      min-width: 38px;
+      height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-white);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .page-btn:hover:not(:disabled) {
+      background: var(--color-warm-tan);
+      border-color: var(--color-sage);
+    }
+
+    .page-btn.active {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      border-color: var(--color-dark);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* ========================================================
+       Curated Living Banner (as in reference)
+       ======================================================== */
+    .curated-banner {
+      background: linear-gradient(rgba(43,37,32,0.45), rgba(43,37,32,0.65)),
+                  url('../assets/images/products/accent-cabinets/FHD-AF-1001.jpg') center/cover no-repeat;
+      padding: 120px 48px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 40px;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .curated-banner h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
       margin-bottom: 16px;
     }
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 14px;
-      border-top: 1px solid var(--color-border);
-    }
-    .product-material {
-      font-size: 0.68rem;
-      color: rgba(43,37,32,0.45);
-      letter-spacing: 0.06em;
-    }
-    .enquire-link {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-sage-dark);
-      text-decoration: none;
-      transition: color var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .enquire-link:hover { color: var(--color-dark); }
-    .enquire-link svg { transition: transform var(--transition); }
-    .enquire-link:hover svg { transform: translateX(3px); }
+    .curated-banner h2 em { font-style: italic; color: #E8DFD0; }
 
-    /* Pagination */
-    .pagination {
+    .curated-banner p {
+      max-width: 620px;
+      margin: 0 auto 32px;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .btn-banner-action {
+      background: #FFFFFF;
+      color: var(--color-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border-radius: 3px;
+      transition: all var(--transition);
+      display: inline-block;
+    }
+    .btn-banner-action:hover {
+      background: var(--color-sage);
+      color: #FFFFFF;
+    }
+
+    /* ========================================================
+       Newsletter Email Sign-Up (as in reference)
+       ======================================================== */
+    .newsletter-section {
+      background: var(--color-cream);
+      padding: 70px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .newsletter-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .newsletter-inner h3 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 10px;
+    }
+
+    .newsletter-inner p {
+      font-size: 0.82rem;
+      color: rgba(43,37,32,0.68);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 3px;
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.8rem;
+      outline: none;
+    }
+    .newsletter-form input:focus { border-color: var(--color-sage); }
+
+    .btn-subscribe {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0 24px;
+      border-radius: 3px;
+      transition: background var(--transition);
+    }
+    .btn-subscribe:hover { background: #96743A; }
+
+    .newsletter-social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .newsletter-social-icons a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--color-border);
-    }
-    .page-btn {
-      width: 40px; height: 40px;
-      border: 1.5px solid var(--color-border);
-      background: white;
-      border-radius: 50%;
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
       color: var(--color-brown);
-      cursor: pointer;
       transition: all var(--transition);
-      display: flex; align-items: center; justify-content: center;
     }
-    .page-btn:hover, .page-btn.active {
+    .newsletter-social-icons a:hover {
       border-color: var(--color-sage);
       background: var(--color-sage);
-      color: white;
+      color: #FFFFFF;
     }
-    .page-btn.arrow { border-radius: 6px; width: auto; padding: 0 14px; gap: 6px; font-size: 0.7rem; }
 
-    /* Banner CTA */
-    .banner-cta {
-      margin-top: 64px;
-      background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-brown) 100%);
-      border-radius: 16px;
-      padding: 56px 48px;
+    /* ========================================================
+       Footer (Full reference luxury footer)
+       ======================================================== */
+    footer {
+      background: #FFFFFF;
+      color: var(--color-dark);
+      border-top: 1px solid var(--color-border);
+      padding: 64px 48px 32px;
+    }
+
+    .footer-columns {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-dark);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.78rem;
+      color: rgba(43,37,32,0.65);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--color-sage-dark); }
+
+    .footer-contact-info p {
+      font-size: 0.78rem;
+      color: rgba(43,37,32,0.7);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .footer-contact-info a {
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
+    .footer-bottom-bar {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: rgba(43,37,32,0.55);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal-links a:hover { color: var(--color-dark); }
+
+    /* ========================================================
+       Quick View Modal
+       ======================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(43, 37, 32, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-box {
+      background: var(--color-white);
+      max-width: 840px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .btn-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-cream);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 40px;
+      justify-content: center;
+      color: var(--color-dark);
+      font-size: 1.2rem;
+      transition: background var(--transition);
+      z-index: 10;
     }
-    .banner-cta-text h3 {
+    .btn-modal-close:hover { background: var(--color-border); }
+
+    .modal-img-wrap {
+      background: #F2EDE4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      min-height: 420px;
+    }
+
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+    }
+
+    .modal-details {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
       font-family: var(--font-serif);
       font-size: 2rem;
-      color: white;
-      margin-bottom: 10px;
-    }
-    .banner-cta-text h3 em { font-style: italic; color: rgba(232,223,208,0.9); }
-    .banner-cta-text p { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 400px; }
-    .btn-light {
-      background: white;
+      font-weight: 400;
       color: var(--color-dark);
-      font-family: var(--font-sans);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .modal-specs-table {
+      margin: 18px 0;
+      border-top: 1px solid var(--color-border-light);
+      border-bottom: 1px solid var(--color-border-light);
+      padding: 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.78rem;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    .spec-row span:first-child {
+      color: var(--color-brown);
+      font-weight: 500;
+    }
+    .spec-row span:last-child {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    .modal-desc {
+      font-size: 0.78rem;
+      color: rgba(43,37,32,0.7);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .modal-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-modal-enquire {
+      flex: 1;
+      background: var(--color-dark);
+      color: #FFFFFF;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 16px 40px;
-      border-radius: 4px;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: all var(--transition);
+      padding: 14px;
+      border-radius: 3px;
+      text-align: center;
+      transition: background var(--transition);
     }
-    .btn-light:hover { background: var(--color-warm-tan); transform: translateY(-2px); }
-
-    /* ---- Footer ---- */
-    footer {
-      background: var(--color-dark);
-      color: rgba(255,255,255,0.55);
-      padding: 32px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+    .btn-modal-enquire:hover {
+      background: var(--color-sage);
+      color: #FFFFFF;
     }
-    footer a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color var(--transition); }
-    footer a:hover { color: var(--color-sage); }
-    .footer-links { display: flex; gap: 28px; }
 
-    /* ---- Responsive ---- */
+    /* ========================================================
+       Responsive Breakpoints
+       ======================================================== */
     @media (max-width: 1100px) {
-      .catalogue-wrap { gap: 32px; padding: 40px; }
-      .subcat-grid { grid-template-columns: repeat(2, 1fr); }
-      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .catalogue-container { grid-template-columns: 240px 1fr; gap: 24px; }
+      .footer-columns { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .cat-nav-inner { padding: 0 20px; }
-      .catalogue-wrap { flex-direction: column; padding: 24px 20px 60px; }
-      .sidebar { width: 100%; position: static; }
-      .page-hero { padding: 48px 20px 36px; }
-      .banner-cta { flex-direction: column; text-align: center; padding: 36px 28px; }
-      footer { flex-direction: column; gap: 14px; text-align: center; padding: 24px 20px; }
-    }
-    @media (max-width: 520px) {
-      .subcat-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: 1fr; }
+
+    @media (max-width: 820px) {
+      .top-nav { padding: 0 20px; }
+      .nav-menu-links { display: none; }
+      .catalogue-container { grid-template-columns: 1fr; padding: 0 20px 60px; }
+      .filter-sidebar { position: static; margin-bottom: 20px; }
+      .feature-showcase { padding: 0 20px; }
+      .showcase-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .modal-box { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+      .modal-img-wrap { min-height: 260px; }
+      footer { padding: 40px 20px 24px; }
+      .footer-columns { grid-template-columns: 1fr; gap: 30px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="../index.html" class="nav-logo">
-      <img src="../assets/images/logo.png" alt="Fair Home Decor" />
-    </a>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="catalogue.html" class="active">Catalogue</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <a href="contact.html" class="nav-enquire">Enquire</a>
+  <!-- ==========================================
+       TOP NAVIGATION BAR
+       ========================================== -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="brand-logo" aria-label="Fair Home Decor Home">
+        <img src="../assets/images/logo.png" alt="Fair Home Decor Logo" />
+      </a>
+      <ul class="nav-menu-links">
+        <li><a href="catalogue.html" class="active">Catalogue</a></li>
+        <li><a href="catalogue.html" onclick="filterBySubcat('accent-cabinets')">Cabinets</a></li>
+        <li><a href="catalogue.html" onclick="filterBySubcat('console-tables')">Console Tables</a></li>
+        <li><a href="catalogue.html" onclick="filterBySubcat('round-tables')">Round Tables</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Live Search Bar -->
+    <div class="nav-center-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search product, code (e.g. FHD-AF-1001), dimensions..." />
+    </div>
+
+    <!-- Right Actions -->
+    <div class="nav-right-actions">
+      <a href="contact.html" class="btn-contact-nav">
+        <span>Inquire Now</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       OLIVE/SAGE CATEGORY NAVIGATION RIBBON
+       ========================================== -->
+  <nav class="category-ribbon">
+    <div class="category-ribbon-inner">
+      <div class="ribbon-item active" data-category="furniture" onclick="switchCategory('furniture', this)">Furniture (423)</div>
+      <div class="ribbon-item" data-category="decor" onclick="switchCategory('decor', this)">Home Decor (16)</div>
+      <div class="ribbon-item" data-category="all" onclick="switchCategory('all', this)">View All (439)</div>
+      <div class="ribbon-item" onclick="filterBySubcat('accent-cabinets')">Accent Cabinets</div>
+      <div class="ribbon-item" onclick="filterBySubcat('bedside-tables')">Bedside Tables</div>
+      <div class="ribbon-item" onclick="filterBySubcat('console-tables')">Console Tables</div>
+      <div class="ribbon-item" onclick="filterBySubcat('bookshelves')">Bookshelves</div>
+      <div class="ribbon-item" onclick="filterBySubcat('round-tables')">Round Tables</div>
+      <div class="ribbon-item" onclick="filterBySubcat('side-tables')">Side Tables</div>
+      <div class="ribbon-item" onclick="filterBySubcat('study-tables')">Study Desks</div>
     </div>
   </nav>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <span class="eyebrow">Fair Home Decor</span>
-    <h1>Our <em>Catalogue</em></h1>
-    <p>Explore our thoughtfully curated collection of handcrafted furniture, decorative items, and home accessories.</p>
+  <!-- ==========================================
+       HERO FEATURE SHOWCASE (4 Cards as in design reference)
+       ========================================== -->
+  <section class="feature-showcase">
+    <div class="showcase-grid">
+      <!-- Card 1 -->
+      <div class="showcase-card" onclick="filterBySubcat('accent-cabinets')">
+        <div class="showcase-img-wrap">
+          <img src="../assets/images/products/accent-cabinets/FHD-AF-1001.jpg" alt="Accent Cabinets" />
+        </div>
+        <div class="showcase-content">
+          <h4>Accent Cabinets</h4>
+          <span>30 Designs</span>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="showcase-card" onclick="filterBySubcat('console-tables')">
+        <div class="showcase-img-wrap">
+          <img src="../assets/images/products/console-tables/FHD-CST-1001.jpg" alt="Console Tables" />
+        </div>
+        <div class="showcase-content">
+          <h4>Console Tables</h4>
+          <span>30 Designs</span>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="showcase-card" onclick="filterBySubcat('round-tables')">
+        <div class="showcase-img-wrap">
+          <img src="../assets/images/products/round-tables/FHD-RT-1001.jpg" alt="Round & Dining Tables" />
+        </div>
+        <div class="showcase-content">
+          <h4>Round Tables</h4>
+          <span>80 Designs</span>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="showcase-card" onclick="filterBySubcat('bookshelves')">
+        <div class="showcase-img-wrap">
+          <img src="../assets/images/products/bookshelves/FHD-BS-1001.jpg" alt="Bookshelves" />
+        </div>
+        <div class="showcase-content">
+          <h4>Bookshelves</h4>
+          <span>60 Designs</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Category Navigation Bar -->
-  <div class="cat-nav">
-    <div class="cat-nav-inner">
-      <button class="cat-btn active" data-cat="furniture">Furniture</button>
-      <button class="cat-btn" data-cat="decorative">Decorative Items</button>
-      <button class="cat-btn" data-cat="frames">Photo Frames</button>
-    </div>
-  </div>
+  <!-- ==========================================
+       MAIN CATALOGUE SECTION (SIDEBAR + GRID)
+       ========================================== -->
+  <div class="catalogue-container">
 
-  <!-- Catalogue Main -->
-  <div class="catalogue-wrap">
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
+    <!-- LEFT FILTER SIDEBAR -->
+    <aside class="filter-sidebar">
+      <div class="filter-header">
         <h3>Filters</h3>
-        <button class="clear-btn" id="clearFilters">Clear all</button>
+        <button class="btn-clear-filters" onclick="resetFilters()">Reset All</button>
       </div>
 
-      <!-- Filter: Availability -->
-      <div class="filter-group">
-        <h4>Availability</h4>
-        <label class="filter-option">
-          <input type="checkbox" checked /> <span>In Stock</span>
+      <!-- In Stock & Availability Toggles -->
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <span>In Stock / Ready to Ship</span>
+          <span class="switch">
+            <input type="checkbox" id="toggleInStock" onchange="applyFilters()" checked />
+            <span class="slider"></span>
+          </span>
         </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Made to Order</span>
-        </label>
-      </div>
-
-      <div class="filter-separator"></div>
-
-      <!-- Filter: Sort -->
-      <div class="filter-group">
-        <h4>Sort By</h4>
-        <label class="sort-option">
-          <input type="radio" name="sort" checked /> <span>Featured</span>
-        </label>
-        <label class="sort-option">
-          <input type="radio" name="sort" /> <span>Newest</span>
-        </label>
-        <label class="sort-option">
-          <input type="radio" name="sort" /> <span>Name A–Z</span>
+        <label class="toggle-label">
+          <span>Container Load (HC40)</span>
+          <span class="switch">
+            <input type="checkbox" id="toggleContainer" onchange="applyFilters()" checked />
+            <span class="slider"></span>
+          </span>
         </label>
       </div>
 
-      <div class="filter-separator"></div>
-
-      <!-- Filter: Material -->
-      <div class="filter-group">
-        <h4>Material</h4>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Solid Wood</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Engineered Wood</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Metal</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Rattan / Cane</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Ceramic</span>
-        </label>
+      <!-- Sort Filter -->
+      <div class="filter-section">
+        <div class="filter-section-title">Sort By</div>
+        <ul class="radio-list">
+          <li class="filter-option">
+            <label><input type="radio" name="sortOption" value="featured" checked onchange="applyFilters()" /> Featured</label>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="sortOption" value="code-asc" onchange="applyFilters()" /> Item Code (A – Z)</label>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="sortOption" value="dim-asc" onchange="applyFilters()" /> Dimensions (Compact first)</label>
+          </li>
+        </ul>
       </div>
 
-      <div class="filter-separator"></div>
+      <!-- Subcategory / Product Type Filter -->
+      <div class="filter-section">
+        <div class="filter-section-title">Product Type</div>
+        <ul class="radio-list" id="subcatFilterList">
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="all" checked onchange="applyFilters()" /> All Subcategories</label>
+            <span class="filter-count">439</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="accent-cabinets" onchange="applyFilters()" /> Accent Cabinets</label>
+            <span class="filter-count">30</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="bedside-tables" onchange="applyFilters()" /> Bedside Tables</label>
+            <span class="filter-count">64</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="study-tables" onchange="applyFilters()" /> Study Desks</label>
+            <span class="filter-count">48</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="console-tables" onchange="applyFilters()" /> Console Tables</label>
+            <span class="filter-count">30</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="bookshelves" onchange="applyFilters()" /> Bookshelves</label>
+            <span class="filter-count">60</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="round-tables" onchange="applyFilters()" /> Round Tables</label>
+            <span class="filter-count">80</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="side-tables" onchange="applyFilters()" /> Side Tables</label>
+            <span class="filter-count">111</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="photo-frames" onchange="applyFilters()" /> Wooden Photo Frames</label>
+            <span class="filter-count">16</span>
+          </li>
+        </ul>
+      </div>
 
-      <!-- Filter: Finish -->
-      <div class="filter-group">
-        <h4>Finish</h4>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Natural Wood</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Walnut</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>White / Cream</span>
-        </label>
-        <label class="filter-option">
-          <input type="checkbox" /> <span>Dark Stain</span>
-        </label>
+      <!-- Material & Finishes -->
+      <div class="filter-section">
+        <div class="filter-section-title">Material & Finish</div>
+        <ul class="checkbox-list">
+          <li class="filter-option">
+            <label><input type="checkbox" value="solid-wood" checked onchange="applyFilters()" /> Solid Timber / Hardwood</label>
+          </li>
+          <li class="filter-option">
+            <label><input type="checkbox" value="natural" checked onchange="applyFilters()" /> Natural / Light Stain</label>
+          </li>
+          <li class="filter-option">
+            <label><input type="checkbox" value="walnut" checked onchange="applyFilters()" /> Walnut / Dark Stain</label>
+          </li>
+        </ul>
       </div>
     </aside>
 
-    <!-- Product Area -->
-    <main class="product-area">
+    <!-- RIGHT MAIN PRODUCT GRID -->
+    <main class="main-catalogue-view">
 
-      <!-- ============ FURNITURE SECTION ============ -->
-      <section class="cat-section active" id="cat-furniture">
-        <div class="cat-section-header">
-          <h2>
-            <span>Category</span>
-            Wooden Furniture
-          </h2>
-          <span class="result-count" id="furnitureCount">6 subcategories</span>
+      <!-- Top info bar -->
+      <div class="catalogue-top-bar">
+        <div class="results-info">
+          Showing <strong id="visibleCount">1–12</strong> of <strong id="totalCount">439</strong> curated pieces
         </div>
 
-        <!-- Sub-category Cards -->
-        <div class="subcat-grid" id="subcatGrid">
-
-          <div class="subcat-card" data-subcat="console-tables" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">🪵</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Console Tables</h4>
-              <p>Entryway &amp; wall tables</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="side-tables" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">🪑</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Side Tables</h4>
-              <p>Accent &amp; end tables</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="round-tables" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">⭕</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Round Tables</h4>
-              <p>Dining &amp; centre tables</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="bedside-tables" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">🛏️</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Bedside Tables</h4>
-              <p>Nightstands &amp; bedside units</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="bookshelves" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">📚</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Bookshelves</h4>
-              <p>Open &amp; closed shelving</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="accent-cabinets" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">🗄️</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Accent Cabinets</h4>
-              <p>Storage &amp; display cabinets</p>
-            </div>
-          </div>
-
-          <div class="subcat-card" data-subcat="study-tables" onclick="openSubcat(this)">
-            <div class="subcat-img">
-              <span class="img-placeholder">🖥️</span>
-            </div>
-            <div class="subcat-body">
-              <h4>Study Tables</h4>
-              <p>Desks &amp; work tables</p>
-            </div>
-          </div>
-
+        <div class="view-controls">
+          <label style="font-size:0.74rem; color:var(--color-brown);">Per page:</label>
+          <select id="itemsPerPage" class="items-per-page-select" onchange="changeItemsPerPage(this.value)">
+            <option value="12" selected>12 items</option>
+            <option value="24">24 items</option>
+            <option value="48">48 items</option>
+          </select>
         </div>
+      </div>
 
-        <!-- Products Grid (shown after sub-cat is selected) -->
-        <div id="productDisplay" style="display:none;">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;">
-            <h3 id="subcatTitle" style="font-family:var(--font-serif); font-size:1.6rem; font-weight:400;"></h3>
-            <button onclick="backToSubcats()" style="background:none;border:1.5px solid var(--color-border);padding:8px 18px;border-radius:4px;font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;color:var(--color-brown);transition:all 0.3s ease;" onmouseover="this.style.borderColor='var(--color-sage)'" onmouseout="this.style.borderColor='var(--color-border)'">
-              ← All Categories
-            </button>
-          </div>
-          <div class="products-grid" id="subcatProducts">
-            <!-- Products injected by JS -->
-          </div>
-        </div>
+      <!-- Active filters tags bar -->
+      <div class="active-filters-bar" id="activeFiltersBar"></div>
 
-        <!-- Banner CTA -->
-        <div class="banner-cta">
-          <div class="banner-cta-text">
-            <h3>Looking for something <em>specific?</em></h3>
-            <p>Can't find what you're looking for? We also take custom orders — get in touch with us and we'll craft it for you.</p>
-          </div>
-          <a href="contact.html" class="btn-light">Get In Touch</a>
-        </div>
-      </section>
+      <!-- Product Cards Grid -->
+      <div class="product-grid" id="productGrid">
+        <!-- Rendered via JavaScript -->
+      </div>
 
-      <!-- ============ DECORATIVE ITEMS SECTION ============ -->
-      <section class="cat-section" id="cat-decorative">
-        <div class="cat-section-header">
-          <h2>
-            <span>Category</span>
-            Decorative Items
-          </h2>
-          <span class="result-count">Coming soon</span>
-        </div>
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <h3>No matching products found</h3>
+        <p>Try searching for a different keyword or resetting your filters to see our full catalogue.</p>
+        <button class="btn-contact-nav" onclick="resetFilters()">Reset All Filters</button>
+      </div>
 
-        <div class="products-grid">
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🏺</span>
-              <span class="img-label">Decorative</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Vases &amp; Pots</p>
-              <h3 class="product-name">Artisan Ceramic Vase</h3>
-              <p class="product-desc">Handcrafted ceramic with natural glaze finish. Perfect for dried or fresh florals.</p>
-              <div class="product-footer">
-                <span class="product-material">Ceramic · Natural</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🕯️</span>
-              <span class="img-label">Decorative</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Candle Holders</p>
-              <h3 class="product-name">Brass Pillar Holder</h3>
-              <p class="product-desc">Elegant brass-finished pillar candle holder. Adds warmth to any living space.</p>
-              <div class="product-footer">
-                <span class="product-material">Brass · Gold</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🪴</span>
-              <span class="img-label">Decorative</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Planters</p>
-              <h3 class="product-name">Woven Rattan Planter</h3>
-              <p class="product-desc">Natural rattan weave planter basket. Pairs beautifully with indoor plants.</p>
-              <div class="product-footer">
-                <span class="product-material">Rattan · Natural</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div style="text-align:center; margin-top:48px; padding:48px 0; border-top:1px solid var(--color-border);">
-          <p style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; color:var(--color-brown); margin-bottom:16px;">Full decorative collection launching soon.</p>
-          <p style="font-size:0.8rem; color:rgba(43,37,32,0.5); margin-bottom:28px;">Contact us to enquire about current stock and availability.</p>
-          <a href="contact.html" class="btn-light" style="background:var(--color-dark); color:white; padding:14px 36px; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:4px; text-decoration:none; display:inline-block; transition:all 0.3s ease;">Contact Us</a>
-        </div>
-      </section>
-
-      <!-- ============ PHOTO FRAMES SECTION ============ -->
-      <section class="cat-section" id="cat-frames">
-        <div class="cat-section-header">
-          <h2>
-            <span>Category</span>
-            Wooden Photo Frames
-          </h2>
-          <span class="result-count">Coming soon</span>
-        </div>
-
-        <div class="products-grid">
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🖼️</span>
-              <span class="img-label">Photo Frame</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Classic Frames</p>
-              <h3 class="product-name">Walnut Wood Frame</h3>
-              <p class="product-desc">Solid walnut frame with natural grain finish. Available in multiple sizes.</p>
-              <div class="product-footer">
-                <span class="product-material">Solid Walnut</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🖼️</span>
-              <span class="img-label">Photo Frame</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Gallery Frames</p>
-              <h3 class="product-name">Oak Gallery Frame Set</h3>
-              <p class="product-desc">Set of 3 matching oak frames for gallery wall arrangements. Light natural finish.</p>
-              <div class="product-footer">
-                <span class="product-material">Solid Oak · Set of 3</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-img">
-              <span class="img-icon">🖼️</span>
-              <span class="img-label">Photo Frame</span>
-            </div>
-            <div class="product-body">
-              <p class="product-tag">Floating Frames</p>
-              <h3 class="product-name">Reclaimed Wood Frame</h3>
-              <p class="product-desc">Rustic reclaimed wood frame with a weathered character and unique grain patterns.</p>
-              <div class="product-footer">
-                <span class="product-material">Reclaimed Wood</span>
-                <a href="contact.html" class="enquire-link">
-                  Enquire
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div style="text-align:center; margin-top:48px; padding:48px 0; border-top:1px solid var(--color-border);">
-          <p style="font-family:var(--font-serif); font-size:1.3rem; font-style:italic; color:var(--color-brown); margin-bottom:16px;">Full frames collection launching soon.</p>
-          <a href="contact.html" class="btn-light" style="background:var(--color-dark); color:white; padding:14px 36px; font-family:var(--font-sans); font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:4px; text-decoration:none; display:inline-block;">Contact Us</a>
-        </div>
-      </section>
+      <!-- Pagination -->
+      <div class="pagination-bar" id="paginationBar">
+        <!-- Rendered via JavaScript -->
+      </div>
 
     </main>
   </div>
 
-  <!-- Footer -->
+  <!-- ==========================================
+       CURATED LIVING BANNER (as in design reference)
+       ========================================== -->
+  <section class="curated-banner">
+    <h2>Heirloom Quality · <em>Handcrafted Solid Wood</em></h2>
+    <p>Every piece in our collection is masterfully crafted with generational joinery techniques, sustainably sourced hardwoods, and bespoke finish customizability tailored for wholesale and retail elegance.</p>
+    <a href="contact.html?subject=wholesale" class="btn-banner-action">Request Container Catalogue & Pricing</a>
+  </section>
+
+  <!-- ==========================================
+       EMAIL SIGN-UP NEWSLETTER (as in reference)
+       ========================================== -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h3>Email Sign-Up</h3>
+      <p>Subscribe for curated furniture inspiration, trade catalogues, and new collection previews delivered straight to you.</p>
+      
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Fair Home Decor updates!'); this.reset();">
+        <input type="email" placeholder="Enter your email address" required />
+        <button type="submit" class="btn-subscribe">Subscribe</button>
+      </form>
+
+      <div class="newsletter-social-icons">
+        <a href="https://www.instagram.com/fairhomedecorinc/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61593950044982" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
   <footer>
-    <span>&copy; 2025 Fair Home Decor. All rights reserved.</span>
-    <nav class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="catalogue.html">Catalogue</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://www.instagram.com/fairhomedecorinc/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:5px;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Instagram
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61593950044982" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:5px;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        Facebook
-      </a>
-    </nav>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h5>Shop Collections</h5>
+        <ul>
+          <li><a href="catalogue.html" onclick="filterBySubcat('accent-cabinets')">Accent Cabinets</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('bedside-tables')">Bedside Tables</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('study-tables')">Study Desks</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('console-tables')">Console Tables</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('bookshelves')">Bookshelves</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('round-tables')">Round Tables</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('side-tables')">Side Tables</a></li>
+          <li><a href="catalogue.html" onclick="filterBySubcat('photo-frames')">Wooden Photo Frames</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="../index.html">About Fair Home Decor</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html?subject=wholesale">Wholesale & Trade Accounts</a></li>
+          <li><a href="contact.html">Custom Order Inquiries</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Trade & Supply</h5>
+        <ul>
+          <li><a href="contact.html">Container Loads (HC40)</a></li>
+          <li><a href="contact.html">FOB Mumbai & Mundra, India</a></li>
+          <li><a href="contact.html">POE Port US</a></li>
+          <li><a href="contact.html">FOB Warehouse New Jersey</a></li>
+          <li><a href="contact.html">Packaging Upon Request</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-contact-info">
+        <h5>Fair Home Decor INC.</h5>
+        <p>1 Auer Ct, Second Floor<br />East Brunswick, NJ 08816<br />United States</p>
+        <p>Phone: <a href="tel:+17857131584">+1 785-713-1584</a></p>
+        <p>Email: <a href="mailto:info@fairhomedecor.com">info@fairhomedecor.com</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>&copy; 2025–2027 Fair Home Decor INC. All rights reserved.</span>
+      <div class="footer-legal-links">
+        <a href="../index.html">USA | English</a>
+        <a href="../index.html">Terms of Service</a>
+        <a href="../index.html">Privacy Policy</a>
+        <a href="../index.html">Legal</a>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    // ============ Product Data ============
-    const subcatData = {
-      'console-tables': {
-        title: 'Console Tables',
-        items: [
-          { name: 'Narrow Hallway Console', tag: 'Console Table', desc: 'Slimline console table ideal for entryways. Solid wood with clean, minimal lines.', material: 'Solid Wood · Natural' },
-          { name: 'Two-Drawer Console', tag: 'Console Table', desc: 'Console table with two drawers for practical storage. Dovetail joinery.', material: 'Solid Wood · Walnut' },
-          { name: 'Open Shelf Console', tag: 'Console Table', desc: 'Console with lower open shelf. Perfect for books, baskets or decorative objects.', material: 'Solid Wood · Oak' },
-          { name: 'Tapered Leg Console', tag: 'Console Table', desc: 'Mid-century inspired console with tapered solid wood legs and apron detail.', material: 'Solid Wood · Teak' },
-          { name: 'Modern Plank Console', tag: 'Console Table', desc: 'Simple plank-top console with hairpin-inspired legs. Contemporary and clean.', material: 'Solid Wood · Natural' },
-          { name: 'Rustic Console Table', tag: 'Console Table', desc: 'Chunky, rustic console with live-edge top and handcrafted wooden frame.', material: 'Live Edge Wood' },
-        ]
-      },
-      'side-tables': {
-        title: 'Side Tables',
-        items: [
-          { name: 'Round Top Side Table', tag: 'Side Table', desc: 'Classic round-top side table with slender solid wood legs. Timeless design.', material: 'Solid Wood · Natural' },
-          { name: 'Drum Side Table', tag: 'Side Table', desc: 'Cylindrical drum-shaped side table. Doubles as extra seating in a pinch.', material: 'Solid Wood · Walnut' },
-          { name: 'Nesting Side Tables', tag: 'Side Table', desc: 'Set of two nesting tables that slide neatly together. Space-saving and stylish.', material: 'Solid Wood · Set of 2' },
-          { name: 'C-Shape Side Table', tag: 'Side Table', desc: 'Slide-under sofa table with C-shaped frame. Practical for sofas and beds.', material: 'Solid Wood · Dark Stain' },
-          { name: 'Rattan Accent Table', tag: 'Side Table', desc: 'Rattan-wrapped accent table with wood legs. Adds natural texture to any room.', material: 'Rattan &amp; Wood' },
-          { name: 'Tripod Side Table', tag: 'Side Table', desc: 'Elegant tripod-legged side table with a round top. Sculptural and functional.', material: 'Solid Wood · Oak' },
-        ]
-      },
-      'round-tables': {
-        title: 'Round Tables',
-        items: [
-          { name: 'Round Dining Table', tag: 'Round Table', desc: 'Solid wood round dining table. Seats 4–6. Pedestal base with sturdy construction.', material: 'Solid Wood · Natural' },
-          { name: 'Small Bistro Table', tag: 'Round Table', desc: 'Compact round table for 2. Perfect for breakfast nooks or small dining spaces.', material: 'Solid Wood · Walnut' },
-          { name: 'Coffee Table Round', tag: 'Round Table', desc: 'Low-profile round coffee table for living rooms. Wide top with lower shelf.', material: 'Solid Wood · Oak' },
-          { name: 'Pedestal Accent Table', tag: 'Round Table', desc: 'Decorative pedestal side table. Suitable as a plant stand or accent piece.', material: 'Solid Wood · Teak' },
-        ]
-      },
-      'bedside-tables': {
-        title: 'Bedside Tables',
-        items: [
-          { name: 'Single Drawer Bedside', tag: 'Bedside Table', desc: 'Compact bedside table with one drawer. Clean lines and solid construction.', material: 'Solid Wood · Natural' },
-          { name: 'Two-Drawer Nightstand', tag: 'Bedside Table', desc: 'Practical two-drawer nightstand with ample storage for bedroom essentials.', material: 'Solid Wood · Walnut' },
-          { name: 'Open Shelf Bedside', tag: 'Bedside Table', desc: 'Open shelf bedside table for books and morning essentials. Minimalist design.', material: 'Solid Wood · Oak' },
-          { name: 'Floating Bedside Shelf', tag: 'Bedside Table', desc: 'Wall-mounted floating bedside shelf. Saves floor space with a modern look.', material: 'Solid Wood · Dark Stain' },
-          { name: 'Cane Bedside Table', tag: 'Bedside Table', desc: 'Solid wood frame with cane panel detail. Adds a natural, warm texture to bedrooms.', material: 'Wood &amp; Cane' },
-        ]
-      },
-      'bookshelves': {
-        title: 'Bookshelves',
-        items: [
-          { name: 'Tall Bookshelf Unit', tag: 'Bookshelf', desc: 'Tall 5-tier solid wood bookshelf. Sturdy and spacious for books and display items.', material: 'Solid Wood · Natural' },
-          { name: 'Low-Profile Bookcase', tag: 'Bookshelf', desc: 'Low 3-shelf bookcase ideal below windows or as a room divider element.', material: 'Solid Wood · Walnut' },
-          { name: 'Ladder Bookshelf', tag: 'Bookshelf', desc: 'Leaning ladder shelf with 5 tiers. Compact footprint, asymmetric charm.', material: 'Solid Wood · Oak' },
-          { name: 'Cube Shelving Unit', tag: 'Bookshelf', desc: 'Modular cube shelving unit. Highly versatile — stack and arrange as needed.', material: 'Engineered Wood · White' },
-          { name: 'Open Box Shelf', tag: 'Bookshelf', desc: 'Wall-mounted open box shelf set. Mix and match arrangements for any room.', material: 'Solid Wood · Natural' },
-          { name: 'Bookshelf with Cabinet', tag: 'Bookshelf', desc: 'Combination bookshelf with lower closed cabinet for hidden storage.', material: 'Solid Wood · Dark Stain' },
-        ]
-      },
-      'accent-cabinets': {
-        title: 'Accent Cabinets',
-        items: [
-          { name: 'Sideboard Cabinet', tag: 'Accent Cabinet', desc: 'Wide low sideboard with two doors. Perfect for dining rooms and living areas.', material: 'Solid Wood · Natural' },
-          { name: 'Tall Display Cabinet', tag: 'Accent Cabinet', desc: 'Tall cabinet with glass panel doors. Showcase collectibles and fine items.', material: 'Solid Wood · Walnut' },
-          { name: 'Media Console Cabinet', tag: 'Accent Cabinet', desc: 'Low TV unit with shelves and closed storage. Clean, functional design.', material: 'Solid Wood · Oak' },
-          { name: 'Bar Cabinet', tag: 'Accent Cabinet', desc: 'Compact bar cabinet with inner shelving and stemware rack. Elegant entertainer.', material: 'Solid Wood · Dark Stain' },
-          { name: 'Cane Front Cabinet', tag: 'Accent Cabinet', desc: 'Cabinet with cane-webbing door panels. Natural warmth meets storage function.', material: 'Wood &amp; Cane' },
-        ]
-      },
-      'study-tables': {
-        title: 'Study Tables',
-        items: [
-          { name: 'Minimalist Study Desk', tag: 'Study Table', desc: 'Clean-lined solid wood study table. Ample surface for a productive workspace.', material: 'Solid Wood · Natural' },
-          { name: 'Desk with Drawers', tag: 'Study Table', desc: 'Study desk with two side drawers. Keeps your workspace tidy and organized.', material: 'Solid Wood · Walnut' },
-          { name: 'Corner Study Desk', tag: 'Study Table', desc: 'L-shaped corner desk for maximizing corner space in a home office.', material: 'Solid Wood · Oak' },
-          { name: 'Standing Desk', tag: 'Study Table', desc: 'Adjustable height standing desk. Solid wood top with height-adjustable frame.', material: 'Solid Wood · Natural' },
-          { name: 'Writing Table', tag: 'Study Table', desc: 'Elegant writing table with slim profile. Ideal for study nooks or home offices.', material: 'Solid Wood · Dark Stain' },
-        ]
-      }
-    };
-
-    // ============ Category Switching ============
-    document.querySelectorAll('.cat-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.cat-section').forEach(s => s.classList.remove('active'));
-        this.classList.add('active');
-        document.getElementById('cat-' + this.dataset.cat).classList.add('active');
-        // Reset any open subcat
-        backToSubcats();
-      });
-    });
-
-    // ============ Sub-category Opening ============
-    function openSubcat(card) {
-      const key = card.dataset.subcat;
-      const data = subcatData[key];
-      if (!data) return;
-
-      document.querySelectorAll('.subcat-card').forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-
-      // Set title
-      document.getElementById('subcatTitle').textContent = data.title;
-
-      // Render products
-      const grid = document.getElementById('subcatProducts');
-      grid.innerHTML = data.items.map(item => `
-        <div class="product-card">
-          <div class="product-img">
-            <span class="img-icon">🪵</span>
-            <span class="img-label">${item.tag}</span>
+  <!-- ==========================================
+       QUICK VIEW MODAL
+       ========================================== -->
+  <div class="modal-backdrop" id="quickViewModal" onclick="handleModalBackdropClick(event)">
+    <div class="modal-box">
+      <button class="btn-modal-close" onclick="closeModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="Product" />
+      </div>
+      <div class="modal-details">
+        <span class="modal-badge" id="modalBadge">Accent Cabinet</span>
+        <h2 class="modal-title" id="modalTitle">Accent Cabinet FHD-AF-1001</h2>
+        
+        <div class="modal-specs-table">
+          <div class="spec-row">
+            <span>Item Number:</span>
+            <span id="modalCode">FHD-AF-1001</span>
           </div>
-          <div class="product-body">
-            <p class="product-tag">${item.tag}</p>
-            <h3 class="product-name">${item.name}</h3>
-            <p class="product-desc">${item.desc}</p>
-            <div class="product-footer">
-              <span class="product-material">${item.material}</span>
-              <a href="contact.html" class="enquire-link">
-                Enquire
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-              </a>
-            </div>
+          <div class="spec-row">
+            <span>Dimensions:</span>
+            <span id="modalDims">30 x 14 x 30 in</span>
+          </div>
+          <div class="spec-row">
+            <span>Material:</span>
+            <span id="modalMaterial">Solid Wood · Handcrafted</span>
+          </div>
+          <div class="spec-row">
+            <span>Finish Options:</span>
+            <span id="modalFinish">Natural / Walnut / Teak Stains</span>
+          </div>
+          <div class="spec-row">
+            <span>Packaging & Supply:</span>
+            <span>HC40 Container loads · FOB NJ / India</span>
           </div>
         </div>
-      `).join('');
 
-      // Show product display, hide subcat grid
-      document.getElementById('subcatGrid').style.display = 'none';
-      document.getElementById('productDisplay').style.display = 'block';
-      document.getElementById('furnitureCount').textContent = data.items.length + ' products';
+        <p class="modal-desc" id="modalDesc"></p>
 
-      // Smooth scroll to products
-      document.getElementById('productDisplay').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        <div class="modal-actions">
+          <a href="#" id="modalEnquireBtn" class="btn-modal-enquire">Inquire About This Product</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Database Script -->
+  <script src="../assets/js/products-data.js"></script>
+
+  <!-- Catalogue Interactive Logic -->
+  <script>
+    // State management
+    const state = {
+      allProducts: [],
+      filteredProducts: [],
+      selectedCategory: 'all',
+      selectedSubcat: 'all',
+      searchQuery: '',
+      sortOption: 'featured',
+      currentPage: 1,
+      itemsPerPage: 12
+    };
+
+    // Initialize once DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.FHD_PRODUCTS && Array.isArray(window.FHD_PRODUCTS)) {
+        state.allProducts = window.FHD_PRODUCTS;
+      } else {
+        console.warn('FHD_PRODUCTS not loaded from script, attempting fallback fetch...');
+        fetch('../assets/data/products.json')
+          .then(res => res.json())
+          .then(data => {
+            state.allProducts = data;
+            initCatalogue();
+          })
+          .catch(err => console.error('Error loading products JSON:', err));
+        return;
+      }
+      initCatalogue();
+    });
+
+    function initCatalogue() {
+      // Check for URL query param, e.g. ?subcat=accent-cabinets
+      const urlParams = new URLSearchParams(window.location.search);
+      const subcatParam = urlParams.get('subcat');
+      const catParam = urlParams.get('category');
+      const searchParam = urlParams.get('search');
+
+      if (subcatParam) {
+        state.selectedSubcat = subcatParam;
+        const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcatParam}"]`);
+        if (subRadio) subRadio.checked = true;
+      }
+      if (catParam) {
+        state.selectedCategory = catParam;
+        document.querySelectorAll('.ribbon-item').forEach(el => {
+          el.classList.toggle('active', el.dataset.category === catParam);
+        });
+      }
+      if (searchParam) {
+        state.searchQuery = searchParam;
+        document.getElementById('searchInput').value = searchParam;
+      }
+
+      // Live search input listener
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value.trim().toLowerCase();
+        state.currentPage = 1;
+        applyFilters();
+      });
+
+      applyFilters();
     }
 
-    function backToSubcats() {
-      document.getElementById('subcatGrid').style.display = 'grid';
-      document.getElementById('productDisplay').style.display = 'none';
-      document.querySelectorAll('.subcat-card').forEach(c => c.classList.remove('active'));
-      document.getElementById('furnitureCount').textContent = '7 subcategories';
+    // Switch Category (Ribbon)
+    function switchCategory(cat, element) {
+      document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
+      if (element) element.classList.add('active');
+      state.selectedCategory = cat;
+      // Reset subcat if changing category
+      state.selectedSubcat = 'all';
+      const allRadio = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (allRadio) allRadio.checked = true;
+      state.currentPage = 1;
+      applyFilters();
     }
 
-    // Sticky nav shadow
-    window.addEventListener('scroll', () => {
-      document.querySelector('nav').style.boxShadow =
-        window.scrollY > 10 ? '0 2px 20px rgba(43,37,32,0.08)' : '';
+    // Filter by Subcategory directly (from cards or menu)
+    function filterBySubcat(subcatKey) {
+      state.selectedSubcat = subcatKey;
+      state.currentPage = 1;
+      const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcatKey}"]`);
+      if (subRadio) subRadio.checked = true;
+      applyFilters();
+
+      // Smooth scroll down to main grid
+      document.querySelector('.main-catalogue-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Reset All Filters
+    function resetFilters() {
+      state.selectedCategory = 'all';
+      state.selectedSubcat = 'all';
+      state.searchQuery = '';
+      state.sortOption = 'featured';
+      state.currentPage = 1;
+
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('.ribbon-item').forEach((el, idx) => el.classList.toggle('active', idx === 0));
+      const allRadio = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (allRadio) allRadio.checked = true;
+      const featuredSort = document.querySelector('input[name="sortOption"][value="featured"]');
+      if (featuredSort) featuredSort.checked = true;
+
+      applyFilters();
+    }
+
+    // Change items per page
+    function changeItemsPerPage(val) {
+      state.itemsPerPage = parseInt(val, 10);
+      state.currentPage = 1;
+      renderProducts();
+    }
+
+    // Apply active filters & sorting
+    function applyFilters() {
+      // Read subcat radio
+      const checkedSubcat = document.querySelector('input[name="subcatOption"]:checked');
+      if (checkedSubcat) state.selectedSubcat = checkedSubcat.value;
+
+      // Read sort radio
+      const checkedSort = document.querySelector('input[name="sortOption"]:checked');
+      if (checkedSort) state.sortOption = checkedSort.value;
+
+      // Filter
+      let result = state.allProducts.filter(item => {
+        // Category check
+        if (state.selectedCategory !== 'all') {
+          if (item.category !== state.selectedCategory) return false;
+        }
+
+        // Subcategory check
+        if (state.selectedSubcat !== 'all') {
+          if (item.subcategory !== state.selectedSubcat) return false;
+        }
+
+        // Search Query check (matches code, name, dimensions, or tag)
+        if (state.searchQuery) {
+          const target = `${item.code} ${item.name} ${item.dimensions} ${item.tag} ${item.subcatTitle}`.toLowerCase();
+          if (!target.includes(state.searchQuery)) return false;
+        }
+
+        return true;
+      });
+
+      // Sort
+      if (state.sortOption === 'code-asc') {
+        result.sort((a, b) => a.code.localeCompare(b.code));
+      } else if (state.sortOption === 'dim-asc') {
+        result.sort((a, b) => a.dimensions.localeCompare(b.dimensions));
+      }
+
+      state.filteredProducts = result;
+      renderActivePills();
+      renderProducts();
+    }
+
+    // Render active filter pills
+    function renderActivePills() {
+      const container = document.getElementById('activeFiltersBar');
+      let pills = [];
+
+      if (state.selectedSubcat !== 'all') {
+        pills.push(`
+          <span class="filter-pill">
+            Type: ${formatSubcatName(state.selectedSubcat)}
+            <button onclick="clearSubcatFilter()">&times;</button>
+          </span>
+        `);
+      }
+
+      if (state.searchQuery) {
+        pills.push(`
+          <span class="filter-pill">
+            Search: "${state.searchQuery}"
+            <button onclick="clearSearchFilter()">&times;</button>
+          </span>
+        `);
+      }
+
+      container.innerHTML = pills.join('');
+    }
+
+    function clearSubcatFilter() {
+      state.selectedSubcat = 'all';
+      const allRadio = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (allRadio) allRadio.checked = true;
+      applyFilters();
+    }
+
+    function clearSearchFilter() {
+      state.searchQuery = '';
+      document.getElementById('searchInput').value = '';
+      applyFilters();
+    }
+
+    function formatSubcatName(key) {
+      return key.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // Render product cards and pagination
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const emptyState = document.getElementById('emptyState');
+      const total = state.filteredProducts.length;
+
+      document.getElementById('totalCount').textContent = total;
+
+      if (total === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        document.getElementById('paginationBar').innerHTML = '';
+        document.getElementById('visibleCount').textContent = '0';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      emptyState.style.display = 'none';
+
+      // Pagination slice
+      const startIndex = (state.currentPage - 1) * state.itemsPerPage;
+      const endIndex = Math.min(startIndex + state.itemsPerPage, total);
+      const pageItems = state.filteredProducts.slice(startIndex, endIndex);
+
+      document.getElementById('visibleCount').textContent = `${startIndex + 1}–${endIndex}`;
+
+      // Build cards HTML
+      grid.innerHTML = pageItems.map(item => {
+        // Fix relative image path if needed
+        const imgPath = item.image.startsWith('../') ? item.image : `../${item.image}`;
+        return `
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <span class="product-badge-subcat">${item.tag}</span>
+              <span class="product-badge-code">${item.code}</span>
+              <img src="${imgPath}" alt="${item.name}" loading="lazy" onerror="this.src='../assets/images/logo.png';" />
+              
+              <div class="quick-view-overlay">
+                <button class="btn-quick-view" onclick="openQuickView('${item.code}')">Quick View</button>
+              </div>
+            </div>
+
+            <div class="product-card-body">
+              <h3 class="product-card-title">${item.name}</h3>
+
+              <div class="product-dimensions-box">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                <span>${item.dimensions}</span>
+              </div>
+
+              <p class="product-card-desc">${item.description}</p>
+
+              <div class="product-card-footer">
+                <span class="card-material-info">${item.material}</span>
+                <a href="contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}" class="btn-enquire-card">
+                  Enquire
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      renderPagination(total);
+    }
+
+    // Render pagination controls
+    function renderPagination(totalItems) {
+      const totalPages = Math.ceil(totalItems / state.itemsPerPage);
+      const pagination = document.getElementById('paginationBar');
+
+      if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      
+      // Prev Button
+      html += `
+        <button class="page-btn" onclick="goToPage(${state.currentPage - 1})" ${state.currentPage === 1 ? 'disabled' : ''}>
+          &larr; Prev
+        </button>
+      `;
+
+      // Page numbers (display current, nearby, first and last)
+      const maxButtons = 5;
+      let startPage = Math.max(1, state.currentPage - 2);
+      let endPage = Math.min(totalPages, startPage + maxButtons - 1);
+      if (endPage - startPage < maxButtons - 1) {
+        startPage = Math.max(1, endPage - maxButtons + 1);
+      }
+
+      if (startPage > 1) {
+        html += `<button class="page-btn" onclick="goToPage(1)">1</button>`;
+        if (startPage > 2) html += `<span style="padding:0 4px; color:#A09586;">...</span>`;
+      }
+
+      for (let p = startPage; p <= endPage; p++) {
+        html += `
+          <button class="page-btn ${p === state.currentPage ? 'active' : ''}" onclick="goToPage(${p})">
+            ${p}
+          </button>
+        `;
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) html += `<span style="padding:0 4px; color:#A09586;">...</span>`;
+        html += `<button class="page-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+      }
+
+      // Next Button
+      html += `
+        <button class="page-btn" onclick="goToPage(${state.currentPage + 1})" ${state.currentPage === totalPages ? 'disabled' : ''}>
+          Next &rarr;
+        </button>
+      `;
+
+      pagination.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      state.currentPage = page;
+      renderProducts();
+      document.querySelector('.catalogue-top-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Quick View Modal
+    function openQuickView(code) {
+      const item = state.allProducts.find(p => p.code === code);
+      if (!item) return;
+
+      const imgPath = item.image.startsWith('../') ? item.image : `../${item.image}`;
+
+      document.getElementById('modalImg').src = imgPath;
+      document.getElementById('modalBadge').textContent = `${item.subcatTitle} · Item Number`;
+      document.getElementById('modalTitle').textContent = item.name;
+      document.getElementById('modalCode').textContent = item.code;
+      document.getElementById('modalDims').textContent = item.dimensions;
+      document.getElementById('modalMaterial').textContent = item.material;
+      document.getElementById('modalFinish').textContent = item.finish;
+      document.getElementById('modalDesc').textContent = item.description;
+
+      const enquireBtn = document.getElementById('modalEnquireBtn');
+      enquireBtn.href = `contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}`;
+
+      document.getElementById('quickViewModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('quickViewModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target.id === 'quickViewModal') {
+        closeModal();
+      }
+    }
+
+    // Keyboard ESC to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
     });
   </script>
 </body>
 </html>
-
