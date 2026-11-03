@@ -35,3 +35,4 @@ FHD WEBSITE/
 
 ---
 © 2025 Fair Home Decor. All rights reserved.
+
