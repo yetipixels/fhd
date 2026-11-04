@@ -77,6 +77,17 @@
       gap: 36px;
     }
 
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.04);
+    }
+
     .brand-logo img {
       height: 64px;
       width: auto;
@@ -96,14 +107,17 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-brown);
-      transition: color var(--transition);
+      transition: color var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       padding: 4px 0;
+      display: inline-block;
+      will-change: transform;
     }
 
     .nav-menu-links a:hover,
     .nav-menu-links a.active {
       color: var(--color-dark);
+      transform: scale(1.08);
     }
 
     .nav-menu-links a.active::after {
@@ -165,16 +179,18 @@
       text-transform: uppercase;
       padding: 11px 22px;
       border-radius: 4px;
-      transition: all var(--transition);
+      transition: all var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       display: inline-flex;
       align-items: center;
       gap: 8px;
       white-space: nowrap;
+      will-change: transform;
     }
 
     .btn-contact-nav:hover {
       background: var(--color-sage);
       color: var(--color-white);
+      transform: scale(1.05) translateY(-1px);
     }
 
     /* Mobile search container (shown below header on phones) */
@@ -255,13 +271,14 @@
       border-radius: 8px;
       overflow: hidden;
       cursor: pointer;
-      transition: all var(--transition);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color var(--transition);
       position: relative;
+      will-change: transform;
     }
 
     .showcase-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(43, 37, 32, 0.12);
       border-color: var(--color-sage);
     }
 
@@ -580,13 +597,14 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all var(--transition);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color var(--transition);
       position: relative;
+      will-change: transform;
     }
 
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-5px) scale(1.015);
+      box-shadow: 0 16px 40px rgba(43, 37, 32, 0.12);
       border-color: var(--color-sage);
     }
 
@@ -669,11 +687,13 @@
       padding: 8px 16px;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-      transition: background var(--transition);
+      transition: background var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       white-space: nowrap;
+      will-change: transform;
     }
     .btn-quick-view:hover {
       background: var(--color-sage);
+      transform: scale(1.08);
     }
 
     .product-card-body {
@@ -752,25 +772,60 @@
       background: var(--color-cream);
     }
 
-    .btn-enquire-card {
-      background: var(--color-dark);
+    .card-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-buy-now {
+      background: var(--color-sage-dark);
       color: #FFFFFF;
       font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 8px 16px;
+      padding: 8px 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      white-space: nowrap;
+      will-change: transform;
+      cursor: pointer;
+    }
+
+    .btn-buy-now:hover {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      transform: scale(1.06);
+      box-shadow: 0 4px 14px rgba(43, 37, 32, 0.2);
+    }
+
+    .btn-enquire-card {
+      background: transparent;
+      color: var(--color-brown);
+      border: 1px solid var(--color-border);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 12px;
       border-radius: 4px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all var(--transition);
+      transition: all var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       white-space: nowrap;
+      will-change: transform;
     }
 
     .btn-enquire-card:hover {
-      background: var(--color-sage);
-      color: #FFFFFF;
+      background: var(--color-warm-tan);
+      border-color: var(--color-brown);
+      color: var(--color-dark);
+      transform: scale(1.05);
     }
 
     /* ---- Empty State ---- */
@@ -1176,11 +1231,12 @@
       margin-top: auto;
       display: flex;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .btn-modal-enquire {
-      flex: 1;
-      background: var(--color-dark);
+    .btn-modal-buynow {
+      flex: 1.2;
+      background: var(--color-sage-dark);
       color: #FFFFFF;
       font-size: 0.72rem;
       font-weight: 600;
@@ -1189,11 +1245,156 @@
       padding: 14px;
       border-radius: 4px;
       text-align: center;
-      transition: background var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-modal-buynow:hover {
+      background: var(--color-dark);
+      transform: scale(1.02);
+    }
+
+    .btn-modal-enquire {
+      flex: 1;
+      background: transparent;
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 13px;
+      border-radius: 4px;
+      text-align: center;
+      transition: all var(--transition);
     }
     .btn-modal-enquire:hover {
+      background: var(--color-dark);
+      color: #FFFFFF;
+    }
+
+    /* Cart Toast Notification */
+    .cart-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1E1A17;
+      color: #FAF8F5;
+      padding: 16px 22px;
+      border-radius: 6px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 9999;
+      border-left: 4px solid var(--color-sage);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-width: 440px;
+    }
+    .cart-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .cart-toast-content {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .cart-toast-content strong {
+      color: #FFFFFF;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .cart-toast-btn {
       background: var(--color-sage);
       color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 3px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cart-toast-btn:hover {
+      background: var(--color-sage-dark);
+    }
+
+    /* Editorial Placeholder for Blank / Upcoming Categories */
+    .empty-category-curation {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 64px 32px;
+      text-align: center;
+      margin: 10px 0 30px;
+      box-shadow: var(--shadow-sm);
+    }
+    .empty-cat-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--color-cream);
+      border: 1px dashed var(--color-sage);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--color-sage-dark);
+    }
+    .empty-cat-icon svg { width: 28px; height: 28px; stroke-width: 1.8; }
+    .empty-category-curation .empty-cat-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      background: var(--color-warm-tan);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .empty-category-curation h3 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .empty-category-curation p {
+      font-size: 0.86rem;
+      color: rgba(43, 37, 32, 0.7);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+    .empty-cat-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-placeholder-solid {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .btn-placeholder-solid:hover {
+      background: var(--color-sage);
     }
 
     /* ========================================================
@@ -1302,11 +1503,12 @@
         <img src="../assets/images/logo.png" alt="Fair Home Decor Logo" loading="eager" onerror="this.onerror=null; this.src='../assets/images/logo-original.png';" />
       </a>
       <ul class="nav-menu-links">
-        <li><a href="catalogue.html" class="active">Catalogue</a></li>
-        <li><a href="catalogue.html" onclick="filterBySubcat('accent-cabinets')">Cabinets</a></li>
-        <li><a href="catalogue.html" onclick="filterBySubcat('console-tables')">Console Tables</a></li>
-        <li><a href="catalogue.html" onclick="filterBySubcat('round-tables')">Round Tables</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="catalogue.html" class="active">Shop Now</a></li>
+        <li><a href="account.html">My Account</a></li>
         <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="cart.html">Cart (<span class="header-cart-count">0</span>)</a></li>
       </ul>
     </div>
 
@@ -1316,7 +1518,7 @@
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
-      <input type="text" id="searchInput" placeholder="Search product, code (e.g. FHD-AF-1001), dimensions..." />
+      <input type="text" id="searchInput" placeholder="Search 439 products, code (e.g. FHD-AF-1001), dimensions..." />
     </div>
 
     <!-- Right Actions -->
@@ -1344,16 +1546,18 @@
        ========================================== -->
   <nav class="category-ribbon">
     <div class="category-ribbon-inner">
-      <div class="ribbon-item active" data-category="furniture" onclick="switchCategory('furniture', this)">Furniture (423)</div>
-      <div class="ribbon-item" data-category="decor" onclick="switchCategory('decor', this)">Home Decor (16)</div>
-      <div class="ribbon-item" data-category="all" onclick="switchCategory('all', this)">View All (439)</div>
-      <div class="ribbon-item" onclick="filterBySubcat('accent-cabinets')">Accent Cabinets</div>
-      <div class="ribbon-item" onclick="filterBySubcat('bedside-tables')">Bedside Tables</div>
-      <div class="ribbon-item" onclick="filterBySubcat('console-tables')">Console Tables</div>
-      <div class="ribbon-item" onclick="filterBySubcat('bookshelves')">Bookshelves</div>
-      <div class="ribbon-item" onclick="filterBySubcat('round-tables')">Round Tables</div>
-      <div class="ribbon-item" onclick="filterBySubcat('side-tables')">Side Tables</div>
-      <div class="ribbon-item" onclick="filterBySubcat('study-tables')">Study Desks</div>
+      <div class="ribbon-item active" data-dept="all" data-material="all" onclick="selectDepartment('all', this)">All Pieces (439)</div>
+      <div class="ribbon-item" data-material="solid-wood" onclick="selectMaterial('solid-wood', this)">Solid Wood (439)</div>
+      <div class="ribbon-item" data-dept="tables" onclick="selectDepartment('tables', this)">Tables & Consoles (333)</div>
+      <div class="ribbon-item" data-dept="storage" onclick="selectDepartment('storage', this)">Storage & Cabinets (90)</div>
+      <div class="ribbon-item" data-dept="accessories" onclick="selectDepartment('accessories', this)">Accessories & Decor (16)</div>
+      <div class="ribbon-item" data-dept="seating" onclick="selectDepartment('seating', this)">Seating</div>
+      <div class="ribbon-item" data-dept="lighting" onclick="selectDepartment('lighting', this)">Lighting</div>
+      <div class="ribbon-item" data-dept="furnishing" onclick="selectDepartment('furnishing', this)">Furnishing</div>
+      <div class="ribbon-item" data-dept="antiques" onclick="selectDepartment('antiques', this)">Antiques</div>
+      <div class="ribbon-item" data-dept="art" onclick="selectDepartment('art', this)">Art & Sculptures</div>
+      <div class="ribbon-item" data-material="metal" onclick="selectMaterial('metal', this)">Brass & Metals <span style="opacity:0.75; font-size:0.6rem;">(Soon)</span></div>
+      <div class="ribbon-item" data-material="stone" onclick="selectMaterial('stone', this)">Marble & Stone <span style="opacity:0.75; font-size:0.6rem;">(Soon)</span></div>
     </div>
   </nav>
 
@@ -1462,17 +1666,64 @@
         </ul>
       </div>
 
-      <!-- Subcategory / Product Type Filter -->
+      <!-- Department / Category by Type -->
       <div class="filter-section">
-        <div class="filter-section-title">Product Type</div>
+        <div class="filter-section-title">Department</div>
+        <ul class="radio-list" id="deptFilterList">
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="all" checked onchange="handleDeptChange('all')" /> All Departments</label>
+            <span class="filter-count">439</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="tables" onchange="handleDeptChange('tables')" /> Tables & Consoles</label>
+            <span class="filter-count">333</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="storage" onchange="handleDeptChange('storage')" /> Storage & Cabinets</label>
+            <span class="filter-count">90</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="accessories" onchange="handleDeptChange('accessories')" /> Accessories & Decor</label>
+            <span class="filter-count">16</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="seating" onchange="handleDeptChange('seating')" /> Seating</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="lighting" onchange="handleDeptChange('lighting')" /> Lighting</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="furnishing" onchange="handleDeptChange('furnishing')" /> Furnishing</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="antiques" onchange="handleDeptChange('antiques')" /> Antiques</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="art" onchange="handleDeptChange('art')" /> Art & Sculptures</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Specific Product Type Filter -->
+      <div class="filter-section">
+        <div class="filter-section-title">Product Subcategory</div>
         <ul class="radio-list" id="subcatFilterList">
           <li class="filter-option">
             <label><input type="radio" name="subcatOption" value="all" checked onchange="applyFilters()" /> All Subcategories</label>
             <span class="filter-count">439</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="accent-cabinets" onchange="applyFilters()" /> Accent Cabinets</label>
-            <span class="filter-count">30</span>
+            <label><input type="radio" name="subcatOption" value="round-tables" onchange="applyFilters()" /> Round Tables</label>
+            <span class="filter-count">80</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="side-tables" onchange="applyFilters()" /> Side Tables</label>
+            <span class="filter-count">111</span>
           </li>
           <li class="filter-option">
             <label><input type="radio" name="subcatOption" value="bedside-tables" onchange="applyFilters()" /> Bedside Tables</label>
@@ -1487,16 +1738,12 @@
             <span class="filter-count">30</span>
           </li>
           <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="accent-cabinets" onchange="applyFilters()" /> Accent Cabinets</label>
+            <span class="filter-count">30</span>
+          </li>
+          <li class="filter-option">
             <label><input type="radio" name="subcatOption" value="bookshelves" onchange="applyFilters()" /> Bookshelves</label>
             <span class="filter-count">60</span>
-          </li>
-          <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="round-tables" onchange="applyFilters()" /> Round Tables</label>
-            <span class="filter-count">80</span>
-          </li>
-          <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="side-tables" onchange="applyFilters()" /> Side Tables</label>
-            <span class="filter-count">111</span>
           </li>
           <li class="filter-option">
             <label><input type="radio" name="subcatOption" value="photo-frames" onchange="applyFilters()" /> Wooden Photo Frames</label>
@@ -1505,18 +1752,25 @@
         </ul>
       </div>
 
-      <!-- Material & Finishes -->
+      <!-- Category by Material -->
       <div class="filter-section">
-        <div class="filter-section-title">Material & Finish</div>
-        <ul class="checkbox-list">
+        <div class="filter-section-title">Material</div>
+        <ul class="radio-list" id="materialFilterList">
           <li class="filter-option">
-            <label><input type="checkbox" value="solid-wood" checked onchange="applyFilters()" /> Solid Timber / Hardwood</label>
+            <label><input type="radio" name="materialOption" value="all" checked onchange="handleMaterialChange('all')" /> All Materials</label>
+            <span class="filter-count">439</span>
           </li>
           <li class="filter-option">
-            <label><input type="checkbox" value="natural" checked onchange="applyFilters()" /> Natural / Light Stain</label>
+            <label><input type="radio" name="materialOption" value="solid-wood" onchange="handleMaterialChange('solid-wood')" /> Solid Wood (439)</label>
+            <span class="filter-count" style="color:var(--color-sage-dark); font-weight:700;">In Stock</span>
           </li>
           <li class="filter-option">
-            <label><input type="checkbox" value="walnut" checked onchange="applyFilters()" /> Walnut / Dark Stain</label>
+            <label><input type="radio" name="materialOption" value="metal" onchange="handleMaterialChange('metal')" /> Brass, Copper & Iron</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="materialOption" value="stone" onchange="handleMaterialChange('stone')" /> Marble & Stones</label>
+            <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
         </ul>
       </div>
@@ -1695,7 +1949,11 @@
         <p class="modal-desc" id="modalDesc"></p>
 
         <div class="modal-actions">
-          <a href="#" id="modalEnquireBtn" class="btn-modal-enquire">Inquire About This Product</a>
+          <button type="button" id="modalBuyNowBtn" class="btn-modal-buynow" onclick="buyNowFromModal()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Buy Now
+          </button>
+          <a href="#" id="modalEnquireBtn" class="btn-modal-enquire">Inquire / Custom Order</a>
         </div>
       </div>
     </div>
@@ -1704,22 +1962,40 @@
   <!-- Products Database Script -->
   <script src="../assets/js/products-data.js"></script>
 
-  <!-- Catalogue Interactive Logic -->
+  <!-- Shop Interactive Logic -->
   <script>
-    // State management
+    // Comprehensive state management
     const state = {
       allProducts: [],
       filteredProducts: [],
-      selectedCategory: 'all',
-      selectedSubcat: 'all',
+      selectedDepartment: 'all', // 'all', 'tables', 'storage', 'accessories', 'seating', 'lighting', 'furnishing', 'antiques', 'art'
+      selectedMaterial: 'all',   // 'all', 'solid-wood', 'metal', 'stone'
+      selectedSubcat: 'all',     // 'all', 'round-tables', 'side-tables', 'bedside-tables', etc.
       searchQuery: '',
       sortOption: 'featured',
       currentPage: 1,
-      itemsPerPage: 12
+      itemsPerPage: 12,
+      isBlankCategory: false,
+      blankInfo: null
+    };
+
+    let currentModalCode = '';
+
+    // Department grouping map
+    const DEPT_MAP = {
+      tables: ['round-tables', 'side-tables', 'bedside-tables', 'study-tables', 'console-tables'],
+      storage: ['accent-cabinets', 'bookshelves'],
+      accessories: ['photo-frames'],
+      seating: [],
+      lighting: [],
+      furnishing: [],
+      antiques: [],
+      art: []
     };
 
     // Initialize once DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
+      updateCartCounters();
       if (window.FHD_PRODUCTS && Array.isArray(window.FHD_PRODUCTS)) {
         state.allProducts = window.FHD_PRODUCTS;
       } else {
@@ -1738,20 +2014,34 @@
     function initCatalogue() {
       const urlParams = new URLSearchParams(window.location.search);
       const subcatParam = urlParams.get('subcat');
-      const catParam = urlParams.get('category');
-      const searchParam = urlParams.get('search');
+      const deptParam = urlParams.get('dept') || urlParams.get('type') || urlParams.get('category');
+      const matParam = urlParams.get('material');
+      const searchParam = urlParams.get('search') || urlParams.get('q');
 
       if (subcatParam) {
         state.selectedSubcat = subcatParam;
         const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcatParam}"]`);
         if (subRadio) subRadio.checked = true;
       }
-      if (catParam) {
-        state.selectedCategory = catParam;
+
+      if (deptParam) {
+        state.selectedDepartment = deptParam;
+        const deptRadio = document.querySelector(`input[name="deptOption"][value="${deptParam}"]`);
+        if (deptRadio) deptRadio.checked = true;
         document.querySelectorAll('.ribbon-item').forEach(el => {
-          el.classList.toggle('active', el.dataset.category === catParam);
+          el.classList.toggle('active', el.dataset.dept === deptParam);
         });
       }
+
+      if (matParam) {
+        state.selectedMaterial = matParam;
+        const matRadio = document.querySelector(`input[name="materialOption"][value="${matParam}"]`);
+        if (matRadio) matRadio.checked = true;
+        document.querySelectorAll('.ribbon-item').forEach(el => {
+          el.classList.toggle('active', el.dataset.material === matParam);
+        });
+      }
+
       if (searchParam) {
         state.searchQuery = searchParam;
         document.getElementById('searchInput').value = searchParam;
@@ -1791,39 +2081,92 @@
       icon.innerHTML = isOpen ? '&#9652;' : '&#9662;';
     }
 
-    // Switch Category (Ribbon)
-    function switchCategory(cat, element) {
+    // Select Department from Ribbon or Sidebar
+    function selectDepartment(dept, element) {
       document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
       if (element) element.classList.add('active');
-      state.selectedCategory = cat;
+
+      state.selectedDepartment = dept;
+      state.selectedMaterial = 'all';
       state.selectedSubcat = 'all';
-      const allRadio = document.querySelector('input[name="subcatOption"][value="all"]');
-      if (allRadio) allRadio.checked = true;
+
+      const deptRadio = document.querySelector(`input[name="deptOption"][value="${dept}"]`);
+      if (deptRadio) deptRadio.checked = true;
+      const matAll = document.querySelector('input[name="materialOption"][value="all"]');
+      if (matAll) matAll.checked = true;
+      const subAll = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (subAll) subAll.checked = true;
+
       state.currentPage = 1;
       applyFilters();
     }
 
-    // Filter by Subcategory directly (from cards or menu)
+    function handleDeptChange(dept) {
+      state.selectedDepartment = dept;
+      state.selectedSubcat = 'all';
+      document.querySelectorAll('.ribbon-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.dept === dept);
+      });
+      const subAll = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (subAll) subAll.checked = true;
+      state.currentPage = 1;
+      applyFilters();
+    }
+
+    // Select Material from Ribbon or Sidebar
+    function selectMaterial(mat, element) {
+      document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
+      if (element) element.classList.add('active');
+
+      state.selectedMaterial = mat;
+      state.selectedDepartment = 'all';
+      state.selectedSubcat = 'all';
+
+      const matRadio = document.querySelector(`input[name="materialOption"][value="${mat}"]`);
+      if (matRadio) matRadio.checked = true;
+      const deptAll = document.querySelector('input[name="deptOption"][value="all"]');
+      if (deptAll) deptAll.checked = true;
+      const subAll = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (subAll) subAll.checked = true;
+
+      state.currentPage = 1;
+      applyFilters();
+    }
+
+    function handleMaterialChange(mat) {
+      state.selectedMaterial = mat;
+      document.querySelectorAll('.ribbon-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.material === mat);
+      });
+      state.currentPage = 1;
+      applyFilters();
+    }
+
+    // Filter by Subcategory directly
     function filterBySubcat(subcatKey) {
       state.selectedSubcat = subcatKey;
+      state.selectedDepartment = 'all';
       state.currentPage = 1;
+
       const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcatKey}"]`);
       if (subRadio) subRadio.checked = true;
+
+      document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
+
       applyFilters();
 
-      // Close mobile drawer if open
       const sidebar = document.getElementById('filterSidebar');
       if (sidebar) sidebar.classList.remove('mobile-open');
       const icon = document.getElementById('mobileFilterToggleIcon');
       if (icon) icon.innerHTML = '&#9662;';
 
-      // Smooth scroll down to main grid
       document.querySelector('.main-catalogue-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     // Reset All Filters
     function resetFilters() {
-      state.selectedCategory = 'all';
+      state.selectedDepartment = 'all';
+      state.selectedMaterial = 'all';
       state.selectedSubcat = 'all';
       state.searchQuery = '';
       state.sortOption = 'featured';
@@ -1834,8 +2177,12 @@
       if (mob) mob.value = '';
 
       document.querySelectorAll('.ribbon-item').forEach((el, idx) => el.classList.toggle('active', idx === 0));
-      const allRadio = document.querySelector('input[name="subcatOption"][value="all"]');
-      if (allRadio) allRadio.checked = true;
+      const deptAll = document.querySelector('input[name="deptOption"][value="all"]');
+      if (deptAll) deptAll.checked = true;
+      const matAll = document.querySelector('input[name="materialOption"][value="all"]');
+      if (matAll) matAll.checked = true;
+      const subAll = document.querySelector('input[name="subcatOption"][value="all"]');
+      if (subAll) subAll.checked = true;
       const featuredSort = document.querySelector('input[name="sortOption"][value="featured"]');
       if (featuredSort) featuredSort.checked = true;
 
@@ -1851,21 +2198,51 @@
 
     // Apply active filters & sorting
     function applyFilters() {
-      const checkedSubcat = document.querySelector('input[name="subcatOption"]:checked');
-      if (checkedSubcat) state.selectedSubcat = checkedSubcat.value;
+      // Check for blank / coming soon category selections
+      state.isBlankCategory = false;
+      state.blankInfo = null;
 
-      const checkedSort = document.querySelector('input[name="sortOption"]:checked');
-      if (checkedSort) state.sortOption = checkedSort.value;
+      const emptyDepts = ['seating', 'lighting', 'furnishing', 'antiques', 'art'];
+      if (emptyDepts.includes(state.selectedDepartment)) {
+        state.isBlankCategory = true;
+        state.blankInfo = {
+          title: formatDeptName(state.selectedDepartment),
+          desc: `Our upcoming collection of handcrafted ${formatDeptName(state.selectedDepartment)} is currently being sculpted by our master artisans. Images and complete specifications will be published here soon.`
+        };
+      } else if (state.selectedMaterial === 'metal') {
+        state.isBlankCategory = true;
+        state.blankInfo = {
+          title: 'Brass, Copper & Iron Metals',
+          desc: 'Our metal collection — featuring hand-hammered brass, antique copper, and forged architectural iron — is in preparation. Images will be added soon. Inquire directly for custom and trade orders.'
+        };
+      } else if (state.selectedMaterial === 'stone') {
+        state.isBlankCategory = true;
+        state.blankInfo = {
+          title: 'Natural Marble & Stone',
+          desc: 'We are sculpting pieces in hand-selected natural marble, travertine, and architectural soapstone. Photography will be published soon. Inquire for bespoke stone commissions.'
+        };
+      }
+
+      if (state.isBlankCategory) {
+        state.filteredProducts = [];
+        renderActivePills();
+        renderProducts();
+        return;
+      }
 
       let result = state.allProducts.filter(item => {
-        if (state.selectedCategory !== 'all') {
-          if (item.category !== state.selectedCategory) return false;
+        // Department filter
+        if (state.selectedDepartment !== 'all') {
+          const validSubcats = DEPT_MAP[state.selectedDepartment] || [];
+          if (!validSubcats.includes(item.subcategory)) return false;
         }
 
+        // Subcategory filter
         if (state.selectedSubcat !== 'all') {
           if (item.subcategory !== state.selectedSubcat) return false;
         }
 
+        // Search query
         if (state.searchQuery) {
           const target = `${item.code} ${item.name} ${item.dimensions} ${item.tag} ${item.subcatTitle}`.toLowerCase();
           if (!target.includes(state.searchQuery)) return false;
@@ -1873,6 +2250,10 @@
 
         return true;
       });
+
+      // Sort
+      const checkedSort = document.querySelector('input[name="sortOption"]:checked');
+      if (checkedSort) state.sortOption = checkedSort.value;
 
       if (state.sortOption === 'code-asc') {
         result.sort((a, b) => a.code.localeCompare(b.code));
@@ -1940,11 +2321,41 @@
       const mobBadge = document.getElementById('mobileCountBadge');
       if (mobBadge) mobBadge.textContent = total;
 
+      // Handle blank / upcoming category selection
+      if (state.isBlankCategory && state.blankInfo) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        document.getElementById('paginationBar').innerHTML = '';
+        document.getElementById('visibleCount').textContent = '0';
+        emptyState.innerHTML = `
+          <div class="empty-category-curation">
+            <div class="empty-cat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="empty-cat-badge">Coming Soon · Artisanal Line</span>
+            <h3>${state.blankInfo.title}</h3>
+            <p>${state.blankInfo.desc}</p>
+            <div class="empty-cat-actions">
+              <a href="contact.html?subject=${encodeURIComponent(state.blankInfo.title + ' Custom Inquiry')}" class="btn-buy-now" style="padding:11px 22px;">Inquire For Custom Order</a>
+              <button type="button" class="btn-card-quickview-alt" onclick="selectDepartment('all'); selectMaterial('solid-wood');" style="padding:10px 18px; border:1px solid var(--color-border); border-radius:4px;">
+                Browse Available Wood Pieces (${state.allProducts.length})
+              </button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
       if (total === 0) {
         grid.style.display = 'none';
         emptyState.style.display = 'block';
         document.getElementById('paginationBar').innerHTML = '';
         document.getElementById('visibleCount').textContent = '0';
+        emptyState.innerHTML = `
+          <h3>No matching pieces found</h3>
+          <p>Try searching for a different keyword or resetting your filters to explore our full collection.</p>
+          <button class="btn-contact-nav" onclick="resetFilters()">Reset All Filters</button>
+        `;
         return;
       }
 
@@ -1988,10 +2399,15 @@
                     Details
                   </button>
                 </div>
-                <a href="contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}" class="btn-enquire-card">
-                  Enquire
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-                </a>
+                <div class="card-btn-group">
+                  <button type="button" class="btn-buy-now" onclick="buyNow('${item.code}')">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Buy Now
+                  </button>
+                  <a href="contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}" class="btn-enquire-card">
+                    Inquire
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -2060,9 +2476,12 @@
     }
 
     // Quick View Modal
+    let currentModalCode = null;
+
     function openQuickView(code) {
       const item = state.allProducts.find(p => p.code === code);
       if (!item) return;
+      currentModalCode = code;
 
       const imgPath = item.image.startsWith('../') ? item.image : `../${item.image}`;
 
@@ -2082,9 +2501,83 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function buyNowFromModal() {
+      if (currentModalCode) {
+        buyNow(currentModalCode);
+      }
+    }
+
+    function buyNow(code) {
+      const item = state.allProducts.find(p => p.code === code);
+      if (!item) return;
+
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
+      } catch (e) {
+        cart = [];
+      }
+
+      const existingIndex = cart.findIndex(p => p.code === code);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+      } else {
+        cart.push({
+          code: item.code,
+          name: item.name,
+          dimensions: item.dimensions,
+          material: item.material,
+          tag: item.tag,
+          image: item.image,
+          quantity: 1,
+          addedAt: new Date().toISOString()
+        });
+      }
+
+      localStorage.setItem('fhd_cart', JSON.stringify(cart));
+      updateCartCounters();
+      showCartToast(item.name);
+    }
+
+    function showCartToast(itemName) {
+      let toast = document.getElementById('cartToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cartToast';
+        toast.className = 'cart-toast';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `
+        <div class="cart-toast-content">
+          <strong>Added to Cart</strong>
+          <span>${itemName} has been added to your selection.</span>
+        </div>
+        <a href="cart.html" class="cart-toast-btn">View Cart</a>
+      `;
+      toast.classList.add('show');
+      if (window.toastTimeout) clearTimeout(window.toastTimeout);
+      window.toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    function updateCartCounters() {
+      let count = 0;
+      try {
+        const cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
+        count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+      } catch (e) {
+        count = 0;
+      }
+      document.querySelectorAll('.header-cart-count, .cart-count').forEach(el => {
+        el.textContent = count;
+      });
+    }
+
     function closeModal() {
       document.getElementById('quickViewModal').style.display = 'none';
       document.body.style.overflow = '';
+      currentModalCode = null;
     }
 
     function handleModalBackdropClick(e) {
@@ -2096,6 +2589,8 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
     });
+
+    document.addEventListener('DOMContentLoaded', updateCartCounters);
   </script>
 </body>
 </html>
