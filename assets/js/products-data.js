@@ -6159,5 +6159,19 @@ window.FHD_PRODUCTS = [
     "finish": "Polished Antique Brass",
     "description": "Handcrafted 3-arm solid brass candelabra candle holder featuring intricate sculptural baroque filigree, a heavy weighted pedestal base, and classic candle sockets.",
     "image": "assets/images/landing/brass-candle-holder.jpg"
+  },
+  {
+    "id": "FHD-AG-1001",
+    "code": "FHD-AG-1001",
+    "name": "Crescent Agate Nesting Tables FHD-AG-1001",
+    "tag": "Nesting Tables",
+    "category": "furniture",
+    "subcategory": "side-tables",
+    "subcatTitle": "Side & Accent Tables",
+    "dimensions": "Set of 3 (Heights: 24, 20, 16 in)",
+    "material": "Natural Agate & Stone \u00b7 Forged Iron",
+    "finish": "Natural Agate / Matte Black Iron",
+    "description": "Set of three crescent and circular nesting accent tables featuring handcrafted natural gemstone agate tops in white, amber, and malachite green with sleek architectural iron frames.",
+    "image": "assets/images/landing/crescent-nesting-tables.jpg"
   }
 ];
