@@ -6257,5 +6257,19 @@ window.FHD_PRODUCTS = [
     "finish": "Rich Espresso Walnut / Satin Brass Accents",
     "description": "Sculptural solid wood accent cabinet featuring multi-faceted pyramid geometric carved door panels, triangle brass pull hardware, and tapered turned legs.",
     "image": "assets/images/landing/new-arrival-carved-cabinet.jpg"
+  },
+  {
+    "id": "FHD-HD-1004",
+    "code": "FHD-HD-1004",
+    "name": "Silver Reindeer Sleigh Wine Cooler & Centerpiece FHD-HD-1004",
+    "tag": "Wine Cooler",
+    "category": "decor",
+    "subcategory": "candle-holders",
+    "subcatTitle": "Holiday & Candle Decor",
+    "dimensions": "24 x 10 x 16 in",
+    "material": "Sculpted Cast Aluminium · Polished Silver Metal",
+    "finish": "Polished Nickel Silver · Artisan Chain Harness",
+    "description": "Statement holiday entertaining centerpiece featuring a majestic sculpted silver reindeer pulling an ornate sleigh bucket designed as a wine bottle and champagne chiller.",
+    "image": "assets/images/landing/reindeer-sleigh-wine-cooler.jpg"
   }
 ];
