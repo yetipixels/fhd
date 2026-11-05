@@ -999,32 +999,7 @@
     @media(max-width:480px){.prod-row{grid-template-columns:1fr}}
 
     /* ══════════════════════════════════════════════
-       SECTION 7 — LIFESTYLE GRID
-    ══════════════════════════════════════════════ */
-    .lifestyle{padding:0 0 80px}
-    .lifestyle-head{margin-bottom:36px}
-    .lifestyle-head h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:400;margin-top:10px}
-    .life-grid{display:grid;grid-template-columns:7fr 5fr;gap:12px;align-items:start}
-    .life-main{aspect-ratio:4/3;overflow:hidden;position:relative;cursor:pointer}
-    .life-main img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-    .life-main:hover img{transform:scale(1.04)}
-    .life-side{display:grid;gap:12px}
-    .life-side-cell{aspect-ratio:4/3;overflow:hidden;position:relative;cursor:pointer}
-    .life-side-cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-    .life-side-cell:hover img{transform:scale(1.04)}
-    .life-label{position:absolute;bottom:14px;left:16px;font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--white);opacity:0;transition:opacity var(--t)}
-    .life-main:hover .life-label,.life-side-cell:hover .life-label{opacity:1}
-    .lifestyle-more{text-align:right;margin-top:20px}
-    .lifestyle-more a{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);display:inline-flex;align-items:center;gap:8px;transition:color var(--t),transform 0.22s ease;will-change:transform}
-    .lifestyle-more a:hover{color:var(--sage);transform:scale(1.06)}
-
-    @media(max-width:640px){
-      .life-grid{grid-template-columns:1fr}
-      .life-side{grid-template-columns:1fr 1fr}
-    }
-
-    /* ══════════════════════════════════════════════
-       SECTION 8 — DARK HERO (atmospheric)
+       SECTION 6 — DARK HERO (atmospheric)
     ══════════════════════════════════════════════ */
     .dark-hero{position:relative;height:560px;overflow:hidden}
     .dark-hero-img{position:absolute;inset:0;background:url('assets/images/landing/dark-hero.webp') center/cover no-repeat}
@@ -1036,7 +1011,7 @@
     .dark-hero-text p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.6);max-width:480px;line-height:1.85;margin-bottom:28px}
 
     /* ══════════════════════════════════════════════
-       SECTION 9 — EDITORIAL PANELS (2 column)
+       SECTION 7 — EDITORIAL PANELS (2 column)
     ══════════════════════════════════════════════ */
     .editorial{padding:80px 0;background:var(--cream)}
     .editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
@@ -1051,7 +1026,7 @@
     @media(max-width:640px){.editorial-grid{grid-template-columns:1fr}}
 
     /* ══════════════════════════════════════════════
-       SECTION 10 — DARK PRODUCT STRIP
+       SECTION 8 — DARK PRODUCT STRIP
     ══════════════════════════════════════════════ */
     .dark-strip{background:#1E1A17;padding:80px 0}
     .dark-strip-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:20px;flex-wrap:wrap}
@@ -1076,7 +1051,7 @@
     @media(max-width:480px){.dark-prod-row{grid-template-columns:1fr}}
 
     /* ══════════════════════════════════════════════
-       SECTION 11 — NEWSLETTER
+       SECTION 9 — NEWSLETTER
     ══════════════════════════════════════════════ */
     .newsletter{padding:80px 0;background:var(--cream);text-align:center}
     .newsletter-inner{max-width:580px;margin:0 auto}
@@ -1413,38 +1388,6 @@
           </a>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ LIFESTYLE GRID ═══════════════ -->
-<section class="lifestyle" id="lifestyle">
-  <div class="wrap">
-    <div class="lifestyle-head fade">
-      <span class="label">Rooms We Love</span>
-      <h2>At Home with <em>Fair Home Decor</em></h2>
-    </div>
-    <div class="life-grid">
-      <div class="life-main fade d1">
-        <img src="assets/images/landing/lifestyle1.webp" alt="Styled living room with handcrafted wooden furniture from Fair Home Decor" loading="lazy"/>
-        <div class="life-label">Living Room Edit</div>
-      </div>
-      <div class="life-side">
-        <div class="life-side-cell fade d2">
-          <img src="assets/images/landing/lifestyle2.webp" alt="Bedroom styled with wooden bedside table and decorative accents" loading="lazy"/>
-          <div class="life-label">Bedroom Edit</div>
-        </div>
-        <div class="life-side-cell fade d3">
-          <img src="assets/images/landing/lifestyle3.webp" alt="Dining room with wooden furniture and home decor accents" loading="lazy"/>
-          <div class="life-label">Dining Edit</div>
-        </div>
-      </div>
-    </div>
-    <div class="lifestyle-more fade">
-      <a href="pages/catalogue.html">
-        Shop All Rooms
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
     </div>
   </div>
 </section>
