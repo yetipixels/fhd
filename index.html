@@ -101,6 +101,12 @@
       }
     }
 
+    @media(max-width:480px) {
+      .wrap {
+        padding: 0 16px
+      }
+    }
+
     .label {
       font-size: .62rem;
       font-weight: 600;
@@ -262,15 +268,44 @@
 
     @media (max-width: 1024px) {
       .hdr-inner {
-        padding: 0 32px;
+        padding: 0 28px;
         gap: 16px;
+      }
+      .hdr-search-wrap {
+        max-width: 320px;
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .hdr-inner {
-        padding: 0 18px;
+        padding: 0 20px;
         height: 68px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hdr-inner {
+        padding: 0 16px;
+        height: 64px;
+        gap: 8px;
+      }
+      .hdr-logo img {
+        height: 44px;
+      }
+      .hdr-right-group {
+        gap: 4px;
+      }
+      .hdr-contact-btn {
+        display: none !important;
+      }
+      .account-btn {
+        padding: 8px;
+      }
+      .hdr-cart-btn {
+        padding: 8px;
+      }
+      .mob-nav {
+        top: 64px;
       }
     }
 
@@ -738,6 +773,21 @@
       letter-spacing: 0.18em;
     }
 
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        gap: 10px;
+      }
+      .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 14px 20px;
+      }
+    }
+
     .btn-hero-dark {
       background: #1E1A17;
       color: #FAF8F5;
@@ -773,6 +823,12 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-scroll {
+        display: none;
+      }
     }
 
     .hero-scroll span {
@@ -1100,6 +1156,36 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .holiday-content {
+        padding: 22px 16px;
+      }
+
+      .holiday-offer-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .offer-code-pill {
+        width: 100%;
+        text-align: center;
+      }
+
+      .holiday-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .btn-holiday-primary,
+      .btn-holiday-secondary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
     /* ══════════════════════════════════════════════
        SECTION 4 — MID HERO (dark atmospheric)
     ══════════════════════════════════════════════ */
@@ -1315,13 +1401,27 @@
 
     @media(max-width:900px) {
       .prod-row {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
       }
     }
 
     @media(max-width:480px) {
       .prod-row {
-        grid-template-columns: 1fr
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .prod-info {
+        padding: 12px 10px 14px;
+      }
+      .prod-name {
+        font-size: 0.92rem;
+      }
+    }
+
+    @media(max-width:340px) {
+      .prod-row {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1580,13 +1680,27 @@
 
     @media(max-width:900px) {
       .dark-prod-row {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
       }
     }
 
     @media(max-width:480px) {
       .dark-prod-row {
-        grid-template-columns: 1fr
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .dark-prod-info {
+        padding: 10px 10px 12px;
+      }
+      .dark-prod-name {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media(max-width:340px) {
+      .dark-prod-row {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1935,6 +2049,34 @@
       .footer-bottom {
         flex-direction: column;
         text-align: center
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-nl-form {
+        flex-direction: column;
+      }
+      .footer-nl-form button {
+        width: 100%;
+        padding: 12px;
+      }
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+    }
+
+    /* iOS Safari Auto-Zoom Prevention */
+    @media (max-width: 768px) {
+      input[type="text"],
+      input[type="email"],
+      input[type="search"],
+      input[type="password"],
+      input[type="tel"],
+      select,
+      textarea {
+        font-size: 16px !important;
       }
     }
   </style>

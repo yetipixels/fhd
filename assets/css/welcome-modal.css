@@ -242,3 +242,21 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 400px) {
+  .fhd-welcome-backdrop {
+    padding: 12px;
+  }
+  .fhd-welcome-card {
+    padding: 26px 16px 22px;
+    max-height: 92vh;
+  }
+  .fhd-welcome-close {
+    top: 10px;
+    right: 10px;
+  }
+  .fhd-welcome-title {
+    font-size: 1.5rem;
+  }
+}
+
