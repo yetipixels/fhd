@@ -6173,5 +6173,19 @@ window.FHD_PRODUCTS = [
     "finish": "Natural Agate / Matte Black Iron",
     "description": "Set of three crescent and circular nesting accent tables featuring handcrafted natural gemstone agate tops in white, amber, and malachite green with sleek architectural iron frames.",
     "image": "assets/images/landing/crescent-nesting-tables.jpg"
+  },
+  {
+    "id": "FHD-HD-1001",
+    "code": "FHD-HD-1001",
+    "name": "Silver Reindeer Candle Centrepiece FHD-HD-1001",
+    "tag": "Candle Holder",
+    "category": "decor",
+    "subcategory": "candle-holders",
+    "subcatTitle": "Holiday & Candle Decor",
+    "dimensions": "14 x 5 x 16 in",
+    "material": "Sculpted Cast Metal \u00b7 Crackle Glass",
+    "finish": "Champagne Silver \u00b7 Crackle Glass",
+    "description": "Festive sculpted reindeer candle centrepiece featuring a stepped platform with three crackle glass votive holders for tea lights or votive candles.",
+    "image": "assets/images/landing/reindeer-candle-centrepiece.jpg"
   }
 ];
