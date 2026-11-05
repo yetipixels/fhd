@@ -1,0 +1,97 @@
+/* ========================================================
+   FAIR HOME DECOR — Luxury Page Transitions & Progress Bar
+   ======================================================== */
+
+/* 1. Native View Transitions (Chrome 111+, Safari 18+, Edge) */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: fhdFadeOut 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: fhdFadeIn 0.3s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes fhdFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes fhdFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Soft Page Entrance Animation */
+html {
+  background-color: #FAF8F5; /* Matches luxury warm background to avoid white flashing */
+}
+
+body {
+  animation: fhdPageEnter 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes fhdPageEnter {
+  0% {
+    opacity: 0.75;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 3. Smooth Exit Fade */
+body.page-transitioning-out {
+  opacity: 0 !important;
+  transform: translateY(-5px) !important;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 1, 1), transform 0.2s cubic-bezier(0.4, 0, 1, 1) !important;
+}
+
+/* 4. Luxury Golden Top Progress Bar */
+#fhd-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #7C8C6E 0%, #C8BC9E 35%, #B38D4F 70%, #C47B6A 100%);
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(179, 141, 79, 0.5), 0 0 4px rgba(124, 140, 110, 0.4);
+  transition: width 0.24s cubic-bezier(0.1, 0.85, 0.25, 1), opacity 0.2s ease;
+}
+
+#fhd-progress-bar.active {
+  opacity: 1;
+}
+
+/* 5. Tactile Micro-Interaction on Interactive Elements */
+a, button, .btn, .btn-submit, .hdr-logo, .ribbon-item, .product-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active:not(:disabled),
+.btn-submit:active:not(:disabled),
+.hero-cta:active {
+  transform: scale(0.98);
+}
