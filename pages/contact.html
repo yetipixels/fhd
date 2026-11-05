@@ -723,24 +723,138 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition), box-shadow 0.28s ease;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition), box-shadow 0.28s ease, color 0.25s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       margin-top: 8px;
+      position: relative;
+      overflow: hidden;
       will-change: transform;
+    }
+
+    .btn-submit .send-icon {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
     }
 
     .btn-submit:hover:not(:disabled) {
       background: var(--color-sage);
-      transform: scale(1.03) translateY(-2px);
+      transform: scale(1.02) translateY(-2px);
       box-shadow: 0 10px 28px rgba(43, 37, 32, 0.2);
     }
 
+    .btn-submit:hover:not(:disabled) .send-icon {
+      transform: translateX(4px) translateY(-2px);
+    }
+
+    .btn-submit:active:not(:disabled) {
+      transform: scale(0.99) translateY(0);
+    }
+
     .btn-submit:disabled {
-      opacity: 0.7;
       cursor: wait;
+    }
+
+    /* Active Sending Animation */
+    .btn-submit.is-sending {
+      background: #3c322b !important;
+      cursor: wait;
+      pointer-events: none;
+      box-shadow: 0 6px 18px rgba(43, 37, 32, 0.15);
+    }
+
+    .btn-submit.is-sending .send-icon {
+      animation: paperPlaneFly 0.8s ease-in-out infinite alternate;
+    }
+
+    /* Sent / Success State */
+    .btn-submit.is-sent {
+      background: #4A6348 !important;
+      color: #FFFFFF !important;
+      transform: scale(1.02);
+      pointer-events: none;
+      box-shadow: 0 8px 22px rgba(74, 99, 72, 0.3);
+    }
+
+    @keyframes paperPlaneFly {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(6px, -5px) rotate(-10deg) scale(1.1);
+      }
+      100% {
+        transform: translate(12px, -8px) rotate(-18deg) scale(0.95);
+      }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes successPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-pop {
+      animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Tab switcher for General vs Trade */
+    .contact-tab-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+      background: rgba(184, 151, 126, 0.12);
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    .contact-tab-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border: none;
+      background: transparent;
+      color: var(--color-brown);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .contact-tab-btn:hover {
+      color: var(--color-dark);
+    }
+
+    .contact-tab-btn.active {
+      background: var(--color-white);
+      color: var(--color-dark);
+      box-shadow: 0 2px 8px rgba(43, 37, 32, 0.08);
+    }
+
+    .trade-pill {
+      font-size: 0.62rem;
+      background: var(--color-terracotta);
+      color: white;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     /* ---- Success State ---- */
@@ -1410,13 +1524,26 @@
 
     <!-- Form Column -->
     <div class="form-col">
-      <h3>Send a Message</h3>
-      <p>Queries are sent directly to our team at <strong>info@fairhomedecor.com</strong>.</p>
+      <!-- Tabs to switch between General Inquiry and Trade Application -->
+      <div class="contact-tab-nav" role="tablist">
+        <button type="button" class="contact-tab-btn active" id="tabGeneralBtn" onclick="switchContactTab('general')" role="tab" aria-selected="true">
+          <span>General Message</span>
+        </button>
+        <button type="button" class="contact-tab-btn" id="tabTradeBtn" onclick="switchContactTab('trade')" role="tab" aria-selected="false">
+          <span>Trade Application</span>
+          <span class="trade-pill">B2B</span>
+        </button>
+      </div>
+
+      <div id="formHeader">
+        <h3 id="formTitle">Send a Message</h3>
+        <p id="formSub">Queries are sent directly to our team at <strong>info@fairhomedecor.com</strong>.</p>
+      </div>
 
       <!-- Product inquiry banner if coming from catalogue -->
       <div id="inquiryBadge" class="product-inquiry-box"></div>
 
-      <!-- The Form -->
+      <!-- General Contact Form -->
       <form id="contactForm" action="https://formsubmit.co/info@fairhomedecor.com" method="POST" novalidate>
         <!-- FormSubmit Configuration -->
         <input type="hidden" name="_subject" id="formSubjectHidden" value="New Inquiry from Fair Home Decor Website" />
@@ -1464,23 +1591,90 @@
         </div>
 
         <button type="submit" id="btnSubmit" class="btn-submit">
-          <span>Send Inquiry to info@fairhomedecor.com</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="9 18 15 12 9 6" />
+          <span>Send</span>
+          <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Trade Application Form -->
+      <form id="tradeForm" action="https://formsubmit.co/info@fairhomedecor.com" method="POST" novalidate style="display:none;">
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" id="tradeFormSubjectHidden" value="New B2B Trade Application — Fair Home Decor" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <div class="form-group">
+          <label for="tradeBusinessName">Business / Design Studio Name *</label>
+          <input type="text" id="tradeBusinessName" name="businessName" placeholder="e.g. Studio Arch Design LLC" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tradeFirstName">First Name *</label>
+            <input type="text" id="tradeFirstName" name="firstName" placeholder="First name" required />
+          </div>
+          <div class="form-group">
+            <label for="tradeLastName">Last Name *</label>
+            <input type="text" id="tradeLastName" name="lastName" placeholder="Last name" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tradeEmail">Professional Trade Email *</label>
+          <input type="email" id="tradeEmail" name="email" placeholder="trade@company.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tradePhone">Phone / WhatsApp *</label>
+          <input type="tel" id="tradePhone" name="phone" placeholder="+1 (785) 713-1584" required />
+        </div>
+
+        <div class="form-group">
+          <label for="tradeBusinessType">Business Type *</label>
+          <select id="tradeBusinessType" name="businessType" required>
+            <option value="">Select your business type</option>
+            <option value="Interior Designer / Studio">Interior Designer / Studio</option>
+            <option value="Architect / Firm">Architect / Architectural Firm</option>
+            <option value="Hospitality / Hotel / Restaurant">Hospitality / Hotel / Restaurant</option>
+            <option value="Retail Store / Boutique">Retail Store / Furniture Boutique</option>
+            <option value="Real Estate Developer">Real Estate Developer</option>
+            <option value="Wholesale Importer / Distributor">Wholesale Importer / Container Buyer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tradeTaxId">Resale Certificate / Tax ID (EIN)</label>
+          <input type="text" id="tradeTaxId" name="taxId" placeholder="State Tax ID or Federal EIN" />
+        </div>
+
+        <div class="form-group">
+          <label for="tradeMessage">Project or Sourcing Requirements</label>
+          <textarea id="tradeMessage" name="tradeMessage" placeholder="Tell us about your upcoming project, expected volume, or catalogue requirements..."></textarea>
+        </div>
+
+        <button type="submit" id="btnTradeSubmit" class="btn-submit">
+          <span>Send</span>
+          <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
           </svg>
         </button>
       </form>
 
       <!-- Success State -->
       <div class="success-msg" id="successMsg">
-        <div class="success-icon">
+        <div class="success-icon animate-pop">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
         <h3>Thank You, <span id="successCustomerName"></span>!</h3>
-        <p>Your inquiry has been delivered directly to <strong>info@fairhomedecor.com</strong>. Our team will review
+        <p id="successDesc">Your message has been delivered directly to <strong>info@fairhomedecor.com</strong>. Our team will review
           your request and get back to you within 1–2 business days.</p>
         <button type="button" class="btn-success-reset" onclick="resetContactForm()">Send Another Query</button>
       </div>
@@ -1661,11 +1855,42 @@
       }
     }
 
-    // 2. Submit form directly to info@fairhomedecor.com via FormSubmit AJAX with fallback
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
+    // Tab switcher between General and Trade Application
+    function switchContactTab(tab) {
+      const isGeneral = tab === 'general';
+      const tabGen = document.getElementById('tabGeneralBtn');
+      const tabTrd = document.getElementById('tabTradeBtn');
+      const cForm = document.getElementById('contactForm');
+      const tForm = document.getElementById('tradeForm');
+      const fTitle = document.getElementById('formTitle');
+      const fSub = document.getElementById('formSub');
+      const sBox = document.getElementById('successMsg');
 
-      const required = this.querySelectorAll('[required]');
+      if (tabGen) tabGen.classList.toggle('active', isGeneral);
+      if (tabTrd) tabTrd.classList.toggle('active', !isGeneral);
+      if (sBox) sBox.style.display = 'none';
+
+      if (isGeneral) {
+        if (cForm) cForm.style.display = 'block';
+        if (tForm) tForm.style.display = 'none';
+        if (fTitle) fTitle.textContent = 'Send a Message';
+        if (fSub) fSub.innerHTML = 'Queries are sent directly to our team at <strong>info@fairhomedecor.com</strong>.';
+      } else {
+        if (cForm) cForm.style.display = 'none';
+        if (tForm) tForm.style.display = 'block';
+        if (fTitle) fTitle.textContent = 'B2B Trade Application';
+        if (fSub) fSub.innerHTML = 'Applications are sent directly to our wholesale trade team at <strong>info@fairhomedecor.com</strong>.';
+      }
+    }
+
+    // Check URL hash for direct trade tab linking
+    if (window.location.hash === '#trade') {
+      switchContactTab('trade');
+    }
+
+    // Helper: Run send animation and dispatch to info@fairhomedecor.com
+    function executeFormSubmission(formEl, submitBtn, opts) {
+      const required = formEl.querySelectorAll('[required]');
       let valid = true;
       required.forEach(field => {
         if (!field.value.trim()) {
@@ -1677,63 +1902,147 @@
       });
       if (!valid) return;
 
-      const submitBtn = document.getElementById('btnSubmit');
+      // Small sending animation state
       submitBtn.disabled = true;
+      submitBtn.classList.remove('is-sent');
+      submitBtn.classList.add('is-sending');
       submitBtn.innerHTML = `
-        <svg style="animation:spin 1s linear infinite; display:inline-block; vertical-align:middle; margin-right:8px;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
-        Sending to info@fairhomedecor.com...
+        <span>Sending...</span>
+        <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
       `;
 
+      const startTime = Date.now();
+      const minAnimationMs = 700; // ensure user perceives the elegant sending animation
+
+      const formData = new FormData(formEl);
+
+      const completeSuccess = () => {
+        const elapsed = Date.now() - startTime;
+        const delay = Math.max(0, minAnimationMs - elapsed);
+
+        setTimeout(() => {
+          submitBtn.classList.remove('is-sending');
+          submitBtn.classList.add('is-sent');
+          submitBtn.innerHTML = `
+            <span>Sent!</span>
+            <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          `;
+
+          setTimeout(() => {
+            formEl.style.display = 'none';
+            const sBox = document.getElementById('successMsg');
+            if (sBox) {
+              document.getElementById('successCustomerName').textContent = opts.customerName;
+              document.getElementById('successDesc').innerHTML = opts.successText;
+              sBox.style.display = 'block';
+              sBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }, 550);
+        }, delay);
+      };
+
+      fetch('https://formsubmit.co/ajax/info@fairhomedecor.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        completeSuccess();
+      })
+      .catch(err => {
+        console.warn('FormSubmit AJAX network notice:', err);
+        completeSuccess();
+        if (opts.mailtoFallback) {
+          setTimeout(() => {
+            opts.mailtoFallback();
+          }, 850);
+        }
+      });
+    }
+
+    // 2. Submit General Contact Form
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
       const firstName = document.getElementById('firstName').value.trim();
       const lastName = document.getElementById('lastName').value.trim();
       const userEmail = document.getElementById('email').value.trim();
       const userPhone = document.getElementById('phone').value.trim();
       const userTopic = document.getElementById('subject').value;
       const userMessage = document.getElementById('message').value.trim();
+      const submitBtn = document.getElementById('btnSubmit');
 
       document.getElementById('formSubjectHidden').value = `Website Inquiry [${userTopic}] from ${firstName} ${lastName}`;
 
-      const formData = new FormData(this);
-
-      // Submit via FormSubmit AJAX
-      fetch('https://formsubmit.co/ajax/info@fairhomedecor.com', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('contactForm').style.display = 'none';
-          const successBox = document.getElementById('successMsg');
-          document.getElementById('successCustomerName').textContent = `${firstName} ${lastName}`;
-          successBox.style.display = 'block';
-          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        })
-        .catch(err => {
-          console.warn('FormSubmit network fallback:', err);
-          // Fallback: If external endpoint is blocked by client adblocker, open mailto directly
-          document.getElementById('contactForm').style.display = 'none';
-          const successBox = document.getElementById('successMsg');
-          document.getElementById('successCustomerName').textContent = `${firstName} ${lastName}`;
-          successBox.style.display = 'block';
-
+      executeFormSubmission(this, submitBtn, {
+        customerName: `${firstName} ${lastName}`,
+        successText: 'Your inquiry has been delivered directly to <strong>info@fairhomedecor.com</strong>. Our team will review your request and get back to you within 1–2 business days.',
+        mailtoFallback: () => {
           const mailtoLink = `mailto:info@fairhomedecor.com?subject=${encodeURIComponent('Inquiry: ' + userTopic + ' from ' + firstName + ' ' + lastName)}&body=${encodeURIComponent('Name: ' + firstName + ' ' + lastName + '\nEmail: ' + userEmail + '\nPhone: ' + userPhone + '\n\nMessage:\n' + userMessage)}`;
           window.location.href = mailtoLink;
-        });
+        }
+      });
+    });
+
+    // 3. Submit Trade Application Form
+    document.getElementById('tradeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const bName = document.getElementById('tradeBusinessName').value.trim();
+      const fName = document.getElementById('tradeFirstName').value.trim();
+      const lName = document.getElementById('tradeLastName').value.trim();
+      const tEmail = document.getElementById('tradeEmail').value.trim();
+      const tPhone = document.getElementById('tradePhone').value.trim();
+      const bType = document.getElementById('tradeBusinessType').value;
+      const tTaxId = document.getElementById('tradeTaxId').value.trim();
+      const tMsg = document.getElementById('tradeMessage').value.trim();
+      const submitBtn = document.getElementById('btnTradeSubmit');
+
+      document.getElementById('tradeFormSubjectHidden').value = `B2B Trade Application: ${bName} (${fName} ${lName})`;
+
+      executeFormSubmission(this, submitBtn, {
+        customerName: `${fName} ${lName} (${bName})`,
+        successText: 'Your trade application has been delivered directly to <strong>info@fairhomedecor.com</strong>. Our wholesale team will verify your credentials and send wholesale access within 24 hours.',
+        mailtoFallback: () => {
+          const mailtoLink = `mailto:info@fairhomedecor.com?subject=${encodeURIComponent('B2B Trade Application: ' + bName)}&body=${encodeURIComponent('Business Name: ' + bName + '\nContact: ' + fName + ' ' + lName + '\nEmail: ' + tEmail + '\nPhone: ' + tPhone + '\nBusiness Type: ' + bType + '\nTax ID / EIN: ' + tTaxId + '\n\nRequirements:\n' + tMsg)}`;
+          window.location.href = mailtoLink;
+        }
+      });
     });
 
     function resetContactForm() {
+      const isTrade = document.getElementById('tabTradeBtn').classList.contains('active');
       document.getElementById('contactForm').reset();
-      document.getElementById('contactForm').style.display = 'block';
-      document.getElementById('successMsg').style.display = 'none';
-      const submitBtn = document.getElementById('btnSubmit');
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `
-        <span>Send Inquiry to info@fairhomedecor.com</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      document.getElementById('tradeForm').reset();
+
+      const btnSubmit = document.getElementById('btnSubmit');
+      btnSubmit.disabled = false;
+      btnSubmit.classList.remove('is-sending', 'is-sent');
+      btnSubmit.innerHTML = `
+        <span>Send</span>
+        <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
       `;
+
+      const btnTrade = document.getElementById('btnTradeSubmit');
+      btnTrade.disabled = false;
+      btnTrade.classList.remove('is-sending', 'is-sent');
+      btnTrade.innerHTML = `
+        <span>Send</span>
+        <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      `;
+
+      document.getElementById('successMsg').style.display = 'none';
+      switchContactTab(isTrade ? 'trade' : 'general');
     }
 
     // Mobile nav toggle

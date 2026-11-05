@@ -513,15 +513,81 @@
       text-transform: uppercase;
       border-radius: 4px;
       cursor: pointer;
-      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--t), box-shadow 0.28s ease;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--t), box-shadow 0.28s ease, color 0.25s ease;
       margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       will-change: transform;
     }
 
-    .btn-submit:hover {
+    .btn-submit .send-icon {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .btn-submit:hover:not(:disabled) {
       background: var(--brown);
-      transform: scale(1.03) translateY(-1px);
+      transform: scale(1.02) translateY(-1px);
       box-shadow: 0 8px 24px rgba(43, 37, 32, 0.18);
+    }
+
+    .btn-submit:hover:not(:disabled) .send-icon {
+      transform: translateX(4px) translateY(-2px);
+    }
+
+    .btn-submit:active:not(:disabled) {
+      transform: scale(0.99) translateY(0);
+    }
+
+    .btn-submit:disabled {
+      cursor: wait;
+    }
+
+    .btn-submit.is-sending {
+      background: #3c322b !important;
+      cursor: wait;
+      pointer-events: none;
+      box-shadow: 0 6px 18px rgba(43, 37, 32, 0.15);
+    }
+
+    .btn-submit.is-sending .send-icon {
+      animation: paperPlaneFly 0.8s ease-in-out infinite alternate;
+    }
+
+    .btn-submit.is-sent {
+      background: #4A6348 !important;
+      color: #FFFFFF !important;
+      transform: scale(1.02);
+      pointer-events: none;
+      box-shadow: 0 8px 22px rgba(74, 99, 72, 0.3);
+    }
+
+    @keyframes paperPlaneFly {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(6px, -5px) rotate(-10deg) scale(1.1);
+      }
+      100% {
+        transform: translate(12px, -8px) rotate(-18deg) scale(0.95);
+      }
+    }
+
+    @keyframes successPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-pop {
+      animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
     /* Favourites empty state & populated grid */
@@ -1121,33 +1187,65 @@
         <div class="portal-panel" id="panel-b2b">
           <div class="panel-head">
             <h2>B2B Trade & Wholesale Portal</h2>
-            <p>Exclusive access for interior designers, architects, and retail partners.</p>
+            <p>Exclusive access for interior designers, architects, and retail partners. Applications are reviewed directly by our wholesale team.</p>
           </div>
-          <form onsubmit="event.preventDefault(); alert('Trade application received. Our team will verify your credentials within 24 hours.');">
+          <form id="b2bTradeForm" action="https://formsubmit.co/info@fairhomedecor.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" id="b2bFormSubject" value="New B2B Trade Application — Fair Home Decor" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
+
             <div class="form-group">
-              <label>Business / Studio Name</label>
-              <input type="text" placeholder="e.g. Studio Arch Design" required />
+              <label for="b2bBusinessName">Business / Studio Name *</label>
+              <input type="text" id="b2bBusinessName" name="businessName" placeholder="e.g. Studio Arch Design LLC" required />
             </div>
             <div class="form-group">
-              <label>Professional Email</label>
-              <input type="email" placeholder="trade@company.com" required />
+              <label for="b2bContactName">Contact Person Name *</label>
+              <input type="text" id="b2bContactName" name="contactName" placeholder="Full name" required />
             </div>
             <div class="form-group">
-              <label>Business Type</label>
-              <select required>
+              <label for="b2bEmail">Professional Email *</label>
+              <input type="email" id="b2bEmail" name="email" placeholder="trade@company.com" required />
+            </div>
+            <div class="form-group">
+              <label for="b2bPhone">Phone / WhatsApp *</label>
+              <input type="tel" id="b2bPhone" name="phone" placeholder="+1 (785) 713-1584" required />
+            </div>
+            <div class="form-group">
+              <label for="b2bBusinessType">Business Type *</label>
+              <select id="b2bBusinessType" name="businessType" required>
                 <option value="">Select your business type</option>
-                <option value="interior_designer">Interior Designer / Decorator</option>
-                <option value="architect">Architect</option>
-                <option value="hospitality">Hospitality / Developer</option>
-                <option value="retail">Retail Furniture Store</option>
+                <option value="Interior Designer / Decorator">Interior Designer / Decorator</option>
+                <option value="Architect / Firm">Architect / Firm</option>
+                <option value="Hospitality / Developer">Hospitality / Developer</option>
+                <option value="Retail Furniture Store">Retail Furniture Store</option>
+                <option value="Wholesale Container Buyer">Wholesale Container Buyer</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Resale Certificate / Tax ID (Optional)</label>
-              <input type="text" placeholder="State Tax ID or EIN" />
+              <label for="b2bTaxId">Resale Certificate / Tax ID (Optional)</label>
+              <input type="text" id="b2bTaxId" name="taxId" placeholder="State Tax ID or Federal EIN" />
             </div>
-            <button type="submit" class="btn-submit">Submit Trade Application</button>
+            <button type="submit" id="btnB2BSubmit" class="btn-submit">
+              <span>Send</span>
+              <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
           </form>
+
+          <!-- Success State -->
+          <div class="success-msg" id="b2bSuccessMsg" style="display:none; text-align:center; padding:36px 20px;">
+            <div class="success-icon animate-pop" style="width:58px; height:58px; border-radius:50%; background:#EAF0E5; color:var(--dark); display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <h3 style="font-family:var(--serif); font-size:1.8rem; font-weight:400; color:var(--dark); margin-bottom:12px;">Thank You, <span id="b2bCustomerName"></span>!</h3>
+            <p style="font-size:0.88rem; color:rgba(43,37,32,0.7); max-width:440px; margin:0 auto 24px; line-height:1.6;">Your trade application has been delivered directly to <strong>info@fairhomedecor.com</strong>. Our wholesale team will verify your credentials and send trade catalogue access within 24 hours.</p>
+            <button type="button" class="btn-submit" style="display:inline-block; width:auto; padding:12px 28px;" onclick="resetB2BForm()">Submit Another Application</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1408,6 +1506,116 @@
       const count = cart.reduce((sum, i) => sum + (i.quantity || 1), 0);
       document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
       alert(`Added "${item.name || item.code}" to your shopping cart!`);
+    }
+
+    // B2B Trade Application Submit with flight animation & dispatch to info@fairhomedecor.com
+    const b2bForm = document.getElementById('b2bTradeForm');
+    if (b2bForm) {
+      b2bForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const required = this.querySelectorAll('[required]');
+        let valid = true;
+        required.forEach(field => {
+          if (!field.value.trim()) {
+            valid = false;
+            field.style.borderColor = '#C47B6A';
+          } else {
+            field.style.borderColor = '';
+          }
+        });
+        if (!valid) return;
+
+        const submitBtn = document.getElementById('btnB2BSubmit');
+        submitBtn.disabled = true;
+        submitBtn.classList.remove('is-sent');
+        submitBtn.classList.add('is-sending');
+        submitBtn.innerHTML = `
+          <span>Sending...</span>
+          <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        `;
+
+        const bName = document.getElementById('b2bBusinessName').value.trim();
+        const cName = document.getElementById('b2bContactName').value.trim();
+        const email = document.getElementById('b2bEmail').value.trim();
+        const phone = document.getElementById('b2bPhone').value.trim();
+        const bType = document.getElementById('b2bBusinessType').value;
+        const taxId = document.getElementById('b2bTaxId').value.trim();
+
+        document.getElementById('b2bFormSubject').value = `B2B Trade Application: ${bName} (${cName})`;
+
+        const startTime = Date.now();
+        const minAnimationMs = 700;
+        const formData = new FormData(this);
+
+        const onComplete = () => {
+          const elapsed = Date.now() - startTime;
+          const delay = Math.max(0, minAnimationMs - elapsed);
+
+          setTimeout(() => {
+            submitBtn.classList.remove('is-sending');
+            submitBtn.classList.add('is-sent');
+            submitBtn.innerHTML = `
+              <span>Sent!</span>
+              <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            `;
+
+            setTimeout(() => {
+              b2bForm.style.display = 'none';
+              const sBox = document.getElementById('b2bSuccessMsg');
+              if (sBox) {
+                document.getElementById('b2bCustomerName').textContent = `${cName} (${bName})`;
+                sBox.style.display = 'block';
+                sBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }, 550);
+          }, delay);
+        };
+
+        fetch('https://formsubmit.co/ajax/info@fairhomedecor.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => onComplete())
+        .catch(err => {
+          console.warn('FormSubmit AJAX fallback:', err);
+          onComplete();
+          setTimeout(() => {
+            const mailtoLink = `mailto:info@fairhomedecor.com?subject=${encodeURIComponent('B2B Trade Application: ' + bName)}&body=${encodeURIComponent('Business Name: ' + bName + '\nContact Name: ' + cName + '\nEmail: ' + email + '\nPhone: ' + phone + '\nBusiness Type: ' + bType + '\nTax ID / EIN: ' + taxId)}`;
+            window.location.href = mailtoLink;
+          }, 850);
+        });
+      });
+    }
+
+    function resetB2BForm() {
+      const b2bForm = document.getElementById('b2bTradeForm');
+      if (b2bForm) {
+        b2bForm.reset();
+        b2bForm.style.display = 'block';
+      }
+      const sBox = document.getElementById('b2bSuccessMsg');
+      if (sBox) sBox.style.display = 'none';
+
+      const submitBtn = document.getElementById('btnB2BSubmit');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-sending', 'is-sent');
+        submitBtn.innerHTML = `
+          <span>Send</span>
+          <svg class="send-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        `;
+      }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
