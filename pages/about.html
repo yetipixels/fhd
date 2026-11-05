@@ -598,13 +598,13 @@
 
     .pillars-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
     }
 
     .pillar-card {
       background: var(--white);
-      padding: 40px 32px;
+      padding: 34px 26px;
       border-radius: 6px;
       border: 1px solid var(--tan);
       box-shadow: var(--shadow-sm);
@@ -729,6 +729,12 @@
       flex-shrink: 0;
     }
 
+    @media (max-width: 1100px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
 
       .story-grid,
@@ -736,7 +742,9 @@
         grid-template-columns: 1fr;
         gap: 40px;
       }
+    }
 
+    @media (max-width: 640px) {
       .pillars-grid {
         grid-template-columns: 1fr;
       }
@@ -941,8 +949,10 @@
       <p class="about-tagline">Furniture with intention, soul, and enduring craft.</p>
       <p class="about-lead">
         At Fair Home Decor, we believe a home is more than four walls — it is a sanctuary built from pieces that carry
-        warmth, texture, and character. We partner directly with master woodworkers to bring handcrafted, solid wood
-        furniture and curated decor to discerning homeowners and interior designers across the United States.
+        warmth, texture, and character. We own and operate our dedicated factory where solid wood furniture and
+        artisanal crafts are manufactured by skilled workers and generational woodcrafters. Guided directly by our
+        USA head office in East Brunswick, New Jersey, and supported by regional storage units across multiple states,
+        we deliver timeless heirloom pieces directly into American homes — with official retail stores opening soon.
       </p>
     </div>
   </section>
@@ -958,19 +968,13 @@
         <div class="story-text">
           <h2>Rooted in East Brunswick,<br /><em>Crafted for America</em></h2>
           <p>
-            Headquartered at 1 Auer Ct in East Brunswick, New Jersey, Fair Home Decor was born from a desire to push
-            back
-            against the tide of disposable, mass-manufactured flatpack furniture.
+            <strong>Our USA Head Office:</strong> Fair Home Decor INC. is centrally headquartered at <strong>1 Auer Ct, East Brunswick, NJ 08816, USA</strong>. From our New Jersey office, our leadership team directs design, material sourcing, client care, and nationwide logistics.
           </p>
           <p>
-            We curate and engineer solid wood accent cabinets, bookshelves, console tables, bedside units, and
-            hand-carved photo frames built using time-honored joinery techniques. Each grain pattern is unique, each
-            finish
-            is hand-applied, and every piece is crafted to grow more beautiful with age.
+            <strong>Our Own Factory & Skilled Workers:</strong> Unlike conventional furniture brands that outsource to anonymous third parties, we manufacture our furniture and home crafts in our very own factory. Every solid wood accent cabinet, bookshelf, console desk, brass candelabra, and holiday centrepiece is shaped, carved, and assembled by skilled workers using time-tested joinery techniques. Human touch and artisan pride guide every cut, facet, and hand-rubbed finish.
           </p>
           <p>
-            From quiet coastal cottages to contemporary city apartments, our pieces are designed to anchor living spaces
-            with grounding, timeless appeal.
+            <strong>Strategic Storage Units & Stores Opening Soon:</strong> To ensure prompt and seamless nationwide delivery, we operate storage units and fulfillment hubs in different places across the USA. While our comprehensive collection is currently available to explore and order online, we are actively preparing to open physical retail stores and design showrooms in multiple locations very soon!
           </p>
           <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
             <a href="catalogue.html" class="hdr-contact-btn"
@@ -993,21 +997,23 @@
       <div class="pillars-grid">
         <div class="pillar-card">
           <div class="pillar-num">01</div>
-          <h3>100% Solid Natural Wood</h3>
-          <p>We work exclusively with authentic, sustainably harvested hardwoods. No paper veneers, no synthetic
-            substitutes — only the honest beauty and structural integrity of real wood.</p>
+          <h3>Our Own Factory</h3>
+          <p>We own and run our dedicated manufacturing facility. Having direct factory oversight ensures strict quality control from raw timber seasoning to precision joint assembly and final inspection.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">02</div>
-          <h3>Artisan Heritage</h3>
-          <p>Our workshop partners carry generations of woodworking mastery. From dovetail drawers to turned spindle
-            legs, human hands shape and inspect every detail.</p>
+          <h3>Skilled Workers & Craft</h3>
+          <p>Manufacturing of our furniture and artisanal decor is executed by skilled workers and master woodcrafters who bring generational expertise to every joint, hand-carved relief, and hand-applied finish.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">03</div>
-          <h3>Nationwide USA Care</h3>
-          <p>Whether you're furnishing a single room or completing a whole-home project, our East Brunswick team
-            oversees nationwide delivery with personalized support.</p>
+          <h3>USA Head Office</h3>
+          <p>Headquartered at 1 Auer Ct, East Brunswick, NJ 08816, our USA corporate office coordinates design direction, trade partnerships, and white-glove customer concierge across the United States.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">04</div>
+          <h3>Storage & Stores Soon</h3>
+          <p>We maintain regional storage units in multiple strategic places across the USA for swift freight delivery. Stay tuned — our physical retail stores and experiential showrooms will be opening soon!</p>
         </div>
       </div>
     </div>
@@ -1078,7 +1084,7 @@
         <div class="footer-brand">
           <img src="../assets/images/logo-white.png" alt="Fair Home Decor"
             onerror="this.onerror=null;this.src='../assets/images/logo.png'" />
-          <p>Handcrafted wooden furniture and curated home decor. Considered living, beautifully made.</p>
+          <p>Handcrafted in our own factory by skilled workers. Headquartered at 1 Auer Ct, East Brunswick, NJ — storage units nationwide, stores opening soon.</p>
         </div>
         <div class="footer-col">
           <h4>Explore</h4>
