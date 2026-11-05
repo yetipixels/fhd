@@ -37,33 +37,29 @@
   }
 }
 
-/* 2. Soft Page Entrance Animation */
+/* 2. Soft Page Entrance Animation (Opacity only — preserves position:fixed viewport containing block) */
 html {
   background-color: #FAF8F5; /* Matches luxury warm background to avoid white flashing */
 }
 
 body {
-  animation: fhdPageEnter 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform;
+  animation: fhdPageEnter 0.28s ease-out forwards;
 }
 
 @keyframes fhdPageEnter {
   0% {
-    opacity: 0.75;
-    transform: translateY(5px);
+    opacity: 0.85;
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* 3. Smooth Exit Fade */
+/* 3. Smooth Exit Fade (Opacity only — keeps position:fixed elements uncorrupted) */
 body.page-transitioning-out {
   opacity: 0 !important;
-  transform: translateY(-5px) !important;
   pointer-events: none;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 1, 1), transform 0.2s cubic-bezier(0.4, 0, 1, 1) !important;
+  transition: opacity 0.18s cubic-bezier(0.4, 0, 1, 1) !important;
 }
 
 /* 4. Luxury Golden Top Progress Bar */
@@ -86,7 +82,7 @@ body.page-transitioning-out {
 }
 
 /* 5. Tactile Micro-Interaction on Interactive Elements */
-a, button, .btn, .btn-submit, .hdr-logo, .ribbon-item, .product-card {
+a, button, .btn, .btn-submit, .hdr-logo, .ribbon-item {
   -webkit-tap-highlight-color: transparent;
 }
 
