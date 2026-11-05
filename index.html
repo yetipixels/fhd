@@ -674,12 +674,20 @@
     .cat-bar-inner {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 6px;
+      justify-content: center;
+      gap: 12px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       padding: 0 40px;
+    }
+
+    @media (max-width: 900px) {
+      .cat-bar-inner {
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 0 20px;
+      }
     }
 
     .cat-bar-inner::-webkit-scrollbar {
@@ -731,27 +739,218 @@
     }
 
     /* ══════════════════════════════════════════════
-       SECTION 3 — MOOD GRID
+       SECTION 3 — CHRISTMAS & HOLIDAY OFFER (Compact Single-Image Banner)
     ══════════════════════════════════════════════ */
-    .mood{padding:80px 0}
-    .mood-head{margin-bottom:40px}
-    .mood-head h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:400;line-height:1.2;margin-top:10px}
-    .mood-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:auto auto;gap:12px}
-    .mood-grid .cell{overflow:hidden;position:relative;cursor:pointer}
-    .mood-grid .cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-    .mood-grid .cell:hover img{transform:scale(1.04)}
-    .mood-grid .cell-label{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(43,37,32,.55));color:var(--white);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;opacity:0;transition:opacity var(--t)}
-    .mood-grid .cell:hover .cell-label{opacity:1}
-    .mood-grid .cell-a{aspect-ratio:4/3}
-    .mood-grid .cell-b{aspect-ratio:4/3}
-    .mood-grid .cell-c{aspect-ratio:4/3}
-    .mood-grid .cell-d{aspect-ratio:4/3}
-    .mood-more{text-align:right;margin-top:20px}
-    .mood-more a{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);display:inline-flex;align-items:center;gap:8px;transition:color var(--t),transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform}
-    .mood-more a:hover{color:var(--sage);transform:scale(1.06)}
+    .holiday-section {
+      padding: 48px 0 54px;
+    }
 
-    @media(max-width:640px){
-      .mood-grid{grid-template-columns:1fr}
+    .holiday-card {
+      background: #FFFFFF;
+      border: 1px solid var(--tan);
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      box-shadow: 0 6px 26px rgba(43, 37, 32, 0.08);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .holiday-card:hover {
+      box-shadow: 0 14px 38px rgba(43, 37, 32, 0.12);
+    }
+
+    .holiday-img-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      background: var(--cream);
+    }
+
+    .holiday-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+      display: block;
+    }
+
+    .holiday-card:hover .holiday-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .holiday-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(43, 37, 32, 0.85);
+      backdrop-filter: blur(8px);
+      color: #FAF8F5;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .holiday-badge span.sparkle {
+      color: #D4AF37;
+    }
+
+    .holiday-content {
+      padding: 40px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #FAF8F5;
+    }
+
+    .holiday-eyebrow {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage2);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .holiday-title {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .holiday-title em {
+      font-style: italic;
+      color: var(--brown);
+    }
+
+    .holiday-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(43, 37, 32, 0.72);
+      margin-bottom: 22px;
+    }
+
+    .holiday-offer-box {
+      background: #FFFFFF;
+      border: 1px dashed var(--sage);
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .offer-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .offer-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage2);
+    }
+
+    .offer-headline {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .offer-code-pill {
+      background: var(--cream);
+      border: 1px solid var(--tan);
+      color: var(--dark);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .holiday-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-holiday-primary {
+      background: var(--dark);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 13px 26px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+      cursor: pointer;
+    }
+
+    .btn-holiday-primary:hover {
+      background: var(--sage2);
+      transform: scale(1.05) translateY(-1px);
+      box-shadow: 0 8px 20px rgba(90, 107, 78, 0.25);
+    }
+
+    .btn-holiday-secondary {
+      background: transparent;
+      color: var(--dark);
+      border: 1px solid var(--tan);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border-radius: 4px;
+      transition: all var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+
+    .btn-holiday-secondary:hover {
+      border-color: var(--dark);
+      background: #FFFFFF;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 900px) {
+      .holiday-card {
+        grid-template-columns: 1fr;
+      }
+      .holiday-img-wrap {
+        min-height: 240px;
+        max-height: 300px;
+      }
+      .holiday-content {
+        padding: 30px 22px;
+      }
     }
 
     /* ══════════════════════════════════════════════
@@ -1107,55 +1306,57 @@
   </div>
 </section>
 
-<!-- ═══════════════ CATEGORY BAR (Organized by Department & Material) ═══════════════ -->
+<!-- ═══════════════ CATEGORY BAR ═══════════════ -->
 <div class="cat-bar">
   <div class="cat-bar-inner wrap">
-    <a href="pages/catalogue.html" class="active">All Pieces <span class="cat-tag-pill">439</span></a>
-    <a href="pages/catalogue.html?material=solid-wood">Solid Wood <span class="cat-tag-pill">439</span></a>
-    <a href="pages/catalogue.html?dept=tables">Tables & Consoles</a>
-    <a href="pages/catalogue.html?dept=storage">Storage & Cabinets</a>
-    <a href="pages/catalogue.html?dept=seating">Seating</a>
-    <a href="pages/catalogue.html?dept=lighting">Lighting</a>
     <a href="pages/catalogue.html?dept=furnishing">Furnishing</a>
-    <a href="pages/catalogue.html?dept=antiques">Antiques</a>
-    <a href="pages/catalogue.html?dept=art">Art & Sculptures</a>
-    <a href="pages/catalogue.html?dept=accessories">Accessories & Decor</a>
-    <span class="cat-divider"></span>
-    <a href="pages/catalogue.html?material=metal" title="Brass, Copper & Iron Collection">Brass & Metals <span class="cat-tag-pill">Soon</span></a>
-    <a href="pages/catalogue.html?material=stone" title="Natural Marble & Stone Collection">Marble & Stone <span class="cat-tag-pill">Soon</span></a>
+    <a href="pages/catalogue.html?dept=lighting">Lighting</a>
+    <a href="pages/catalogue.html?dept=seating">Seating</a>
+    <a href="pages/catalogue.html?dept=accessories">Accessories &amp; Decor</a>
+    <a href="pages/catalogue.html?dept=art">Art &amp; Sculpture</a>
   </div>
 </div>
 
-<!-- ═══════════════ MOOD GRID ═══════════════ -->
-<section class="mood" id="collections">
+<!-- ═══════════════ SECTION 3 — CHRISTMAS & HOLIDAY OFFER ═══════════════ -->
+<section class="holiday-section" id="collections">
   <div class="wrap">
-    <div class="mood-head fade">
-      <span class="label">Our Collections</span>
-      <h2>Spaces Designed for<br/><em>Quiet Elegance</em></h2>
-    </div>
-    <div class="mood-grid">
-      <div class="cell cell-a fade d1">
-        <img src="assets/images/landing/grid1.webp" alt="Modern living room with handcrafted wooden furniture" loading="lazy"/>
-        <div class="cell-label">Living Room</div>
+    <div class="holiday-card fade">
+      <div class="holiday-img-wrap">
+        <img src="assets/images/landing/christmas-offer-landscape.webp" alt="Warm Christmas Living Room with Handcrafted Wooden Furniture and Festive Decor" loading="lazy" />
+        <div class="holiday-badge">
+          <span class="sparkle">✦</span>
+          <span>Holiday Season 2026</span>
+        </div>
       </div>
-      <div class="cell cell-b fade d2">
-        <img src="assets/images/landing/grid2.webp" alt="Elegant kitchen and dining area with wooden accents" loading="lazy"/>
-        <div class="cell-label">Dining & Kitchen</div>
+      <div class="holiday-content">
+        <span class="holiday-eyebrow">
+          <span>Seasonal Curation</span> &middot; <span>Limited Holiday Offer</span>
+        </span>
+        <h2 class="holiday-title">
+          Bring Holiday Warmth Home,<br/><em>Beautifully Handcrafted.</em>
+        </h2>
+        <p class="holiday-desc">
+          Gather with intention this holiday season. Transform your home with our solid wood dining tables, consoles, and artisan decor — built to anchor your festive celebrations for generations to come.
+        </p>
+
+        <div class="holiday-offer-box">
+          <div class="offer-details">
+            <span class="offer-tag">Special Christmas Offer</span>
+            <span class="offer-headline">15% Off Handcrafted Pieces &middot; Complimentary Freight</span>
+          </div>
+          <span class="offer-code-pill">CODE: HOLIDAY15</span>
+        </div>
+
+        <div class="holiday-actions">
+          <a href="pages/catalogue.html?dept=furnishing" class="btn-holiday-primary">
+            <span>Shop Holiday Collection</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="pages/contact.html?subject=Christmas%20Holiday%20Inquiry" class="btn-holiday-secondary">
+            Inquire for Delivery
+          </a>
+        </div>
       </div>
-      <div class="cell cell-c fade d3">
-        <img src="assets/images/landing/grid3.webp" alt="Cozy reading nook with wooden bookshelf" loading="lazy"/>
-        <div class="cell-label">Home Office</div>
-      </div>
-      <div class="cell cell-d fade d4">
-        <img src="assets/images/landing/grid4.webp" alt="Bedroom with handcrafted wooden bedside table" loading="lazy"/>
-        <div class="cell-label">Bedroom</div>
-      </div>
-    </div>
-    <div class="mood-more fade">
-      <a href="pages/catalogue.html">
-        Browse All Collections
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
     </div>
   </div>
 </section>

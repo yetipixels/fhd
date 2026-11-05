@@ -5,8 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>About Us — Fair Home Decor | Considered Living, Beautifully Made</title>
-  <meta name="description" content="Learn about Fair Home Decor — our story, artisan craftsmanship, and commitment to handcrafted wooden furniture and curated home decor across the USA." />
-  <meta name="keywords" content="about Fair Home Decor, handcrafted wooden furniture, solid wood furniture USA, artisan home decor, East Brunswick NJ furniture" />
+  <meta name="description"
+    content="Learn about Fair Home Decor — our story, artisan craftsmanship, and commitment to handcrafted wooden furniture and curated home decor across the USA." />
+  <meta name="keywords"
+    content="about Fair Home Decor, handcrafted wooden furniture, solid wood furniture USA, artisan home decor, East Brunswick NJ furniture" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
@@ -421,7 +423,8 @@
 
     /* Category sub-ribbon */
     .cat-bar {
-      background: var(--sage2); /* #5A6B4E — matching catalogue ribbon */
+      background: var(--sage2);
+      /* #5A6B4E — matching catalogue ribbon */
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 2px 10px rgba(43, 37, 32, 0.06);
     }
@@ -429,11 +432,18 @@
     .cat-bar-inner {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 6px;
+      justify-content: center;
+      gap: 12px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+    }
+
+    @media (max-width: 900px) {
+      .cat-bar-inner {
+        justify-content: flex-start;
+        gap: 6px;
+      }
     }
 
     .cat-bar-inner::-webkit-scrollbar {
@@ -720,6 +730,7 @@
     }
 
     @media (max-width: 900px) {
+
       .story-grid,
       .trade-inner {
         grid-template-columns: 1fr;
@@ -905,19 +916,11 @@
   <!-- Category sub-bar -->
   <div class="cat-bar">
     <div class="cat-bar-inner wrap">
-      <a href="catalogue.html">All Pieces (439)</a>
-      <a href="catalogue.html?material=solid-wood">Solid Wood (439)</a>
-      <a href="catalogue.html?dept=tables">Tables & Consoles</a>
-      <a href="catalogue.html?dept=storage">Storage & Cabinets</a>
-      <a href="catalogue.html?dept=seating">Seating</a>
-      <a href="catalogue.html?dept=lighting">Lighting</a>
       <a href="catalogue.html?dept=furnishing">Furnishing</a>
-      <a href="catalogue.html?dept=antiques">Antiques</a>
-      <a href="catalogue.html?dept=art">Art & Sculptures</a>
-      <a href="catalogue.html?dept=accessories">Accessories & Decor</a>
-      <span style="display:inline-block; width:1px; height:18px; background:rgba(255,255,255,0.25); margin:0 6px;"></span>
-      <a href="catalogue.html?material=metal" title="Brass, Copper & Iron Collection">Brass & Metals <span style="font-size:0.6rem; opacity:0.7;">(Soon)</span></a>
-      <a href="catalogue.html?material=stone" title="Natural Marble & Stone Collection">Marble & Stone <span style="font-size:0.6rem; opacity:0.7;">(Soon)</span></a>
+      <a href="catalogue.html?dept=lighting">Lighting</a>
+      <a href="catalogue.html?dept=seating">Seating</a>
+      <a href="catalogue.html?dept=accessories">Accessories &amp; Decor</a>
+      <a href="catalogue.html?dept=art">Art &amp; Sculpture</a>
     </div>
   </div>
 
@@ -946,12 +949,14 @@
         <div class="story-text">
           <h2>Rooted in East Brunswick,<br /><em>Crafted for America</em></h2>
           <p>
-            Headquartered at 1 Auer Ct in East Brunswick, New Jersey, Fair Home Decor was born from a desire to push back
+            Headquartered at 1 Auer Ct in East Brunswick, New Jersey, Fair Home Decor was born from a desire to push
+            back
             against the tide of disposable, mass-manufactured flatpack furniture.
           </p>
           <p>
             We curate and engineer solid wood accent cabinets, bookshelves, console tables, bedside units, and
-            hand-carved photo frames built using time-honored joinery techniques. Each grain pattern is unique, each finish
+            hand-carved photo frames built using time-honored joinery techniques. Each grain pattern is unique, each
+            finish
             is hand-applied, and every piece is crafted to grow more beautiful with age.
           </p>
           <p>
@@ -959,8 +964,10 @@
             with grounding, timeless appeal.
           </p>
           <div style="margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;">
-            <a href="catalogue.html" class="hdr-contact-btn" style="background: var(--dark); border-color: var(--dark);">Explore Our Catalogue</a>
-            <a href="contact.html" class="hdr-contact-btn" style="background: transparent; color: var(--dark); border-color: var(--dark);">Connect With Us</a>
+            <a href="catalogue.html" class="hdr-contact-btn"
+              style="background: var(--dark); border-color: var(--dark);">Explore Our Catalogue</a>
+            <a href="contact.html" class="hdr-contact-btn"
+              style="background: transparent; color: var(--dark); border-color: var(--dark);">Connect With Us</a>
           </div>
         </div>
       </div>
@@ -978,17 +985,20 @@
         <div class="pillar-card">
           <div class="pillar-num">01</div>
           <h3>100% Solid Natural Wood</h3>
-          <p>We work exclusively with authentic, sustainably harvested hardwoods. No paper veneers, no synthetic substitutes — only the honest beauty and structural integrity of real wood.</p>
+          <p>We work exclusively with authentic, sustainably harvested hardwoods. No paper veneers, no synthetic
+            substitutes — only the honest beauty and structural integrity of real wood.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">02</div>
           <h3>Artisan Heritage</h3>
-          <p>Our workshop partners carry generations of woodworking mastery. From dovetail drawers to turned spindle legs, human hands shape and inspect every detail.</p>
+          <p>Our workshop partners carry generations of woodworking mastery. From dovetail drawers to turned spindle
+            legs, human hands shape and inspect every detail.</p>
         </div>
         <div class="pillar-card">
           <div class="pillar-num">03</div>
           <h3>Nationwide USA Care</h3>
-          <p>Whether you're furnishing a single room or completing a whole-home project, our East Brunswick team oversees nationwide delivery with personalized support.</p>
+          <p>Whether you're furnishing a single room or completing a whole-home project, our East Brunswick team
+            oversees nationwide delivery with personalized support.</p>
         </div>
       </div>
     </div>
@@ -1101,7 +1111,7 @@
         const cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
         const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
         document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
-      } catch(e) {}
+      } catch (e) { }
     }
     document.addEventListener('DOMContentLoaded', updateCartBadge);
     updateCartBadge();
@@ -1110,4 +1120,3 @@
 </body>
 
 </html>
-

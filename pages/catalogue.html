@@ -1546,18 +1546,12 @@
        ========================================== -->
   <nav class="category-ribbon">
     <div class="category-ribbon-inner">
-      <div class="ribbon-item active" data-dept="all" data-material="all" onclick="selectDepartment('all', this)">All Pieces (439)</div>
-      <div class="ribbon-item" data-material="solid-wood" onclick="selectMaterial('solid-wood', this)">Solid Wood (439)</div>
-      <div class="ribbon-item" data-dept="tables" onclick="selectDepartment('tables', this)">Tables & Consoles (333)</div>
-      <div class="ribbon-item" data-dept="storage" onclick="selectDepartment('storage', this)">Storage & Cabinets (90)</div>
-      <div class="ribbon-item" data-dept="accessories" onclick="selectDepartment('accessories', this)">Accessories & Decor (16)</div>
-      <div class="ribbon-item" data-dept="seating" onclick="selectDepartment('seating', this)">Seating</div>
+      <div class="ribbon-item active" data-dept="all" onclick="selectDepartment('all', this)">All Pieces (439)</div>
+      <div class="ribbon-item" data-dept="furnishing" onclick="selectDepartment('furnishing', this)">Furnishing (423)</div>
       <div class="ribbon-item" data-dept="lighting" onclick="selectDepartment('lighting', this)">Lighting</div>
-      <div class="ribbon-item" data-dept="furnishing" onclick="selectDepartment('furnishing', this)">Furnishing</div>
-      <div class="ribbon-item" data-dept="antiques" onclick="selectDepartment('antiques', this)">Antiques</div>
-      <div class="ribbon-item" data-dept="art" onclick="selectDepartment('art', this)">Art & Sculptures</div>
-      <div class="ribbon-item" data-material="metal" onclick="selectMaterial('metal', this)">Brass & Metals <span style="opacity:0.75; font-size:0.6rem;">(Soon)</span></div>
-      <div class="ribbon-item" data-material="stone" onclick="selectMaterial('stone', this)">Marble & Stone <span style="opacity:0.75; font-size:0.6rem;">(Soon)</span></div>
+      <div class="ribbon-item" data-dept="seating" onclick="selectDepartment('seating', this)">Seating</div>
+      <div class="ribbon-item" data-dept="accessories" onclick="selectDepartment('accessories', this)">Accessories &amp; Decor (16)</div>
+      <div class="ribbon-item" data-dept="art" onclick="selectDepartment('art', this)">Art &amp; Sculpture</div>
     </div>
   </nav>
 
@@ -1675,35 +1669,23 @@
             <span class="filter-count">439</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="tables" onchange="handleDeptChange('tables')" /> Tables & Consoles</label>
-            <span class="filter-count">333</span>
-          </li>
-          <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="storage" onchange="handleDeptChange('storage')" /> Storage & Cabinets</label>
-            <span class="filter-count">90</span>
-          </li>
-          <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="accessories" onchange="handleDeptChange('accessories')" /> Accessories & Decor</label>
-            <span class="filter-count">16</span>
-          </li>
-          <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="seating" onchange="handleDeptChange('seating')" /> Seating</label>
-            <span class="filter-count" style="opacity:0.7;">Soon</span>
+            <label><input type="radio" name="deptOption" value="furnishing" onchange="handleDeptChange('furnishing')" /> Furnishing</label>
+            <span class="filter-count">423</span>
           </li>
           <li class="filter-option">
             <label><input type="radio" name="deptOption" value="lighting" onchange="handleDeptChange('lighting')" /> Lighting</label>
             <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="furnishing" onchange="handleDeptChange('furnishing')" /> Furnishing</label>
+            <label><input type="radio" name="deptOption" value="seating" onchange="handleDeptChange('seating')" /> Seating</label>
             <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="antiques" onchange="handleDeptChange('antiques')" /> Antiques</label>
-            <span class="filter-count" style="opacity:0.7;">Soon</span>
+            <label><input type="radio" name="deptOption" value="accessories" onchange="handleDeptChange('accessories')" /> Accessories &amp; Decor</label>
+            <span class="filter-count">16</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="deptOption" value="art" onchange="handleDeptChange('art')" /> Art & Sculptures</label>
+            <label><input type="radio" name="deptOption" value="art" onchange="handleDeptChange('art')" /> Art &amp; Sculpture</label>
             <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
         </ul>
@@ -1981,15 +1963,20 @@
 
     let currentModalCode = '';
 
-    // Department grouping map
+    // Department grouping map (Furnishing, Lighting, Seating, Accessories & Decor, Art & Sculpture)
     const DEPT_MAP = {
-      tables: ['round-tables', 'side-tables', 'bedside-tables', 'study-tables', 'console-tables'],
-      storage: ['accent-cabinets', 'bookshelves'],
+      furnishing: [
+        'round-tables',
+        'side-tables',
+        'bedside-tables',
+        'study-tables',
+        'console-tables',
+        'accent-cabinets',
+        'bookshelves'
+      ],
       accessories: ['photo-frames'],
       seating: [],
       lighting: [],
-      furnishing: [],
-      antiques: [],
       art: []
     };
 
@@ -2196,18 +2183,30 @@
       renderProducts();
     }
 
+    // Format department display names
+    function formatDeptName(key) {
+      const map = {
+        furnishing: 'Furnishing',
+        lighting: 'Lighting',
+        seating: 'Seating',
+        accessories: 'Accessories & Decor',
+        art: 'Art & Sculpture'
+      };
+      return map[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+    }
+
     // Apply active filters & sorting
     function applyFilters() {
       // Check for blank / coming soon category selections
       state.isBlankCategory = false;
       state.blankInfo = null;
 
-      const emptyDepts = ['seating', 'lighting', 'furnishing', 'antiques', 'art'];
+      const emptyDepts = ['seating', 'lighting', 'art'];
       if (emptyDepts.includes(state.selectedDepartment)) {
         state.isBlankCategory = true;
         state.blankInfo = {
           title: formatDeptName(state.selectedDepartment),
-          desc: `Our upcoming collection of handcrafted ${formatDeptName(state.selectedDepartment)} is currently being sculpted by our master artisans. Images and complete specifications will be published here soon.`
+          desc: `Our upcoming collection of handcrafted ${formatDeptName(state.selectedDepartment)} is currently being sculpted by our master artisans. Images and specifications will be published here soon.`
         };
       } else if (state.selectedMaterial === 'metal') {
         state.isBlankCategory = true;
@@ -2271,6 +2270,15 @@
       const container = document.getElementById('activeFiltersBar');
       let pills = [];
 
+      if (state.selectedDepartment !== 'all') {
+        pills.push(`
+          <span class="filter-pill">
+            Department: ${formatDeptName(state.selectedDepartment)}
+            <button onclick="clearDeptFilter()">&times;</button>
+          </span>
+        `);
+      }
+
       if (state.selectedSubcat !== 'all') {
         pills.push(`
           <span class="filter-pill">
@@ -2290,6 +2298,10 @@
       }
 
       container.innerHTML = pills.join('');
+    }
+
+    function clearDeptFilter() {
+      selectDepartment('all');
     }
 
     function clearSubcatFilter() {
