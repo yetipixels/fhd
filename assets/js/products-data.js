@@ -6145,5 +6145,19 @@ window.FHD_PRODUCTS = [
     "finish": "Natural / Walnut / Teak Stains",
     "description": "Artisan solid wood photo frame showcasing refined beveling, rich natural grain, and timeless tabletop or wall presentation.",
     "image": "assets/images/products/photo-frames/FHD-PF-1016.jpg"
+  },
+  {
+    "id": "FHD-BR-1001",
+    "code": "FHD-BR-1001",
+    "name": "Ornate Brass Candelabra FHD-BR-1001",
+    "tag": "Candle Holder",
+    "category": "decor",
+    "subcategory": "candle-holders",
+    "subcatTitle": "Candle Holders",
+    "dimensions": "12 x 6 x 15 in",
+    "material": "Solid Brass \u00b7 Handcrafted",
+    "finish": "Polished Antique Brass",
+    "description": "Handcrafted 3-arm solid brass candelabra candle holder featuring intricate sculptural baroque filigree, a heavy weighted pedestal base, and classic candle sockets.",
+    "image": "assets/images/landing/brass-candle-holder.jpg"
   }
 ];

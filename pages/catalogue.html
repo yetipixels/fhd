@@ -1974,7 +1974,7 @@
         'accent-cabinets',
         'bookshelves'
       ],
-      accessories: ['photo-frames'],
+      accessories: ['photo-frames', 'candle-holders'],
       seating: [],
       lighting: [],
       art: []
@@ -2243,7 +2243,7 @@
 
         // Search query
         if (state.searchQuery) {
-          const target = `${item.code} ${item.name} ${item.dimensions} ${item.tag} ${item.subcatTitle}`.toLowerCase();
+          const target = `${item.code} ${item.name} ${item.dimensions} ${item.tag} ${item.subcatTitle} ${item.material || ''}`.toLowerCase();
           if (!target.includes(state.searchQuery)) return false;
         }
 
