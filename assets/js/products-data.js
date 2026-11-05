@@ -6201,5 +6201,61 @@ window.FHD_PRODUCTS = [
     "finish": "Frosted Crackle Glass / Ebony Carved Wood",
     "description": "Luxurious 4-piece bathroom accessory set including two soap/lotion dispensers, tumbler, and oval soap dish in textured crackle glass, resting in a carved wooden tray.",
     "image": "assets/images/landing/crackle-glass-vanity-set.jpg"
+  },
+  {
+    "id": "FHD-HD-1002",
+    "code": "FHD-HD-1002",
+    "name": "Silver Star Arch Candle Centrepiece FHD-HD-1002",
+    "tag": "Centrepiece",
+    "category": "decor",
+    "subcategory": "candle-holders",
+    "subcatTitle": "Holiday & Candle Decor",
+    "dimensions": "20 x 6 x 18 in",
+    "material": "Sculpted Cast Aluminium \u00b7 Mercury Crackle Glass",
+    "finish": "Textured Antique Silver \u00b7 Mercury Glass",
+    "description": "Statement Christmas holiday centrepiece featuring an arch of sculpted five-point stars over a textured metal tray with three crackle glass votive candle holders.",
+    "image": "assets/images/landing/new-arrival-star-arch.jpg"
+  },
+  {
+    "id": "FHD-HD-1003",
+    "code": "FHD-HD-1003",
+    "name": "Reindeer Sleigh Candle Holders Pair FHD-HD-1003",
+    "tag": "Candle Holders",
+    "category": "decor",
+    "subcategory": "candle-holders",
+    "subcatTitle": "Holiday & Candle Decor",
+    "dimensions": "Pair (Each 12 x 4 x 9 in)",
+    "material": "Cast Brass & Nickel-Plated Metal",
+    "finish": "Polished Gold & Antique Silver",
+    "description": "Set of two elegant Christmas reindeer leaping sleigh candle holders in gold and silver metallic finishes with mercury glass votives.",
+    "image": "assets/images/landing/new-arrival-reindeer-sleigh.jpg"
+  },
+  {
+    "id": "FHD-TX-1001",
+    "code": "FHD-TX-1001",
+    "name": "Embroidered Linen Cushion Trio FHD-TX-1001",
+    "tag": "Cushion Covers",
+    "category": "furniture",
+    "subcategory": "cushions",
+    "subcatTitle": "Cushion Covers & Soft Furnishings",
+    "dimensions": "Trio (20x20 in, 18x18 in, 16x16 in)",
+    "material": "100% Pure Natural Linen & Embroidered Cotton",
+    "finish": "Oatmeal / Natural Flax / Botanical Embroidery",
+    "description": "Artisanal soft furnishing trio featuring fine botanical bird embroidery, fringed woven herringbone, and hand-loomed flax linen.",
+    "image": "assets/images/landing/new-arrival-cushions.jpg"
+  },
+  {
+    "id": "FHD-AF-1033",
+    "code": "FHD-AF-1033",
+    "name": "Geometric Carved Accent Cabinet FHD-AF-1033",
+    "tag": "Accent Cabinet",
+    "category": "furniture",
+    "subcategory": "accent-cabinets",
+    "subcatTitle": "Accent Cabinets",
+    "dimensions": "38 x 16 x 34 in",
+    "material": "Solid Natural Hardwood & Satin Brass",
+    "finish": "Rich Espresso Walnut / Satin Brass Accents",
+    "description": "Sculptural solid wood accent cabinet featuring multi-faceted pyramid geometric carved door panels, triangle brass pull hardware, and tapered turned legs.",
+    "image": "assets/images/landing/new-arrival-carved-cabinet.jpg"
   }
 ];
