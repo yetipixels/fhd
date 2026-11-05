@@ -6187,5 +6187,19 @@ window.FHD_PRODUCTS = [
     "finish": "Champagne Silver \u00b7 Crackle Glass",
     "description": "Festive sculpted reindeer candle centrepiece featuring a stepped platform with three crackle glass votive holders for tea lights or votive candles.",
     "image": "assets/images/landing/reindeer-candle-centrepiece.jpg"
+  },
+  {
+    "id": "FHD-VN-1001",
+    "code": "FHD-VN-1001",
+    "name": "Crackle Glass Bathroom Vanity Set FHD-VN-1001",
+    "tag": "Vanity Set",
+    "category": "decor",
+    "subcategory": "vanity-sets",
+    "subcatTitle": "Bathroom & Vanity Decor",
+    "dimensions": "4-Piece Set (Tray: 14 x 8 in)",
+    "material": "Artisan Crackle Glass \u00b7 Carved Solid Wood",
+    "finish": "Frosted Crackle Glass / Ebony Carved Wood",
+    "description": "Luxurious 4-piece bathroom accessory set including two soap/lotion dispensers, tumbler, and oval soap dish in textured crackle glass, resting in a carved wooden tray.",
+    "image": "assets/images/landing/crackle-glass-vanity-set.jpg"
   }
 ];
