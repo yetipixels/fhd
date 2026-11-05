@@ -409,6 +409,65 @@
       border-radius: 10px;
     }
 
+    /* mobile menu */
+    .hdr-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+
+    .hdr-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--dark);
+      transition: all var(--t);
+    }
+
+    .mob-nav {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--tan);
+      padding: 16px 20px 24px;
+      z-index: 299;
+    }
+
+    .mob-nav.open {
+      display: block;
+    }
+
+    .mob-nav a {
+      display: block;
+      padding: 12px 0;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--tan);
+      color: var(--dark);
+    }
+
+    @media (max-width: 900px) {
+      .hdr-about-link,
+      .hdr-search-wrap,
+      .account-btn span,
+      .account-btn .chevron {
+        display: none;
+      }
+
+      .hdr-burger {
+        display: flex;
+      }
+    }
+
     /* Category sub-ribbon */
     .cat-bar {
       background: var(--sage2); /* #5A6B4E — matching catalogue ribbon */
@@ -1360,10 +1419,7 @@
           </div>
         </div>
 
-        <!-- 5. Contact Us -->
-        <a href="contact.html" class="hdr-contact-btn">Contact Us</a>
-
-        <!-- 6. Cart (Active) -->
+        <!-- 5. Cart (Active) -->
         <a href="cart.html" class="hdr-cart-btn active" aria-label="Cart">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -1374,8 +1430,28 @@
           <span>Cart</span>
           <span class="cart-count">0</span>
         </a>
+
+        <!-- 6. Contact Us -->
+        <a href="contact.html" class="hdr-contact-btn">Contact Us</a>
+
+        <!-- Hamburger for mobile -->
+        <button class="hdr-burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <nav class="mob-nav" id="mobNav">
+      <a href="about.html" onclick="closeMob()">About Us</a>
+      <a href="catalogue.html" onclick="closeMob()">Shop Now</a>
+      <a href="account.html#login" onclick="closeMob()">Login / Register</a>
+      <a href="account.html#track" onclick="closeMob()">Track My Order</a>
+      <a href="account.html#favourites" onclick="closeMob()">Favourites</a>
+      <a href="account.html#b2b" onclick="closeMob()">B2B Trade Portal</a>
+      <a href="cart.html" onclick="closeMob()">Shopping Cart (<span class="cart-count">0</span>)</a>
+      <a href="contact.html" onclick="closeMob()">Contact Us</a>
+    </nav>
   </header>
 
   <!-- Category sub-bar -->
@@ -1842,6 +1918,16 @@
       if (cart.length === 0) return;
       const codes = cart.map(i => `${i.code} (x${i.quantity || 1})`).join(', ');
       window.location.href = `contact.html?product=${encodeURIComponent(codes)}&subject=${encodeURIComponent('Order Inquiry for ' + cart.length + ' Pieces')}`;
+    }
+
+    // Mobile nav toggle
+    const burger = document.getElementById('burger');
+    const mobNav = document.getElementById('mobNav');
+    if (burger && mobNav) {
+      burger.addEventListener('click', () => mobNav.classList.toggle('open'));
+    }
+    function closeMob() {
+      if (mobNav) mobNav.classList.remove('open');
     }
 
     document.addEventListener('DOMContentLoaded', renderCart);

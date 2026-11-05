@@ -34,5 +34,5 @@ FHD WEBSITE/
 - **Photo Frames:** Wooden photo frames in various sizes
 
 ---
-© 2025 Fair Home Decor. All rights reserved.
+© 2026 Fair Home Decor. All rights reserved.
 
