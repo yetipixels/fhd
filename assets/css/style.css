@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5 {
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--color-dark);
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   padding: 60px 40px 30px;
 }
 
@@ -194,20 +194,20 @@ h1, h2, h3, h4, h5 {
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .footer-brand .footer-logo img {
   height: 48px;
   filter: brightness(0) invert(1);
-  opacity: 0.9;
+  opacity: 0.95;
   margin-bottom: 16px;
 }
 
 .footer-brand p {
   font-size: 0.82rem;
   line-height: 1.8;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.78);
   max-width: 240px;
 }
 
@@ -216,7 +216,7 @@ h1, h2, h3, h4, h5 {
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-sage);
+  color: #FFFFFF;
   margin-bottom: 20px;
   font-weight: 600;
 }
@@ -227,7 +227,7 @@ h1, h2, h3, h4, h5 {
 
 .footer-col ul li a {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.78);
   transition: color var(--transition);
 }
 
@@ -239,7 +239,7 @@ h1, h2, h3, h4, h5 {
   justify-content: space-between;
   align-items: center;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.6);
 }
 
 /* ---------- Utilities ---------- */

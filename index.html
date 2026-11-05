@@ -1666,7 +1666,7 @@
     ══════════════════════════════════════════════ */
     .footer {
       background: #1A1611;
-      color: rgba(255, 255, 255, .55);
+      color: rgba(255, 255, 255, .78);
       padding: 72px 0 0
     }
 
@@ -1677,16 +1677,25 @@
       padding-bottom: 56px
     }
 
-    .footer-brand .fl img {
+    .footer-brand .fl img,
+    .footer-brand img {
       height: 52px;
       width: auto;
-      object-fit: contain
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+      transition: opacity var(--t);
+    }
+
+    .footer-brand .fl img:hover,
+    .footer-brand img:hover {
+      opacity: 1;
     }
 
     .footer-brand p {
       font-size: .75rem;
       line-height: 1.85;
-      color: rgba(255, 255, 255, .4);
+      color: rgba(255, 255, 255, .75);
       margin-top: 18px;
       max-width: 260px
     }
@@ -1700,12 +1709,12 @@
     .footer-brand .fsoc a {
       width: 34px;
       height: 34px;
-      border: 1px solid rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .25);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, .45);
+      color: rgba(255, 255, 255, .8);
       transition: all var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       will-change: transform
     }
@@ -1722,7 +1731,7 @@
       font-weight: 600;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .75);
+      color: #FFFFFF;
       margin-bottom: 20px
     }
 
@@ -1735,7 +1744,7 @@
     .footer-col ul li a {
       display: inline-block;
       font-size: .75rem;
-      color: rgba(255, 255, 255, .4);
+      color: rgba(255, 255, 255, .75);
       transition: color var(--t), transform 0.2s ease;
       will-change: transform
     }
@@ -1750,7 +1759,7 @@
       font-weight: 600;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .75);
+      color: #FFFFFF;
       margin-bottom: 20px
     }
 
@@ -1760,7 +1769,7 @@
       gap: 10px;
       margin-bottom: 12px;
       font-size: .75rem;
-      color: rgba(255, 255, 255, .4)
+      color: rgba(255, 255, 255, .75)
     }
 
     .fcontact-row svg {
@@ -1770,7 +1779,7 @@
     }
 
     .fcontact-row a {
-      color: rgba(255, 255, 255, .4);
+      color: rgba(255, 255, 255, .75);
       transition: color var(--t)
     }
 
@@ -1784,20 +1793,20 @@
       font-weight: 600;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, .75);
+      color: #FFFFFF;
       margin-bottom: 10px
     }
 
     .footer-nl p {
       font-size: .72rem;
-      color: rgba(255, 255, 255, .4);
+      color: rgba(255, 255, 255, .75);
       line-height: 1.75;
       margin-bottom: 18px
     }
 
     .footer-nl-form {
       display: flex;
-      border: 1px solid rgba(255, 255, 255, .12)
+      border: 1px solid rgba(255, 255, 255, .25)
     }
 
     .footer-nl-form input {
@@ -1812,7 +1821,7 @@
     }
 
     .footer-nl-form input::placeholder {
-      color: rgba(255, 255, 255, .25)
+      color: rgba(255, 255, 255, .45)
     }
 
     .footer-nl-form button {
@@ -1844,7 +1853,7 @@
     }
 
     .footer-nl-social a {
-      color: rgba(255, 255, 255, .4);
+      color: rgba(255, 255, 255, .7);
       transition: color var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       will-change: transform
     }
@@ -1855,7 +1864,7 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, .07);
+      border-top: 1px solid rgba(255, 255, 255, .15);
       padding: 22px 0;
       display: flex;
       align-items: center;
@@ -1866,7 +1875,7 @@
 
     .footer-bottom span {
       font-size: .65rem;
-      color: rgba(255, 255, 255, .25)
+      color: rgba(255, 255, 255, .55)
     }
 
     .footer-bottom-links {
@@ -1876,7 +1885,7 @@
 
     .footer-bottom-links a {
       font-size: .65rem;
-      color: rgba(255, 255, 255, .25);
+      color: rgba(255, 255, 255, .55);
       transition: color var(--t)
     }
 
@@ -1886,7 +1895,7 @@
 
     .footer-flag {
       font-size: .6rem;
-      color: rgba(255, 255, 255, .25)
+      color: rgba(255, 255, 255, .55)
     }
 
     @media(max-width:1024px) {
@@ -2404,8 +2413,8 @@
         <!-- Brand -->
         <div class="footer-brand">
           <div class="fl">
-            <img src="assets/images/logo.png" alt="Fair Home Decor"
-              onerror="this.onerror=null;this.src='assets/images/logo-original.png'" />
+            <img src="assets/images/logo-white.png" alt="Fair Home Decor"
+              onerror="this.onerror=null;this.src='assets/images/logo.png'" />
           </div>
           <p>Handcrafted wooden furniture and curated home decor — built for the modern American home. Considered
             living, beautifully made.</p>
