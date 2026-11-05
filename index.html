@@ -1,55 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fair Home Decor | Considered Living, Beautifully Made</title>
-  <meta name="description" content="Fair Home Decor — handcrafted wooden furniture and curated home decor for the modern American home. Considered living, beautifully made."/>
-  <meta name="keywords" content="handcrafted wooden furniture USA, luxury home decor, wooden accent cabinets, artisan furniture, solid wood bookshelves, decorative home accents, wooden photo frames, home decor online USA"/>
-  <meta property="og:title" content="Fair Home Decor | Considered Living, Beautifully Made"/>
-  <meta property="og:description" content="Handcrafted wooden furniture and curated home decor for the modern American home."/>
-  <meta property="og:image" content="assets/images/landing/hero.webp"/>
-  <meta property="og:type" content="website"/>
-  <link rel="canonical" href="https://fairhomedecor.com/"/>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <meta name="description"
+    content="Fair Home Decor — handcrafted wooden furniture and curated home decor for the modern American home. Considered living, beautifully made." />
+  <meta name="keywords"
+    content="handcrafted wooden furniture USA, luxury home decor, wooden accent cabinets, artisan furniture, solid wood bookshelves, decorative home accents, wooden photo frames, home decor online USA" />
+  <meta property="og:title" content="Fair Home Decor | Considered Living, Beautifully Made" />
+  <meta property="og:description"
+    content="Handcrafted wooden furniture and curated home decor for the modern American home." />
+  <meta property="og:image" content="assets/images/landing/hero.webp" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://fairhomedecor.com/" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
 
   <style>
     /* ── TOKENS ─────────────────────────────────── */
-    :root{
-      --bg:    #F5F2ED;
+    :root {
+      --bg: #F5F2ED;
       --cream: #EDE9E1;
-      --tan:   #D9D2C4;
-      --dark:  #2B2520;
+      --tan: #D9D2C4;
+      --dark: #2B2520;
       --brown: #5C4B3A;
-      --sage:  #7C8C6E;
+      --sage: #7C8C6E;
       --sage2: #5A6B4E;
       --olive: #8A8A6E;
-      --sand:  #C8BC9E;
+      --sand: #C8BC9E;
       --white: #FFFFFF;
       --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Montserrat', sans-serif;
-      --ease:  cubic-bezier(.4,0,.2,1);
-      --t:     .35s var(--ease);
+      --sans: 'Montserrat', sans-serif;
+      --ease: cubic-bezier(.4, 0, .2, 1);
+      --t: .35s var(--ease);
     }
 
     /* ── RESET ───────────────────────────────────── */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--sans);background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    img{display:block;max-width:100%}
-    a{text-decoration:none;color:inherit}
-    ul{list-style:none}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    ul {
+      list-style: none
+    }
 
     /* ── UTILITY ─────────────────────────────────── */
-    .wrap{max-width:1380px;margin:0 auto;padding:0 60px}
-    @media(max-width:1024px){.wrap{padding:0 36px}}
-    @media(max-width:640px) {.wrap{padding:0 20px}}
+    .wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 60px
+    }
 
-    .label{font-size:.62rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--olive)}
-    
+    @media(max-width:1024px) {
+      .wrap {
+        padding: 0 36px
+      }
+    }
+
+    @media(max-width:640px) {
+      .wrap {
+        padding: 0 20px
+      }
+    }
+
+    .label {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--olive)
+    }
+
     /* Interactive Button Base with Smooth Zoom Hover */
     .btn {
       display: inline-flex;
@@ -66,31 +119,99 @@
       transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--t), color var(--t), border-color var(--t), box-shadow 0.28s ease;
       will-change: transform;
     }
+
     .btn:hover {
       transform: scale(1.05) translateY(-2px);
       box-shadow: 0 10px 28px rgba(43, 37, 32, 0.2);
     }
+
     .btn:active {
       transform: scale(0.98);
     }
-    .btn-dark{background:var(--dark);color:var(--white);border-color:var(--dark)}
-    .btn-dark:hover{background:var(--brown);border-color:var(--brown)}
-    .btn-outline{background:transparent;color:var(--dark);border-color:var(--dark)}
-    .btn-outline:hover{background:var(--dark);color:var(--white)}
-    .btn-white{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6)}
-    .btn-white:hover{background:var(--white);color:var(--dark)}
-    .btn-tan{background:var(--sand);color:var(--dark);border-color:var(--sand)}
-    .btn-tan:hover{background:var(--dark);color:var(--white);border-color:var(--dark)}
+
+    .btn-dark {
+      background: var(--dark);
+      color: var(--white);
+      border-color: var(--dark)
+    }
+
+    .btn-dark:hover {
+      background: var(--brown);
+      border-color: var(--brown)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border-color: var(--dark)
+    }
+
+    .btn-outline:hover {
+      background: var(--dark);
+      color: var(--white)
+    }
+
+    .btn-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .6)
+    }
+
+    .btn-white:hover {
+      background: var(--white);
+      color: var(--dark)
+    }
+
+    .btn-tan {
+      background: var(--sand);
+      color: var(--dark);
+      border-color: var(--sand)
+    }
+
+    .btn-tan:hover {
+      background: var(--dark);
+      color: var(--white);
+      border-color: var(--dark)
+    }
 
     /* arrow icon in button */
-    .arr{width:14px;height:14px;transition:transform var(--t)}
-    .btn:hover .arr{transform:translateX(4px) scale(1.1)}
+    .arr {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--t)
+    }
+
+    .btn:hover .arr {
+      transform: translateX(4px) scale(1.1)
+    }
 
     /* ── REVEAL ANIMATION ────────────────────────── */
-    .fade{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-    .fade.in{opacity:1;transform:none}
-    .fade.d1{transition-delay:.1s}.fade.d2{transition-delay:.2s}
-    .fade.d3{transition-delay:.3s}.fade.d4{transition-delay:.4s}
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease)
+    }
+
+    .fade.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .fade.d1 {
+      transition-delay: .1s
+    }
+
+    .fade.d2 {
+      transition-delay: .2s
+    }
+
+    .fade.d3 {
+      transition-delay: .3s
+    }
+
+    .fade.d4 {
+      transition-delay: .4s
+    }
 
     /* ══════════════════════════════════════════════
        HEADER (Order: Logo > About Us > Search > My Account > Contact Us > Cart)
@@ -463,6 +584,7 @@
     }
 
     @media (max-width: 900px) {
+
       .hdr-about-link,
       .hdr-search-wrap,
       .account-btn span,
@@ -505,7 +627,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: 
+      background:
         linear-gradient(to right, rgba(22, 17, 14, 0.78) 0%, rgba(32, 26, 21, 0.52) 44%, rgba(43, 37, 32, 0.2) 76%, transparent 100%),
         linear-gradient(to top, rgba(20, 16, 13, 0.45) 0%, transparent 28%);
     }
@@ -648,6 +770,7 @@
     }
 
     @keyframes scrollAnim {
+
       0%,
       100% {
         opacity: .4;
@@ -664,7 +787,8 @@
        SECTION 2 — CATEGORIES BAR (Referenced from Catalogue / Shop)
     ══════════════════════════════════════════════ */
     .cat-bar {
-      background: var(--sage2); /* #5A6B4E — matching catalogue ribbon */
+      background: var(--sage2);
+      /* #5A6B4E — matching catalogue ribbon */
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 2px 10px rgba(43, 37, 32, 0.06);
       position: relative;
@@ -944,10 +1068,12 @@
       .holiday-card {
         grid-template-columns: 1fr;
       }
+
       .holiday-img-wrap {
         min-height: 240px;
         max-height: 300px;
       }
+
       .holiday-content {
         padding: 30px 22px;
       }
@@ -956,731 +1082,1510 @@
     /* ══════════════════════════════════════════════
        SECTION 4 — MID HERO (dark atmospheric)
     ══════════════════════════════════════════════ */
-    .mid-hero{position:relative;height:520px;overflow:hidden}
-    .mid-hero-img{position:absolute;inset:0;background:url('assets/images/landing/mid-hero.webp') center/cover no-repeat}
-    .mid-hero-overlay{position:absolute;inset:0;background:linear-gradient(to left,rgba(43,37,32,.72) 0%,rgba(43,37,32,.2) 60%,transparent 100%)}
-    .mid-hero-body{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:flex-end}
-    .mid-hero-text{max-width:460px;text-align:right;padding-right:20px}
-    .mid-hero-text .label{color:var(--sand);margin-bottom:14px;display:block}
-    .mid-hero-text h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.4rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:16px}
-    .mid-hero-text h2 em{font-style:italic;color:rgba(220,210,195,.9)}
-    .mid-hero-text p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:28px}
+    .mid-hero {
+      position: relative;
+      height: 520px;
+      overflow: hidden
+    }
 
-    @media(max-width:640px){
-      .mid-hero{height:400px}
-      .mid-hero-body{justify-content:center}
-      .mid-hero-text{text-align:center;padding-right:0;max-width:100%}
-      .mid-hero-overlay{background:rgba(43,37,32,.55)}
+    .mid-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/landing/mid-hero.webp') center/cover no-repeat
+    }
+
+    .mid-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(43, 37, 32, .72) 0%, rgba(43, 37, 32, .2) 60%, transparent 100%)
+    }
+
+    .mid-hero-body {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end
+    }
+
+    .mid-hero-text {
+      max-width: 460px;
+      text-align: right;
+      padding-right: 20px
+    }
+
+    .mid-hero-text .label {
+      color: var(--sand);
+      margin-bottom: 14px;
+      display: block
+    }
+
+    .mid-hero-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 16px
+    }
+
+    .mid-hero-text h2 em {
+      font-style: italic;
+      color: rgba(220, 210, 195, .9)
+    }
+
+    .mid-hero-text p {
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.85;
+      margin-bottom: 28px
+    }
+
+    @media(max-width:640px) {
+      .mid-hero {
+        height: 400px
+      }
+
+      .mid-hero-body {
+        justify-content: center
+      }
+
+      .mid-hero-text {
+        text-align: center;
+        padding-right: 0;
+        max-width: 100%
+      }
+
+      .mid-hero-overlay {
+        background: rgba(43, 37, 32, .55)
+      }
     }
 
     /* ══════════════════════════════════════════════
        SECTION 5 — FEATURED PRODUCTS ROW
     ══════════════════════════════════════════════ */
-    .featured{padding:80px 0;background:var(--bg)}
-    .featured-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:20px;flex-wrap:wrap}
-    .featured-head h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:400;margin-top:10px}
-    .featured-head p{font-size:.8rem;font-weight:300;color:rgba(43,37,32,.6);line-height:1.8;max-width:420px;margin-top:10px}
-    .prod-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .prod-card{background:var(--white);cursor:pointer;transition:transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),box-shadow 0.28s ease;will-change:transform}
-    .prod-card:hover{transform:translateY(-7px) scale(1.02);box-shadow:0 18px 48px rgba(43,37,32,.14)}
-    .prod-img{aspect-ratio:3/4;overflow:hidden;background:var(--cream);position:relative}
-    .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-    .prod-card:hover .prod-img img{transform:scale(1.06)}
-    .prod-tag{position:absolute;top:12px;left:12px;font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--dark);color:var(--white);padding:4px 10px}
-    .prod-info{padding:16px 18px 20px}
-    .prod-cat{font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);margin-bottom:5px}
-    .prod-name{font-family:var(--serif);font-size:1.05rem;font-weight:400;line-height:1.3;margin-bottom:8px}
-    .prod-link{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);display:inline-flex;align-items:center;gap:6px;transition:color var(--t),transform 0.22s ease;will-change:transform}
-    .prod-link svg{transition:transform var(--t)}
-    .prod-link:hover{color:var(--sage2);transform:scale(1.08)}
-    .prod-link:hover svg{transform:translateX(4px)}
+    .featured {
+      padding: 80px 0;
+      background: var(--bg)
+    }
 
-    @media(max-width:900px){.prod-row{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:480px){.prod-row{grid-template-columns:1fr}}
+    .featured-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .featured-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      margin-top: 10px
+    }
+
+    .featured-head p {
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(43, 37, 32, .6);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-top: 10px
+    }
+
+    .prod-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px
+    }
+
+    .prod-card {
+      background: var(--white);
+      cursor: pointer;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+      will-change: transform
+    }
+
+    .prod-card:hover {
+      transform: translateY(-7px) scale(1.02);
+      box-shadow: 0 18px 48px rgba(43, 37, 32, .14)
+    }
+
+    .prod-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--cream);
+      position: relative
+    }
+
+    .prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease)
+    }
+
+    .prod-card:hover .prod-img img {
+      transform: scale(1.06)
+    }
+
+    .prod-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: .55rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      background: var(--dark);
+      color: var(--white);
+      padding: 4px 10px
+    }
+
+    .prod-info {
+      padding: 16px 18px 20px
+    }
+
+    .prod-cat {
+      font-size: .55rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 5px
+    }
+
+    .prod-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 8px
+    }
+
+    .prod-link {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--t), transform 0.22s ease;
+      will-change: transform
+    }
+
+    .prod-link svg {
+      transition: transform var(--t)
+    }
+
+    .prod-link:hover {
+      color: var(--sage2);
+      transform: scale(1.08)
+    }
+
+    .prod-link:hover svg {
+      transform: translateX(4px)
+    }
+
+    @media(max-width:900px) {
+      .prod-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:480px) {
+      .prod-row {
+        grid-template-columns: 1fr
+      }
+    }
 
     /* ══════════════════════════════════════════════
        SECTION 6 — DARK HERO (atmospheric)
     ══════════════════════════════════════════════ */
-    .dark-hero{position:relative;height:560px;overflow:hidden}
-    .dark-hero-img{position:absolute;inset:0;background:url('assets/images/landing/dark-hero.webp') center/cover no-repeat}
-    .dark-hero-overlay{position:absolute;inset:0;background:rgba(30,24,20,.62)}
-    .dark-hero-body{position:relative;z-index:2;height:100%;display:flex;align-items:flex-end;padding-bottom:72px}
-    .dark-hero-text .label{color:var(--sand);margin-bottom:14px;display:block}
-    .dark-hero-text h2{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:16px}
-    .dark-hero-text h2 em{font-style:italic;color:rgba(210,200,185,.9)}
-    .dark-hero-text p{font-size:.8rem;font-weight:300;color:rgba(255,255,255,.6);max-width:480px;line-height:1.85;margin-bottom:28px}
+    .dark-hero {
+      position: relative;
+      height: 560px;
+      overflow: hidden
+    }
+
+    .dark-hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('assets/images/landing/dark-hero.webp') center/cover no-repeat
+    }
+
+    .dark-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 24, 20, .62)
+    }
+
+    .dark-hero-body {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 72px
+    }
+
+    .dark-hero-text .label {
+      color: var(--sand);
+      margin-bottom: 14px;
+      display: block
+    }
+
+    .dark-hero-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 16px
+    }
+
+    .dark-hero-text h2 em {
+      font-style: italic;
+      color: rgba(210, 200, 185, .9)
+    }
+
+    .dark-hero-text p {
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .6);
+      max-width: 480px;
+      line-height: 1.85;
+      margin-bottom: 28px
+    }
 
     /* ══════════════════════════════════════════════
        SECTION 7 — EDITORIAL PANELS (2 column)
     ══════════════════════════════════════════════ */
-    .editorial{padding:80px 0;background:var(--cream)}
-    .editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-    .ed-panel{position:relative;overflow:hidden;cursor:pointer}
-    .ed-panel img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .7s var(--ease)}
-    .ed-panel:hover img{transform:scale(1.05)}
-    .ed-panel-content{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,37,32,.7) 0%,rgba(43,37,32,.1) 60%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:36px 32px}
-    .ed-panel-content .label{color:var(--sand);margin-bottom:10px}
-    .ed-panel-content h3{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:14px}
-    .ed-panel-content p{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:20px}
+    .editorial {
+      padding: 80px 0;
+      background: var(--cream)
+    }
 
-    @media(max-width:640px){.editorial-grid{grid-template-columns:1fr}}
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px
+    }
+
+    .ed-panel {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer
+    }
+
+    .ed-panel img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform .7s var(--ease)
+    }
+
+    .ed-panel:hover img {
+      transform: scale(1.05)
+    }
+
+    .ed-panel-content {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(43, 37, 32, .7) 0%, rgba(43, 37, 32, .1) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px 32px
+    }
+
+    .ed-panel-content .label {
+      color: var(--sand);
+      margin-bottom: 10px
+    }
+
+    .ed-panel-content h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 14px
+    }
+
+    .ed-panel-content p {
+      font-size: .75rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.8;
+      margin-bottom: 20px
+    }
+
+    @media(max-width:640px) {
+      .editorial-grid {
+        grid-template-columns: 1fr
+      }
+    }
 
     /* ══════════════════════════════════════════════
        SECTION 8 — DARK PRODUCT STRIP
     ══════════════════════════════════════════════ */
-    .dark-strip{background:#1E1A17;padding:80px 0}
-    .dark-strip-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:20px;flex-wrap:wrap}
-    .dark-strip-head .label{color:var(--sand)}
-    .dark-strip-head h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:400;color:var(--white);margin-top:10px}
-    .dark-strip-head p{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.45);max-width:360px;line-height:1.8;margin-top:8px}
-    .dark-prod-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .dark-prod-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);cursor:pointer;transition:all var(--t),transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform}
-    .dark-prod-card:hover{background:rgba(255,255,255,.07);border-color:rgba(200,188,158,.3);transform:translateY(-6px) scale(1.02)}
-    .dark-prod-img{aspect-ratio:3/4;overflow:hidden;background:#2a2420}
-    .dark-prod-img img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:all .6s var(--ease)}
-    .dark-prod-card:hover .dark-prod-img img{opacity:1;transform:scale(1.05)}
-    .dark-prod-info{padding:14px 16px 18px}
-    .dark-prod-cat{font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);margin-bottom:5px}
-    .dark-prod-name{font-family:var(--serif);font-size:1rem;font-weight:400;color:rgba(255,255,255,.85);line-height:1.3;margin-bottom:10px}
-    .dark-prod-link{font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(200,188,158,.7);display:inline-flex;align-items:center;gap:5px;transition:color var(--t),transform 0.22s ease;will-change:transform}
-    .dark-prod-link:hover{color:var(--sand);transform:scale(1.08)}
-    .dark-prod-link svg{transition:transform var(--t)}
-    .dark-prod-link:hover svg{transform:translateX(3px)}
+    .dark-strip {
+      background: #1E1A17;
+      padding: 80px 0
+    }
 
-    @media(max-width:900px){.dark-prod-row{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:480px){.dark-prod-row{grid-template-columns:1fr}}
+    .dark-strip-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .dark-strip-head .label {
+      color: var(--sand)
+    }
+
+    .dark-strip-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 10px
+    }
+
+    .dark-strip-head p {
+      font-size: .78rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .45);
+      max-width: 360px;
+      line-height: 1.8;
+      margin-top: 8px
+    }
+
+    .dark-prod-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px
+    }
+
+    .dark-prod-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      cursor: pointer;
+      transition: all var(--t), transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform
+    }
+
+    .dark-prod-card:hover {
+      background: rgba(255, 255, 255, .07);
+      border-color: rgba(200, 188, 158, .3);
+      transform: translateY(-6px) scale(1.02)
+    }
+
+    .dark-prod-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #2a2420
+    }
+
+    .dark-prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .88;
+      transition: all .6s var(--ease)
+    }
+
+    .dark-prod-card:hover .dark-prod-img img {
+      opacity: 1;
+      transform: scale(1.05)
+    }
+
+    .dark-prod-info {
+      padding: 14px 16px 18px
+    }
+
+    .dark-prod-cat {
+      font-size: .55rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 5px
+    }
+
+    .dark-prod-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.3;
+      margin-bottom: 10px
+    }
+
+    .dark-prod-link {
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(200, 188, 158, .7);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color var(--t), transform 0.22s ease;
+      will-change: transform
+    }
+
+    .dark-prod-link:hover {
+      color: var(--sand);
+      transform: scale(1.08)
+    }
+
+    .dark-prod-link svg {
+      transition: transform var(--t)
+    }
+
+    .dark-prod-link:hover svg {
+      transform: translateX(3px)
+    }
+
+    @media(max-width:900px) {
+      .dark-prod-row {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:480px) {
+      .dark-prod-row {
+        grid-template-columns: 1fr
+      }
+    }
 
     /* ══════════════════════════════════════════════
        SECTION 9 — NEWSLETTER
     ══════════════════════════════════════════════ */
-    .newsletter{padding:80px 0;background:var(--cream);text-align:center}
-    .newsletter-inner{max-width:580px;margin:0 auto}
-    .newsletter h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;line-height:1.2;margin-top:12px}
-    .newsletter h2 em{font-style:italic;color:var(--sage)}
-    .newsletter p{font-size:.8rem;font-weight:300;color:rgba(43,37,32,.6);line-height:1.85;margin:16px 0 32px}
-    .nl-form{display:flex;max-width:460px;margin:0 auto;overflow:hidden;border:1px solid var(--tan)}
-    .nl-form input{flex:1;padding:14px 20px;font-family:var(--sans);font-size:.78rem;border:none;outline:none;background:var(--white);color:var(--dark)}
-    .nl-form input::placeholder{color:rgba(43,37,32,.4)}
-    .nl-form button{padding:14px 24px;background:var(--sand);color:var(--dark);border:none;font-family:var(--sans);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background var(--t),transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform}
-    .nl-form button:hover{background:var(--dark);color:var(--white);transform:scale(1.05)}
-    .nl-note{font-size:.65rem;color:rgba(43,37,32,.4);margin-top:12px}
+    .newsletter {
+      padding: 80px 0;
+      background: var(--cream);
+      text-align: center
+    }
 
-    @media(max-width:480px){.nl-form{flex-direction:column}}
+    .newsletter-inner {
+      max-width: 580px;
+      margin: 0 auto
+    }
+
+    .newsletter h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-top: 12px
+    }
+
+    .newsletter h2 em {
+      font-style: italic;
+      color: var(--sage)
+    }
+
+    .newsletter p {
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(43, 37, 32, .6);
+      line-height: 1.85;
+      margin: 16px 0 32px
+    }
+
+    .nl-form {
+      display: flex;
+      max-width: 460px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--tan)
+    }
+
+    .nl-form input {
+      flex: 1;
+      padding: 14px 20px;
+      font-family: var(--sans);
+      font-size: .78rem;
+      border: none;
+      outline: none;
+      background: var(--white);
+      color: var(--dark)
+    }
+
+    .nl-form input::placeholder {
+      color: rgba(43, 37, 32, .4)
+    }
+
+    .nl-form button {
+      padding: 14px 24px;
+      background: var(--sand);
+      color: var(--dark);
+      border: none;
+      font-family: var(--sans);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform
+    }
+
+    .nl-form button:hover {
+      background: var(--dark);
+      color: var(--white);
+      transform: scale(1.05)
+    }
+
+    .nl-note {
+      font-size: .65rem;
+      color: rgba(43, 37, 32, .4);
+      margin-top: 12px
+    }
+
+    @media(max-width:480px) {
+      .nl-form {
+        flex-direction: column
+      }
+    }
 
     /* ══════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════ */
-    .footer{background:#1A1611;color:rgba(255,255,255,.55);padding:72px 0 0}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.6fr;gap:48px;padding-bottom:56px}
-    .footer-brand .fl img{height:52px;width:auto;object-fit:contain}
-    .footer-brand p{font-size:.75rem;line-height:1.85;color:rgba(255,255,255,.4);margin-top:18px;max-width:260px}
-    .footer-brand .fsoc{display:flex;gap:10px;margin-top:22px}
-    .footer-brand .fsoc a{width:34px;height:34px;border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);transition:all var(--t),transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform}
-    .footer-brand .fsoc a:hover{border-color:var(--sage);background:var(--sage);color:var(--white);transform:scale(1.12)}
-    .footer-col h4{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:20px}
-    .footer-col ul{display:flex;flex-direction:column;gap:10px}
-    .footer-col ul li a{display:inline-block;font-size:.75rem;color:rgba(255,255,255,.4);transition:color var(--t),transform 0.2s ease;will-change:transform}
-    .footer-col ul li a:hover{color:var(--sand);transform:scale(1.06) translateX(2px)}
-    .footer-contact-col h4{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:20px}
-    .fcontact-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:.75rem;color:rgba(255,255,255,.4)}
-    .fcontact-row svg{flex-shrink:0;color:var(--sand);margin-top:1px}
-    .fcontact-row a{color:rgba(255,255,255,.4);transition:color var(--t)}
-    .fcontact-row a:hover{color:var(--sand)}
+    .footer {
+      background: #1A1611;
+      color: rgba(255, 255, 255, .55);
+      padding: 72px 0 0
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.6fr;
+      gap: 48px;
+      padding-bottom: 56px
+    }
+
+    .footer-brand .fl img {
+      height: 52px;
+      width: auto;
+      object-fit: contain
+    }
+
+    .footer-brand p {
+      font-size: .75rem;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, .4);
+      margin-top: 18px;
+      max-width: 260px
+    }
+
+    .footer-brand .fsoc {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px
+    }
+
+    .footer-brand .fsoc a {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .45);
+      transition: all var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform
+    }
+
+    .footer-brand .fsoc a:hover {
+      border-color: var(--sage);
+      background: var(--sage);
+      color: var(--white);
+      transform: scale(1.12)
+    }
+
+    .footer-col h4 {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .75);
+      margin-bottom: 20px
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .footer-col ul li a {
+      display: inline-block;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .4);
+      transition: color var(--t), transform 0.2s ease;
+      will-change: transform
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--sand);
+      transform: scale(1.06) translateX(2px)
+    }
+
+    .footer-contact-col h4 {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .75);
+      margin-bottom: 20px
+    }
+
+    .fcontact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .4)
+    }
+
+    .fcontact-row svg {
+      flex-shrink: 0;
+      color: var(--sand);
+      margin-top: 1px
+    }
+
+    .fcontact-row a {
+      color: rgba(255, 255, 255, .4);
+      transition: color var(--t)
+    }
+
+    .fcontact-row a:hover {
+      color: var(--sand)
+    }
 
     /* email sign up in footer */
-    .footer-nl h4{font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:10px}
-    .footer-nl p{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:18px}
-    .footer-nl-form{display:flex;border:1px solid rgba(255,255,255,.12)}
-    .footer-nl-form input{flex:1;padding:11px 16px;background:transparent;border:none;outline:none;font-family:var(--sans);font-size:.72rem;color:var(--white)}
-    .footer-nl-form input::placeholder{color:rgba(255,255,255,.25)}
-    .footer-nl-form button{padding:11px 18px;background:var(--sand);color:var(--dark);border:none;font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background var(--t),transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);white-space:nowrap;will-change:transform}
-    .footer-nl-form button:hover{background:var(--white);transform:scale(1.05)}
-    .footer-nl-social{display:flex;align-items:center;gap:14px;margin-top:20px}
-    .footer-nl-social a{color:rgba(255,255,255,.4);transition:color var(--t),transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);will-change:transform}
-    .footer-nl-social a:hover{color:var(--sand);transform:scale(1.12)}
+    .footer-nl h4 {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .75);
+      margin-bottom: 10px
+    }
 
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .footer-bottom span{font-size:.65rem;color:rgba(255,255,255,.25)}
-    .footer-bottom-links{display:flex;gap:20px}
-    .footer-bottom-links a{font-size:.65rem;color:rgba(255,255,255,.25);transition:color var(--t)}
-    .footer-bottom-links a:hover{color:var(--sand)}
-    .footer-flag{font-size:.6rem;color:rgba(255,255,255,.25)}
+    .footer-nl p {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .4);
+      line-height: 1.75;
+      margin-bottom: 18px
+    }
 
-    @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
-    @media(max-width:640px){
-      .footer-grid{grid-template-columns:1fr;gap:30px}
-      .footer-bottom{flex-direction:column;text-align:center}
+    .footer-nl-form {
+      display: flex;
+      border: 1px solid rgba(255, 255, 255, .12)
+    }
+
+    .footer-nl-form input {
+      flex: 1;
+      padding: 11px 16px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--sans);
+      font-size: .72rem;
+      color: var(--white)
+    }
+
+    .footer-nl-form input::placeholder {
+      color: rgba(255, 255, 255, .25)
+    }
+
+    .footer-nl-form button {
+      padding: 11px 18px;
+      background: var(--sand);
+      color: var(--dark);
+      border: none;
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      white-space: nowrap;
+      will-change: transform
+    }
+
+    .footer-nl-form button:hover {
+      background: var(--white);
+      transform: scale(1.05)
+    }
+
+    .footer-nl-social {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px
+    }
+
+    .footer-nl-social a {
+      color: rgba(255, 255, 255, .4);
+      transition: color var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform
+    }
+
+    .footer-nl-social a:hover {
+      color: var(--sand);
+      transform: scale(1.12)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .footer-bottom span {
+      font-size: .65rem;
+      color: rgba(255, 255, 255, .25)
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px
+    }
+
+    .footer-bottom-links a {
+      font-size: .65rem;
+      color: rgba(255, 255, 255, .25);
+      transition: color var(--t)
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--sand)
+    }
+
+    .footer-flag {
+      font-size: .6rem;
+      color: rgba(255, 255, 255, .25)
+    }
+
+    @media(max-width:1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px
+      }
+    }
+
+    @media(max-width:640px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- ═══════════════ HEADER (Order: Logo > About Us > Search > My Account > Contact Us > Cart) ═══════════════ -->
-<header class="hdr" id="hdr">
-  <div class="hdr-inner">
-    <!-- 1. Logo -->
-    <a href="index.html" class="hdr-logo" aria-label="Fair Home Decor Home">
-      <img src="assets/images/logo.png" alt="Fair Home Decor" loading="eager"
-           onerror="this.onerror=null;this.src='assets/images/logo-original.png'"/>
-    </a>
-
-    <!-- 2. About Us -->
-    <a href="pages/about.html" class="hdr-about-link">About Us</a>
-
-    <!-- 3. Search Bar -->
-    <div class="hdr-search-wrap">
-      <form class="hdr-search-form" action="pages/catalogue.html" method="GET">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="search" name="q" placeholder="Search for handcrafted furniture, decor..." aria-label="Search"/>
-      </form>
-    </div>
-
-    <!-- Right Group -->
-    <div class="hdr-right-group">
-      <!-- 4. My Account with Dropdown -->
-      <div class="account-dropdown-wrap">
-        <button class="account-btn" aria-haspopup="true" aria-expanded="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          <span>My Account</span>
-          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="account-menu">
-          <a href="pages/account.html#login">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-              <polyline points="10 17 15 12 10 7"></polyline>
-              <line x1="15" y1="12" x2="3" y2="12"></line>
-            </svg>
-            <span>Login / Register</span>
-          </a>
-          <a href="pages/account.html#track">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13" rx="2"></rect>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-              <circle cx="5.5" cy="18.5" r="2.5"></circle>
-              <circle cx="18.5" cy="18.5" r="2.5"></circle>
-            </svg>
-            <span>Track My Order</span>
-          </a>
-          <a href="pages/account.html#favourites">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-            <span>Favourites (Wishlist)</span>
-          </a>
-          <div class="menu-divider"></div>
-          <a href="pages/account.html#b2b">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>B2B Member Sign In</span>
-            <span class="b2b-badge">Trade</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 5. Contact Us -->
-      <a href="pages/contact.html" class="hdr-contact-btn">Contact Us</a>
-
-      <!-- 6. Cart -->
-      <a href="pages/cart.html" class="hdr-cart-btn" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span>Cart</span>
-        <span class="cart-count">0</span>
+  <!-- ═══════════════ HEADER (Order: Logo > About Us > Search > My Account > Contact Us > Cart) ═══════════════ -->
+  <header class="hdr" id="hdr">
+    <div class="hdr-inner">
+      <!-- 1. Logo -->
+      <a href="index.html" class="hdr-logo" aria-label="Fair Home Decor Home">
+        <img src="assets/images/logo.png" alt="Fair Home Decor" loading="eager"
+          onerror="this.onerror=null;this.src='assets/images/logo-original.png'" />
       </a>
 
-      <!-- Hamburger for mobile -->
-      <button class="hdr-burger" id="burger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
+      <!-- 2. About Us -->
+      <a href="pages/about.html" class="hdr-about-link">About Us</a>
 
-  <!-- Mobile Nav Drawer -->
-  <nav class="mob-nav" id="mobNav">
-    <a href="pages/about.html" onclick="closeMob()">About Us</a>
-    <a href="pages/catalogue.html" onclick="closeMob()">Shop Now</a>
-    <a href="pages/account.html#login" onclick="closeMob()">Login / Register</a>
-    <a href="pages/account.html#track" onclick="closeMob()">Track My Order</a>
-    <a href="pages/account.html#favourites" onclick="closeMob()">Favourites</a>
-    <a href="pages/account.html#b2b" onclick="closeMob()">B2B Trade Portal</a>
-    <a href="pages/contact.html" onclick="closeMob()">Contact Us</a>
-    <a href="pages/cart.html" onclick="closeMob()">Shopping Cart (<span class="cart-count">0</span>)</a>
-  </nav>
-</header>
+      <!-- 3. Search Bar -->
+      <div class="hdr-search-wrap">
+        <form class="hdr-search-form" action="pages/catalogue.html" method="GET">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" name="q" placeholder="Search for handcrafted furniture, decor..." aria-label="Search" />
+        </form>
+      </div>
 
-<!-- ═══════════════ HERO (Clean, Elegant, Tagline Focused) ═══════════════ -->
-<section class="hero">
-  <div class="hero-img" id="heroImg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-body wrap">
-    <div class="hero-text">
-      <p class="hero-eyebrow">Fair Home Decor &middot; East Brunswick, NJ</p>
-      <h1 class="hero-h1">Considered living,<br/><em>beautifully made.</em></h1>
-      <p class="hero-desc">
-        Artisanal solid wood furniture and intentional home decor — handcrafted to bring warmth, balance, and enduring beauty to modern American spaces.
-      </p>
-      <div class="hero-actions">
-        <a href="pages/catalogue.html" class="btn btn-hero-dark">
-          Explore Collection
-          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <!-- Right Group -->
+      <div class="hdr-right-group">
+        <!-- 4. My Account with Dropdown -->
+        <div class="account-dropdown-wrap">
+          <button class="account-btn" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>My Account</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="account-menu">
+            <a href="pages/account.html#login">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                <polyline points="10 17 15 12 10 7"></polyline>
+                <line x1="15" y1="12" x2="3" y2="12"></line>
+              </svg>
+              <span>Login / Register</span>
+            </a>
+            <a href="pages/account.html#track">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+              <span>Track My Order</span>
+            </a>
+            <a href="pages/account.html#favourites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+              </svg>
+              <span>Favourites (Wishlist)</span>
+            </a>
+            <div class="menu-divider"></div>
+            <a href="pages/account.html#b2b">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>B2B Member Sign In</span>
+              <span class="b2b-badge">Trade</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Contact Us -->
+        <a href="pages/contact.html" class="hdr-contact-btn">Contact Us</a>
+
+        <!-- 6. Cart -->
+        <a href="pages/cart.html" class="hdr-cart-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Cart</span>
+          <span class="cart-count">0</span>
         </a>
-        <a href="pages/about.html" class="btn btn-hero-outline">Our Story</a>
+
+        <!-- Hamburger for mobile -->
+        <button class="hdr-burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
 
-<!-- ═══════════════ CATEGORY BAR ═══════════════ -->
-<div class="cat-bar">
-  <div class="cat-bar-inner wrap">
-    <a href="pages/catalogue.html?dept=furnishing">Furnishing</a>
-    <a href="pages/catalogue.html?dept=lighting">Lighting</a>
-    <a href="pages/catalogue.html?dept=seating">Seating</a>
-    <a href="pages/catalogue.html?dept=accessories">Accessories &amp; Decor</a>
-    <a href="pages/catalogue.html?dept=art">Art &amp; Sculpture</a>
-  </div>
-</div>
+    <!-- Mobile Nav Drawer -->
+    <nav class="mob-nav" id="mobNav">
+      <a href="pages/about.html" onclick="closeMob()">About Us</a>
+      <a href="pages/catalogue.html" onclick="closeMob()">Shop Now</a>
+      <a href="pages/account.html#login" onclick="closeMob()">Login / Register</a>
+      <a href="pages/account.html#track" onclick="closeMob()">Track My Order</a>
+      <a href="pages/account.html#favourites" onclick="closeMob()">Favourites</a>
+      <a href="pages/account.html#b2b" onclick="closeMob()">B2B Trade Portal</a>
+      <a href="pages/contact.html" onclick="closeMob()">Contact Us</a>
+      <a href="pages/cart.html" onclick="closeMob()">Shopping Cart (<span class="cart-count">0</span>)</a>
+    </nav>
+  </header>
 
-<!-- ═══════════════ SECTION 3 — CHRISTMAS & HOLIDAY OFFER ═══════════════ -->
-<section class="holiday-section" id="collections">
-  <div class="wrap">
-    <div class="holiday-card fade">
-      <div class="holiday-img-wrap">
-        <img src="assets/images/landing/christmas-offer-landscape.webp" alt="Warm Christmas Living Room with Handcrafted Wooden Furniture and Festive Decor" loading="lazy" />
-        <div class="holiday-badge">
-          <span class="sparkle">✦</span>
-          <span>Holiday Season 2026</span>
-        </div>
-      </div>
-      <div class="holiday-content">
-        <span class="holiday-eyebrow">
-          <span>Seasonal Curation</span> &middot; <span>Limited Holiday Offer</span>
-        </span>
-        <h2 class="holiday-title">
-          Bring Holiday Warmth Home,<br/><em>Beautifully Handcrafted.</em>
-        </h2>
-        <p class="holiday-desc">
-          Gather with intention this holiday season. Transform your home with our solid wood dining tables, consoles, and artisan decor — built to anchor your festive celebrations for generations to come.
+  <!-- ═══════════════ HERO (Clean, Elegant, Tagline Focused) ═══════════════ -->
+  <section class="hero">
+    <div class="hero-img" id="heroImg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-body wrap">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Fair Home Decor &middot; East Brunswick, NJ</p>
+        <h1 class="hero-h1">Considered living,<br /><em>beautifully made.</em></h1>
+        <p class="hero-desc">
+          Artisanal solid wood furniture and intentional home decor — handcrafted to bring warmth, balance, and enduring
+          beauty to modern American spaces.
         </p>
+        <div class="hero-actions">
+          <a href="pages/catalogue.html" class="btn btn-hero-dark">
+            Explore Collection
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+          <a href="pages/about.html" class="btn btn-hero-outline">Our Story</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-        <div class="holiday-offer-box">
-          <div class="offer-details">
-            <span class="offer-tag">Special Christmas Offer</span>
-            <span class="offer-headline">15% Off Handcrafted Pieces &middot; Complimentary Freight</span>
+  <!-- ═══════════════ CATEGORY BAR ═══════════════ -->
+  <div class="cat-bar">
+    <div class="cat-bar-inner wrap">
+      <a href="pages/catalogue.html?dept=furnishing">Furnishing</a>
+      <a href="pages/catalogue.html?dept=lighting">Lighting</a>
+      <a href="pages/catalogue.html?dept=seating">Seating</a>
+      <a href="pages/catalogue.html?dept=accessories">Accessories &amp; Decor</a>
+      <a href="pages/catalogue.html?dept=art">Art &amp; Sculpture</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SECTION 3 — CHRISTMAS & HOLIDAY OFFER ═══════════════ -->
+  <section class="holiday-section" id="collections">
+    <div class="wrap">
+      <div class="holiday-card fade">
+        <div class="holiday-img-wrap">
+          <img src="assets/images/landing/christmas-offer-landscape.webp"
+            alt="Warm Christmas Living Room with Handcrafted Wooden Furniture and Festive Decor" loading="lazy" />
+          <div class="holiday-badge">
+            <span class="sparkle">✦</span>
+            <span>Holiday Season 2026</span>
           </div>
-          <span class="offer-code-pill">CODE: HOLIDAY15</span>
         </div>
+        <div class="holiday-content">
+          <span class="holiday-eyebrow">
+            <span>Seasonal Curation</span> &middot; <span>Limited Holiday Offer</span>
+          </span>
+          <h2 class="holiday-title">
+            Bring Holiday Warmth Home,<br /><em>Beautifully Handcrafted.</em>
+          </h2>
+          <p class="holiday-desc">
+            Gather with intention this holiday season. Transform your home with our solid wood dining tables, consoles,
+            and artisan decor — built to anchor your festive celebrations for generations to come.
+          </p>
 
-        <div class="holiday-actions">
-          <a href="pages/catalogue.html?dept=furnishing" class="btn-holiday-primary">
-            <span>Shop Holiday Collection</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="pages/contact.html?subject=Christmas%20Holiday%20Inquiry" class="btn-holiday-secondary">
-            Inquire for Delivery
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <div class="holiday-offer-box">
+            <div class="offer-details">
+              <span class="offer-tag">Special Christmas Offer</span>
+              <span class="offer-headline">15% Off Handcrafted Pieces &middot; Complimentary Freight</span>
+            </div>
+            <span class="offer-code-pill">CODE: HOLIDAY15</span>
+          </div>
 
-<!-- ═══════════════ MID HERO ═══════════════ -->
-<section class="mid-hero">
-  <div class="mid-hero-img"></div>
-  <div class="mid-hero-overlay"></div>
-  <div class="mid-hero-body wrap">
-    <div class="mid-hero-text fade">
-      <span class="label">Handcrafted Detail</span>
-      <h2>Every Joint.<br/>Every Grain.<br/><em>Every Intention.</em></h2>
-      <p>Our artisans treat each piece as a work of craft — selecting wood for its grain and character, finishing by hand, and building to last generations. This is furniture with a story.</p>
-      <a href="pages/catalogue.html" class="btn btn-white">
-        Shop the Collection
-        <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ FEATURED PRODUCTS ═══════════════ -->
-<section class="featured" id="featured">
-  <div class="wrap">
-    <div class="featured-head">
-      <div class="fade">
-        <span class="label">Editor's Selection</span>
-        <h2>Most-Loved <em>Pieces</em></h2>
-        <p>Handpicked from our collection — timeless shapes in premium solid wood, finished with care.</p>
-      </div>
-      <a href="pages/catalogue.html" class="btn btn-outline fade">View All Products</a>
-    </div>
-    <div class="prod-row">
-      <article class="prod-card fade d1">
-        <div class="prod-img">
-          <img src="assets/images/landing/prod1.webp" alt="Handcrafted solid wood console table" loading="lazy"/>
-          <span class="prod-tag">Popular</span>
-        </div>
-        <div class="prod-info">
-          <div class="prod-cat">Console Tables</div>
-          <div class="prod-name">Solid Wood Console</div>
-          <a href="pages/catalogue.html" class="prod-link">
-            View Details
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="prod-card fade d2">
-        <div class="prod-img">
-          <img src="assets/images/landing/prod2.webp" alt="Artisan wooden accent cabinet" loading="lazy"/>
-          <span class="prod-tag">Bestseller</span>
-        </div>
-        <div class="prod-info">
-          <div class="prod-cat">Accent Cabinets</div>
-          <div class="prod-name">Artisan Accent Cabinet</div>
-          <a href="pages/catalogue.html" class="prod-link">
-            View Details
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="prod-card fade d3">
-        <div class="prod-img">
-          <img src="assets/images/landing/prod3.webp" alt="Handcrafted wooden photo frames decorative" loading="lazy"/>
-        </div>
-        <div class="prod-info">
-          <div class="prod-cat">Decorative Frames</div>
-          <div class="prod-name">Handcrafted Photo Frame</div>
-          <a href="pages/catalogue.html" class="prod-link">
-            View Details
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="prod-card fade d4">
-        <div class="prod-img">
-          <img src="assets/images/landing/prod4.webp" alt="Solid wood round side table" loading="lazy"/>
-          <span class="prod-tag">New Arrival</span>
-        </div>
-        <div class="prod-info">
-          <div class="prod-cat">Side Tables</div>
-          <div class="prod-name">Round Solid Wood Table</div>
-          <a href="pages/catalogue.html" class="prod-link">
-            View Details
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ DARK HERO ═══════════════ -->
-<section class="dark-hero">
-  <div class="dark-hero-img"></div>
-  <div class="dark-hero-overlay"></div>
-  <div class="dark-hero-body wrap">
-    <div class="dark-hero-text">
-      <span class="label">Our Philosophy</span>
-      <h2>Built to Last,<br/><em>Made to Matter</em></h2>
-      <p>In a world of fast furniture, we believe in the opposite — pieces built slowly, with intention, from materials that honour the earth. Fair Home Decor is for those who choose quality over quantity, and beauty over trend.</p>
-      <a href="pages/contact.html" class="btn btn-white">
-        Get in Touch
-        <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ EDITORIAL PANELS ═══════════════ -->
-<section class="editorial">
-  <div class="wrap">
-    <div class="editorial-grid">
-      <div class="ed-panel fade d1">
-        <img src="assets/images/landing/editorial1.webp" alt="Wooden furniture for living room — handcrafted accent cabinets and shelving" loading="lazy"/>
-        <div class="ed-panel-content">
-          <span class="label">Furniture Collection</span>
-          <h3>Furniture That<br/>Tells a Story</h3>
-          <p>Solid wood accent cabinets, bookshelves, and console tables — built by hand, designed to endure.</p>
-          <a href="pages/catalogue.html" class="btn btn-white">
-            Shop Furniture
-            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="ed-panel fade d2">
-        <img src="assets/images/landing/editorial2.webp" alt="Home decor accents — wooden photo frames, decorative items for American homes" loading="lazy"/>
-        <div class="ed-panel-content">
-          <span class="label">Decorative Accents</span>
-          <h3>Details That Make<br/>a Home</h3>
-          <p>Curated wooden photo frames, decorative accents, and artisan objects to finish your space with character.</p>
-          <a href="pages/catalogue.html" class="btn btn-white">
-            Shop Accents
-            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ DARK PRODUCT STRIP ═══════════════ -->
-<section class="dark-strip">
-  <div class="wrap">
-    <div class="dark-strip-head">
-      <div class="fade">
-        <span class="label">Featured Pieces</span>
-        <h2>New Arrivals</h2>
-        <p>The latest additions to our handcrafted collection — fresh designs in solid wood, ready to ship across the USA.</p>
-      </div>
-      <a href="pages/catalogue.html" class="btn btn-tan fade">View All New Arrivals</a>
-    </div>
-    <div class="dark-prod-row">
-      <div class="dark-prod-card fade d1">
-        <div class="dark-prod-img">
-          <img src="assets/images/landing/feat1.webp" alt="Handcrafted wooden bookshelf solid wood" loading="lazy"/>
-        </div>
-        <div class="dark-prod-info">
-          <div class="dark-prod-cat">Bookshelves</div>
-          <div class="dark-prod-name">Open Bookshelf</div>
-          <a href="pages/catalogue.html" class="dark-prod-link">
-            View
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="dark-prod-card fade d2">
-        <div class="dark-prod-img">
-          <img src="assets/images/landing/feat2.webp" alt="Wooden side table handcrafted artisan" loading="lazy"/>
-        </div>
-        <div class="dark-prod-info">
-          <div class="dark-prod-cat">Side Tables</div>
-          <div class="dark-prod-name">Turned Leg Side Table</div>
-          <a href="pages/catalogue.html" class="dark-prod-link">
-            View
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="dark-prod-card fade d3">
-        <div class="dark-prod-img">
-          <img src="assets/images/landing/feat3.webp" alt="Solid wood accent cabinet wooden decorative" loading="lazy"/>
-        </div>
-        <div class="dark-prod-info">
-          <div class="dark-prod-cat">Accent Cabinets</div>
-          <div class="dark-prod-name">Slatted Accent Cabinet</div>
-          <a href="pages/catalogue.html" class="dark-prod-link">
-            View
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="dark-prod-card fade d4">
-        <div class="dark-prod-img">
-          <img src="assets/images/landing/feat4.webp" alt="Handcrafted wooden study table desk" loading="lazy"/>
-        </div>
-        <div class="dark-prod-info">
-          <div class="dark-prod-cat">Study Tables</div>
-          <div class="dark-prod-name">Solid Wood Study Desk</div>
-          <a href="pages/catalogue.html" class="dark-prod-link">
-            View
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ NEWSLETTER ═══════════════ -->
-<section class="newsletter">
-  <div class="newsletter-inner">
-    <span class="label fade">Stay Connected</span>
-    <h2 class="fade d1">Curated Inspiration,<br/><em>Delivered to You</em></h2>
-    <p class="fade d2">Join our community of homeowners and interior designers. Get early access to new collections, styling tips, and exclusive trade offers — no spam, only beautiful things.</p>
-    <form class="nl-form fade d3" onsubmit="nlSubmit(event)">
-      <input type="email" placeholder="Enter your email address" required aria-label="Email address"/>
-      <button type="submit">Subscribe</button>
-    </form>
-    <p class="nl-note fade d4">Unsubscribe at any time. We respect your privacy.</p>
-  </div>
-</section>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <div class="fl">
-          <img src="assets/images/logo.png" alt="Fair Home Decor"
-               onerror="this.onerror=null;this.src='assets/images/logo-original.png'"/>
-        </div>
-        <p>Handcrafted wooden furniture and curated home decor — built for the modern American home. Considered living, beautifully made.</p>
-        <div class="fsoc">
-          <a href="https://www.instagram.com/fairhomedecorinc/" aria-label="Instagram" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61593950044982" aria-label="Facebook" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Shop -->
-      <div class="footer-col">
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="pages/catalogue.html">All Products</a></li>
-          <li><a href="pages/catalogue.html">Accent Cabinets</a></li>
-          <li><a href="pages/catalogue.html">Bookshelves</a></li>
-          <li><a href="pages/catalogue.html">Console Tables</a></li>
-          <li><a href="pages/catalogue.html">Side Tables</a></li>
-          <li><a href="pages/catalogue.html">Photo Frames</a></li>
-          <li><a href="pages/catalogue.html">Study Tables</a></li>
-        </ul>
-      </div>
-
-      <!-- Company -->
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="pages/about.html">About Us</a></li>
-          <li><a href="pages/catalogue.html">Catalogue</a></li>
-          <li><a href="pages/account.html#track">Track Order</a></li>
-          <li><a href="pages/account.html#favourites">Favourites</a></li>
-          <li><a href="pages/contact.html">Contact Us</a></li>
-          <li><a href="pages/account.html#b2b">Trade & Wholesale</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact + Newsletter -->
-      <div class="footer-contact-col">
-        <h4>Contact</h4>
-        <div class="fcontact-row">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>1 Auer Ct, East Brunswick,<br/>NJ 08816, United States</span>
-        </div>
-        <div class="fcontact-row">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42C1.6 2.25 2.33 1.19 3.4.9L6.4 0a2 2 0 0 1 2 1.22l1.38 3.47a2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l1.27-1.33a2 2 0 0 1 2.11-.45l3.47 1.38a2 2 0 0 1 1.22 2z"/></svg>
-          <a href="tel:+17857131584">+1 785-713-1584</a>
-        </div>
-        <div class="fcontact-row">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:info@fairhomedecor.com">info@fairhomedecor.com</a>
-        </div>
-
-        <!-- Footer newsletter -->
-        <div class="footer-nl" style="margin-top:28px">
-          <h4>Email Sign-Up</h4>
-          <p>Subscribe for curated furniture inspiration and irresistible deals delivered straight to you.</p>
-          <form class="footer-nl-form" onsubmit="fnlSubmit(event)">
-            <input type="email" placeholder="Enter email" required aria-label="Email"/>
-            <button type="submit">Subscribe</button>
-          </form>
-          <div class="footer-nl-social" style="margin-top:16px">
-            <a href="https://www.instagram.com/fairhomedecorinc/" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <div class="holiday-actions">
+            <a href="pages/catalogue.html?dept=furnishing" class="btn-holiday-primary">
+              <span>Shop Holiday Collection</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61593950044982" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <a href="pages/contact.html?subject=Christmas%20Holiday%20Inquiry" class="btn-holiday-secondary">
+              Inquire for Delivery
             </a>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <span class="footer-flag">🇺🇸 USA | English</span>
-      <span>© 2025 Fair Home Decor INC. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Terms of Service</a>
-        <a href="#">Legal</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Sitemap</a>
+  <!-- ═══════════════ MID HERO ═══════════════ -->
+  <section class="mid-hero">
+    <div class="mid-hero-img"></div>
+    <div class="mid-hero-overlay"></div>
+    <div class="mid-hero-body wrap">
+      <div class="mid-hero-text fade">
+        <span class="label">Handcrafted Detail</span>
+        <h2>Every Joint.<br />Every Grain.<br /><em>Every Intention.</em></h2>
+        <p>Our artisans treat each piece as a work of craft — selecting wood for its grain and character, finishing by
+          hand, and building to last generations. This is furniture with a story.</p>
+        <a href="pages/catalogue.html" class="btn btn-white">
+          Shop the Collection
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<!-- ═══════════════ JS ═══════════════ -->
-<script>
-  // Sticky header
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.classList.toggle('scrolled', window.scrollY > 50);
-  }, {passive:true});
+  <!-- ═══════════════ FEATURED PRODUCTS ═══════════════ -->
+  <section class="featured" id="featured">
+    <div class="wrap">
+      <div class="featured-head">
+        <div class="fade">
+          <span class="label">Editor's Selection</span>
+          <h2>Most-Loved <em>Pieces</em></h2>
+          <p>Handpicked from our collection — timeless shapes in premium solid wood, finished with care.</p>
+        </div>
+        <a href="pages/catalogue.html" class="btn btn-outline fade">View All Products</a>
+      </div>
+      <div class="prod-row">
+        <article class="prod-card fade d1">
+          <div class="prod-img">
+            <img src="assets/images/landing/prod1.webp" alt="Handcrafted solid wood console table" loading="lazy" />
+            <span class="prod-tag">Popular</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-cat">Console Tables</div>
+            <div class="prod-name">Solid Wood Console</div>
+            <a href="pages/catalogue.html" class="prod-link">
+              View Details
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="prod-card fade d2">
+          <div class="prod-img">
+            <img src="assets/images/landing/prod2.webp" alt="Artisan wooden accent cabinet" loading="lazy" />
+            <span class="prod-tag">Bestseller</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-cat">Accent Cabinets</div>
+            <div class="prod-name">Artisan Accent Cabinet</div>
+            <a href="pages/catalogue.html" class="prod-link">
+              View Details
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="prod-card fade d3">
+          <div class="prod-img">
+            <img src="assets/images/landing/prod3.webp" alt="Handcrafted wooden photo frames decorative"
+              loading="lazy" />
+          </div>
+          <div class="prod-info">
+            <div class="prod-cat">Decorative Frames</div>
+            <div class="prod-name">Handcrafted Photo Frame</div>
+            <a href="pages/catalogue.html" class="prod-link">
+              View Details
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+        <article class="prod-card fade d4">
+          <div class="prod-img">
+            <img src="assets/images/landing/prod4.webp" alt="Solid wood round side table" loading="lazy" />
+            <span class="prod-tag">New Arrival</span>
+          </div>
+          <div class="prod-info">
+            <div class="prod-cat">Side Tables</div>
+            <div class="prod-name">Round Solid Wood Table</div>
+            <a href="pages/catalogue.html" class="prod-link">
+              View Details
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  // Parallax hero
-  const heroImg = document.getElementById('heroImg');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY < window.innerHeight) {
-      heroImg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+  <!-- ═══════════════ DARK HERO ═══════════════ -->
+  <section class="dark-hero">
+    <div class="dark-hero-img"></div>
+    <div class="dark-hero-overlay"></div>
+    <div class="dark-hero-body wrap">
+      <div class="dark-hero-text">
+        <span class="label">Our Philosophy</span>
+        <h2>Built to Last,<br /><em>Made to Matter</em></h2>
+        <p>In a world of fast furniture, we believe in the opposite — pieces built slowly, with intention, from
+          materials that honour the earth. Fair Home Decor is for those who choose quality over quantity, and beauty
+          over trend.</p>
+        <a href="pages/contact.html" class="btn btn-white">
+          Get in Touch
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EDITORIAL PANELS ═══════════════ -->
+  <section class="editorial">
+    <div class="wrap">
+      <div class="editorial-grid">
+        <div class="ed-panel fade d1">
+          <img src="assets/images/landing/shop-furniture.jpg"
+            alt="Handcrafted solid wood furniture — artisan oak sideboard credenza and coffee table" loading="lazy" />
+          <div class="ed-panel-content">
+            <span class="label">Furniture Collection</span>
+            <h3>Furniture That<br />Tells a Story</h3>
+            <p>Solid wood accent cabinets, bookshelves, and console tables — built by hand, designed to endure.</p>
+            <a href="pages/catalogue.html?dept=furnishing" class="btn btn-white">
+              Shop Furniture
+              <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="ed-panel fade d2">
+          <img src="assets/images/landing/shop-accents.jpg"
+            alt="Handcrafted home decor accents — artisan carved wooden photo frames, ceramic vase, and tabletop decor" loading="lazy" />
+          <div class="ed-panel-content">
+            <span class="label">Decorative Accents</span>
+            <h3>Details That Make<br />a Home</h3>
+            <p>Curated wooden photo frames, decorative accents, and artisan objects to finish your space with character.
+            </p>
+            <a href="pages/catalogue.html?dept=accessories" class="btn btn-white">
+              Shop Accents
+              <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DARK PRODUCT STRIP ═══════════════ -->
+  <section class="dark-strip">
+    <div class="wrap">
+      <div class="dark-strip-head">
+        <div class="fade">
+          <span class="label">Featured Pieces</span>
+          <h2>New Arrivals</h2>
+          <p>The latest additions to our handcrafted collection — fresh designs in solid wood, ready to ship across the
+            USA.</p>
+        </div>
+        <a href="pages/catalogue.html" class="btn btn-tan fade">View All New Arrivals</a>
+      </div>
+      <div class="dark-prod-row">
+        <div class="dark-prod-card fade d1">
+          <div class="dark-prod-img">
+            <img src="assets/images/landing/feat1.webp" alt="Handcrafted wooden bookshelf solid wood" loading="lazy" />
+          </div>
+          <div class="dark-prod-info">
+            <div class="dark-prod-cat">Bookshelves</div>
+            <div class="dark-prod-name">Open Bookshelf</div>
+            <a href="pages/catalogue.html" class="dark-prod-link">
+              View
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="dark-prod-card fade d2">
+          <div class="dark-prod-img">
+            <img src="assets/images/landing/feat2.webp" alt="Wooden side table handcrafted artisan" loading="lazy" />
+          </div>
+          <div class="dark-prod-info">
+            <div class="dark-prod-cat">Side Tables</div>
+            <div class="dark-prod-name">Turned Leg Side Table</div>
+            <a href="pages/catalogue.html" class="dark-prod-link">
+              View
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="dark-prod-card fade d3">
+          <div class="dark-prod-img">
+            <img src="assets/images/landing/feat3.webp" alt="Solid wood accent cabinet wooden decorative"
+              loading="lazy" />
+          </div>
+          <div class="dark-prod-info">
+            <div class="dark-prod-cat">Accent Cabinets</div>
+            <div class="dark-prod-name">Slatted Accent Cabinet</div>
+            <a href="pages/catalogue.html" class="dark-prod-link">
+              View
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="dark-prod-card fade d4">
+          <div class="dark-prod-img">
+            <img src="assets/images/landing/feat4.webp" alt="Handcrafted wooden study table desk" loading="lazy" />
+          </div>
+          <div class="dark-prod-info">
+            <div class="dark-prod-cat">Study Tables</div>
+            <div class="dark-prod-name">Solid Wood Study Desk</div>
+            <a href="pages/catalogue.html" class="dark-prod-link">
+              View
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ NEWSLETTER ═══════════════ -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <span class="label fade">Stay Connected</span>
+      <h2 class="fade d1">Curated Inspiration,<br /><em>Delivered to You</em></h2>
+      <p class="fade d2">Join our community of homeowners and interior designers. Get early access to new collections,
+        styling tips, and exclusive trade offers — no spam, only beautiful things.</p>
+      <form class="nl-form fade d3" onsubmit="nlSubmit(event)">
+        <input type="email" placeholder="Enter your email address" required aria-label="Email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="nl-note fade d4">Unsubscribe at any time. We respect your privacy.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="fl">
+            <img src="assets/images/logo.png" alt="Fair Home Decor"
+              onerror="this.onerror=null;this.src='assets/images/logo-original.png'" />
+          </div>
+          <p>Handcrafted wooden furniture and curated home decor — built for the modern American home. Considered
+            living, beautifully made.</p>
+          <div class="fsoc">
+            <a href="https://www.instagram.com/fairhomedecorinc/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61593950044982" aria-label="Facebook" target="_blank"
+              rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shop -->
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="pages/catalogue.html">All Products</a></li>
+            <li><a href="pages/catalogue.html">Accent Cabinets</a></li>
+            <li><a href="pages/catalogue.html">Bookshelves</a></li>
+            <li><a href="pages/catalogue.html">Console Tables</a></li>
+            <li><a href="pages/catalogue.html">Side Tables</a></li>
+            <li><a href="pages/catalogue.html">Photo Frames</a></li>
+            <li><a href="pages/catalogue.html">Study Tables</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="pages/about.html">About Us</a></li>
+            <li><a href="pages/catalogue.html">Catalogue</a></li>
+            <li><a href="pages/account.html#track">Track Order</a></li>
+            <li><a href="pages/account.html#favourites">Favourites</a></li>
+            <li><a href="pages/contact.html">Contact Us</a></li>
+            <li><a href="pages/account.html#b2b">Trade & Wholesale</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact + Newsletter -->
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>1 Auer Ct, East Brunswick,<br />NJ 08816, United States</span>
+          </div>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42C1.6 2.25 2.33 1.19 3.4.9L6.4 0a2 2 0 0 1 2 1.22l1.38 3.47a2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l1.27-1.33a2 2 0 0 1 2.11-.45l3.47 1.38a2 2 0 0 1 1.22 2z" />
+            </svg>
+            <a href="tel:+17857131584">+1 785-713-1584</a>
+          </div>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <a href="mailto:info@fairhomedecor.com">info@fairhomedecor.com</a>
+          </div>
+
+          <!-- Footer newsletter -->
+          <div class="footer-nl" style="margin-top:28px">
+            <h4>Email Sign-Up</h4>
+            <p>Subscribe for curated furniture inspiration and irresistible deals delivered straight to you.</p>
+            <form class="footer-nl-form" onsubmit="fnlSubmit(event)">
+              <input type="email" placeholder="Enter email" required aria-label="Email" />
+              <button type="submit">Subscribe</button>
+            </form>
+            <div class="footer-nl-social" style="margin-top:16px">
+              <a href="https://www.instagram.com/fairhomedecorinc/" target="_blank" rel="noopener"
+                aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61593950044982" target="_blank" rel="noopener"
+                aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-flag">🇺🇸 USA | English</span>
+        <span>© 2025 Fair Home Decor INC. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Terms of Service</a>
+          <a href="#">Legal</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════ JS ═══════════════ -->
+  <script>
+    // Sticky header
+    const hdr = document.getElementById('hdr');
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Parallax hero
+    const heroImg = document.getElementById('heroImg');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        heroImg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+      }
+    }, { passive: true });
+
+    // Mobile nav
+    const burger = document.getElementById('burger');
+    const mobNav = document.getElementById('mobNav');
+    burger.addEventListener('click', () => mobNav.classList.toggle('open'));
+    function closeMob() { mobNav.classList.remove('open'); }
+
+    // Scroll reveal
+    const fades = document.querySelectorAll('.fade');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    fades.forEach(el => obs.observe(el));
+
+    // Newsletter submit
+    function nlSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = '#5A6B4E';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+      e.target.querySelector('input').value = '';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; btn.disabled = false; }, 4000);
     }
-  }, {passive:true});
 
-  // Mobile nav
-  const burger = document.getElementById('burger');
-  const mobNav = document.getElementById('mobNav');
-  burger.addEventListener('click', () => mobNav.classList.toggle('open'));
-  function closeMob() { mobNav.classList.remove('open'); }
+    function fnlSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Done ✓';
+      btn.disabled = true;
+      e.target.querySelector('input').value = '';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.disabled = false; }, 4000);
+    }
 
-  // Scroll reveal
-  const fades = document.querySelectorAll('.fade');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
-  fades.forEach(el => obs.observe(el));
-
-  // Newsletter submit
-  function nlSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Subscribed ✓';
-    btn.style.background = '#5A6B4E';
-    btn.style.color = '#fff';
-    btn.disabled = true;
-    e.target.querySelector('input').value = '';
-    setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; btn.disabled = false; }, 4000);
-  }
-
-  function fnlSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Done ✓';
-    btn.disabled = true;
-    e.target.querySelector('input').value = '';
-    setTimeout(() => { btn.textContent = 'Subscribe'; btn.disabled = false; }, 4000);
-  }
-
-  // Cart badge update
-  function updateCartBadge() {
-    try {
-      const cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
-      const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-      document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
-    } catch(e) {}
-  }
-  document.addEventListener('DOMContentLoaded', updateCartBadge);
-  updateCartBadge();
-</script>
+    // Cart badge update
+    function updateCartBadge() {
+      try {
+        const cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
+        const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+      } catch (e) { }
+    }
+    document.addEventListener('DOMContentLoaded', updateCartBadge);
+    updateCartBadge();
+  </script>
 
 </body>
+
 </html>
