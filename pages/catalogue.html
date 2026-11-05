@@ -27,6 +27,7 @@
       --color-sage:      #7C8C6E;
       --color-sage-dark: #5A6B4E;
       --color-sage-light:#92A185;
+      --color-sand:      #C8BC9E;
       --color-border:    #DDD5C5;
       --color-border-light: #ECE5D8;
       --color-white:     #FFFFFF;
@@ -1915,22 +1916,22 @@
 
     .footer-nl-form button {
       padding: 11px 18px;
-      background: var(--color-sand);
-      color: var(--color-dark);
+      background: var(--sand);
+      color: var(--dark);
       border: none;
-      font-family: var(--font-sans);
+      font-family: var(--sans);
       font-size: .6rem;
       font-weight: 600;
       letter-spacing: .12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background var(--transition), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: background var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       white-space: nowrap;
       will-change: transform;
     }
 
     .footer-nl-form button:hover {
-      background: #FFFFFF;
+      background: var(--white);
       transform: scale(1.05);
     }
 
