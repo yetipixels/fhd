@@ -954,39 +954,7 @@
     }
 
     /* ══════════════════════════════════════════════
-       SECTION 4 — STATS
-    ══════════════════════════════════════════════ */
-    .stats{background:var(--cream);padding:72px 0}
-    .stats-inner{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:1px solid var(--tan)}
-    .stat{padding:40px 32px;border-right:1px solid var(--tan);text-align:center;position:relative}
-    .stat:last-child{border-right:none}
-    .stat-num{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:400;color:var(--dark);line-height:1}
-    .stat-num span{font-style:italic;color:var(--sage)}
-    .stat-label{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--olive);margin-top:8px}
-    .stat-desc{font-size:.75rem;font-weight:300;color:rgba(43,37,32,.55);margin-top:6px;line-height:1.6}
-
-    /* left text block + stats right layout */
-    .stats-wrap{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center}
-    .stats-text h2{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.6rem);font-weight:400;line-height:1.2;margin-top:10px}
-    .stats-text p{font-size:.8rem;font-weight:300;color:rgba(43,37,32,.6);line-height:1.85;margin-top:16px}
-    .stats-text .btn{margin-top:28px}
-
-    @media(max-width:900px){
-      .stats-wrap{grid-template-columns:1fr;gap:36px}
-      .stats-inner{grid-template-columns:1fr 1fr}
-      .stat:nth-child(2){border-right:none}
-      .stat:nth-child(3){border-right:1px solid var(--tan)}
-      .stat:nth-child(3),.stat:nth-child(4){border-top:1px solid var(--tan)}
-    }
-    @media(max-width:480px){
-      .stats-inner{grid-template-columns:1fr}
-      .stat{border-right:none;border-bottom:1px solid var(--tan)}
-      .stat:last-child{border-bottom:none}
-      .stat:nth-child(3){border-right:none}
-    }
-
-    /* ══════════════════════════════════════════════
-       SECTION 5 — MID HERO (dark atmospheric)
+       SECTION 4 — MID HERO (dark atmospheric)
     ══════════════════════════════════════════════ */
     .mid-hero{position:relative;height:520px;overflow:hidden}
     .mid-hero-img{position:absolute;inset:0;background:url('assets/images/landing/mid-hero.webp') center/cover no-repeat}
@@ -1006,7 +974,7 @@
     }
 
     /* ══════════════════════════════════════════════
-       SECTION 6 — FEATURED PRODUCTS ROW
+       SECTION 5 — FEATURED PRODUCTS ROW
     ══════════════════════════════════════════════ */
     .featured{padding:80px 0;background:var(--bg)}
     .featured-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:20px;flex-wrap:wrap}
@@ -1355,42 +1323,6 @@
           <a href="pages/contact.html?subject=Christmas%20Holiday%20Inquiry" class="btn-holiday-secondary">
             Inquire for Delivery
           </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ STATS ═══════════════ -->
-<section class="stats">
-  <div class="wrap">
-    <div class="stats-wrap">
-      <div class="stats-text fade">
-        <span class="label">Why Fair Home Decor</span>
-        <h2>Artisan Quality,<br/><em>Delivered Nationwide</em></h2>
-        <p>Every piece in our collection is handcrafted by skilled artisans using sustainably sourced solid wood. We serve homeowners and interior designers across the entire United States — from East Brunswick, NJ, to your door.</p>
-        <a href="pages/contact.html" class="btn btn-outline">Work With Us</a>
-      </div>
-      <div class="stats-inner fade d1">
-        <div class="stat">
-          <div class="stat-num">430<span>+</span></div>
-          <div class="stat-label">Products</div>
-          <div class="stat-desc">Handcrafted pieces across all categories</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100<span>%</span></div>
-          <div class="stat-label">Solid Wood</div>
-          <div class="stat-desc">Premium, sustainably sourced materials</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">50<span>+</span></div>
-          <div class="stat-label">States Served</div>
-          <div class="stat-desc">Nationwide shipping across the USA</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">10<span>+</span></div>
-          <div class="stat-label">Collections</div>
-          <div class="stat-desc">Curated ranges for every room</div>
         </div>
       </div>
     </div>
