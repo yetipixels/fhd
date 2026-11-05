@@ -1017,9 +1017,12 @@
     /* ══════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════ */
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
     .footer {
       background: #1A1611;
-      color: rgba(255, 255, 255, 0.78);
+      color: rgba(255, 255, 255, .78);
       padding: 72px 0 0;
       margin-top: auto;
     }
@@ -1031,8 +1034,8 @@
       padding-bottom: 56px;
     }
 
-    .footer-brand img,
-    .footer-brand .fl img {
+    .footer-brand .fl img,
+    .footer-brand img {
       height: 52px;
       width: auto;
       object-fit: contain;
@@ -1041,23 +1044,49 @@
       transition: opacity var(--t);
     }
 
-    .footer-brand img:hover,
-    .footer-brand .fl img:hover {
+    .footer-brand .fl img:hover,
+    .footer-brand img:hover {
       opacity: 1;
     }
 
     .footer-brand p {
-      font-size: 0.75rem;
+      font-size: .75rem;
       line-height: 1.85;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, .75);
       margin-top: 18px;
       max-width: 260px;
     }
 
+    .footer-brand .fsoc {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .footer-brand .fsoc a {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .8);
+      transition: all var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+
+    .footer-brand .fsoc a:hover {
+      border-color: var(--sage);
+      background: var(--sage);
+      color: var(--white);
+      transform: scale(1.12);
+    }
+
     .footer-col h4 {
-      font-size: 0.6rem;
+      font-size: .6rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: .22em;
       text-transform: uppercase;
       color: #FFFFFF;
       margin-bottom: 20px;
@@ -1070,25 +1099,179 @@
     }
 
     .footer-col ul li a {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.75);
-      transition: color var(--t);
+      display: inline-block;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .75);
+      transition: color var(--t), transform 0.2s ease;
+      will-change: transform;
     }
 
     .footer-col ul li a:hover {
       color: var(--sand);
+      transform: scale(1.06) translateX(2px);
+    }
+
+    .footer-contact-col h4 {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+
+    .fcontact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .fcontact-row svg {
+      flex-shrink: 0;
+      color: var(--sand);
+      margin-top: 1px;
+    }
+
+    .fcontact-row a {
+      color: rgba(255, 255, 255, .75);
+      transition: color var(--t);
+    }
+
+    .fcontact-row a:hover {
+      color: var(--sand);
+    }
+
+    /* email sign up in footer */
+    .footer-nl h4 {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+
+    .footer-nl p {
+      font-size: .72rem;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .footer-nl-form {
+      display: flex;
+      border: 1px solid rgba(255, 255, 255, .25);
+    }
+
+    .footer-nl-form input {
+      flex: 1;
+      padding: 11px 16px;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--sans);
+      font-size: .72rem;
+      color: var(--white);
+    }
+
+    .footer-nl-form input::placeholder {
+      color: rgba(255, 255, 255, .45);
+    }
+
+    .footer-nl-form button {
+      padding: 11px 18px;
+      background: var(--sand);
+      color: var(--dark);
+      border: none;
+      font-family: var(--sans);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .footer-nl-form button:hover {
+      background: var(--white);
+      transform: scale(1.05);
+    }
+
+    .footer-nl-social {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .footer-nl-social a {
+      color: rgba(255, 255, 255, .7);
+      transition: color var(--t), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+
+    .footer-nl-social a:hover {
+      color: var(--sand);
+      transform: scale(1.12);
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      border-top: 1px solid rgba(255, 255, 255, .15);
       padding: 22px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
-      font-size: 0.65rem;
-      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .footer-bottom span {
+      font-size: .65rem;
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      font-size: .65rem;
+      color: rgba(255, 255, 255, .55);
+      transition: color var(--t);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--sand);
+    }
+
+    .footer-flag {
+      font-size: .6rem;
+      color: rgba(255, 255, 255, .55);
+    }
+
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -1428,46 +1611,138 @@
   <footer class="footer">
     <div class="wrap">
       <div class="footer-grid">
+        <!-- Brand -->
         <div class="footer-brand">
-          <img src="../assets/images/logo-white.png" alt="Fair Home Decor"
-            onerror="this.onerror=null;this.src='../assets/images/logo.png'" />
-          <p>Handcrafted in our own factory by skilled workers. Headquartered at 1 Auer Ct, East Brunswick, NJ — storage units nationwide, stores opening soon.</p>
+          <div class="fl">
+            <img src="../assets/images/logo-white.png" alt="Fair Home Decor"
+              onerror="this.onerror=null;this.src='../assets/images/logo.png'" />
+          </div>
+          <p>Handcrafted in our own factory by skilled workers. Headquartered at 1 Auer Ct, East Brunswick, NJ with regional storage units across the USA — stores opening soon.</p>
+          <div class="fsoc">
+            <a href="https://www.instagram.com/fairhomedecorinc/" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61593950044982" aria-label="Facebook" target="_blank"
+              rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+          </div>
         </div>
+
+        <!-- Shop -->
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Shop</h4>
           <ul>
             <li><a href="catalogue.html">All Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="catalogue.html">Accent Cabinets</a></li>
+            <li><a href="catalogue.html">Bookshelves</a></li>
+            <li><a href="catalogue.html">Console Tables</a></li>
+            <li><a href="catalogue.html">Side Tables</a></li>
+            <li><a href="catalogue.html">Photo Frames</a></li>
+            <li><a href="catalogue.html">Study Tables</a></li>
           </ul>
         </div>
+
+        <!-- Company -->
         <div class="footer-col">
-          <h4>Account & Trade</h4>
+          <h4>Company</h4>
           <ul>
-            <li><a href="account.html#login">Sign In / Register</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="catalogue.html">Catalogue</a></li>
             <li><a href="account.html#track">Track Order</a></li>
             <li><a href="account.html#favourites">Favourites</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
             <li><a href="account.html#b2b">Trade & Wholesale</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Contact Us</h4>
-          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.75); line-height: 1.8;">
-            1 Auer Ct, East Brunswick, NJ 08816<br />
-            Phone: <a href="tel:+17857131584" style="color: var(--sand);">+1 785-713-1584</a><br />
-            Email: <a href="mailto:info@fairhomedecor.com" style="color: var(--sand);">info@fairhomedecor.com</a>
-          </p>
+
+        <!-- Contact + Newsletter -->
+        <div class="footer-contact-col">
+          <h4>Contact</h4>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>1 Auer Ct, East Brunswick,<br />NJ 08816, United States</span>
+          </div>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42C1.6 2.25 2.33 1.19 3.4.9L6.4 0a2 2 0 0 1 2 1.22l1.38 3.47a2 2 0 0 1-.45 2.11L8 8.09a16 16 0 0 0 6 6l1.27-1.33a2 2 0 0 1 2.11-.45l3.47 1.38a2 2 0 0 1 1.22 2z" />
+            </svg>
+            <a href="tel:+17857131584">+1 785-713-1584</a>
+          </div>
+          <div class="fcontact-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <a href="mailto:info@fairhomedecor.com">info@fairhomedecor.com</a>
+          </div>
+
+          <!-- Footer newsletter -->
+          <div class="footer-nl" style="margin-top:28px">
+            <h4>Email Sign-Up</h4>
+            <p>Subscribe for curated furniture inspiration and irresistible deals delivered straight to you.</p>
+            <form class="footer-nl-form" onsubmit="fnlSubmit(event)">
+              <input type="email" placeholder="Enter email" required aria-label="Email" />
+              <button type="submit">Subscribe</button>
+            </form>
+            <div class="footer-nl-social" style="margin-top:16px">
+              <a href="https://www.instagram.com/fairhomedecorinc/" target="_blank" rel="noopener"
+                aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61593950044982" target="_blank" rel="noopener"
+                aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="footer-bottom">
-        <span>© 2025 Fair Home Decor INC. All rights reserved.</span>
-        <span>Considered living, beautifully made.</span>
+        <span class="footer-flag">🇺🇸 USA | English</span>
+        <span>© 2026 Fair Home Decor INC. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Terms of Service</a>
+          <a href="#">Legal</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Sitemap</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
+    function fnlSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Done ✓';
+      btn.disabled = true;
+      e.target.querySelector('input').value = '';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.disabled = false; }, 4000);
+    }
+
     function getCart() {
       try {
         return JSON.parse(localStorage.getItem('fhd_cart') || '[]');
