@@ -524,7 +524,7 @@
       box-shadow: 0 8px 24px rgba(43, 37, 32, 0.18);
     }
 
-    /* Favourites empty state */
+    /* Favourites empty state & populated grid */
     .fav-empty {
       text-align: center;
       padding: 40px 20px;
@@ -540,6 +540,178 @@
       align-items: center;
       justify-content: center;
       color: var(--sage);
+    }
+
+    .fav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    }
+
+    @media (max-width: 540px) {
+      .fav-grid { grid-template-columns: 1fr; }
+    }
+
+    .fav-card {
+      background: #FFFFFF;
+      border: 1px solid var(--tan);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+
+    .fav-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(43, 37, 32, 0.09);
+    }
+
+    .fav-card-img-wrap {
+      height: 200px;
+      background: #F4EFE6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .fav-card-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.35s ease;
+    }
+
+    .fav-card:hover .fav-card-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .fav-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--tan);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      color: var(--sage2);
+    }
+
+    .fav-card-code {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--dark);
+      color: #FFFFFF;
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .fav-card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .fav-card-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .fav-card-dims {
+      font-size: 0.72rem;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .fav-card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .fav-card-price {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .fav-card-price-note {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--sage2);
+      background: var(--cream);
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
+    .fav-card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-fav-add-cart {
+      flex: 1;
+      background: var(--sage2);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 4px;
+      padding: 9px 12px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .btn-fav-add-cart:hover {
+      background: var(--dark);
+    }
+
+    .btn-fav-remove {
+      background: transparent;
+      color: #9C4141;
+      border: 1px solid #E4BABA;
+      border-radius: 4px;
+      padding: 9px 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-fav-remove:hover {
+      background: #FDF2F2;
+      border-color: #9C4141;
     }
 
     /* ══════════════════════════════════════════════
@@ -934,14 +1106,15 @@
             <h2>Your Saved Pieces</h2>
             <p>Keep track of your favorite handcrafted furniture and decor pieces.</p>
           </div>
-          <div class="fav-empty">
+          <div class="fav-empty" id="favEmptyState">
             <div class="fav-empty-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             </div>
             <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 8px;">No Favourites Saved Yet</h3>
-            <p style="font-size: 0.85rem; color: rgba(43,37,32,0.65); max-width: 440px; margin: 0 auto 24px;">Browse our catalogue of over 430 handcrafted pieces and save items you love for your upcoming interior design projects.</p>
+            <p style="font-size: 0.85rem; color: rgba(43,37,32,0.65); max-width: 440px; margin: 0 auto 24px;">Browse our catalogue of handcrafted pieces and save items you love for your upcoming interior design projects.</p>
             <a href="catalogue.html" class="btn-submit" style="display: inline-block; width: auto; padding: 13px 32px;">Browse Catalogue</a>
           </div>
+          <div class="fav-grid" id="favGrid" style="display:none;"></div>
         </div>
 
         <!-- 4. B2B TRADE PORTAL -->
@@ -1135,7 +1308,108 @@
         btn.classList.add('active');
         panel.classList.add('active');
       }
+      if (tabId === 'favourites') {
+        renderAccountFavourites();
+      }
     }
+
+    function renderAccountFavourites() {
+      const grid = document.getElementById('favGrid');
+      const empty = document.getElementById('favEmptyState');
+      if (!grid || !empty) return;
+
+      let favs = [];
+      try {
+        favs = JSON.parse(localStorage.getItem('fhd_favourites') || '[]');
+      } catch(e) { favs = []; }
+
+      if (favs.length === 0) {
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      empty.style.display = 'none';
+
+      grid.innerHTML = favs.map(item => {
+        const imgPath = item.image ? (item.image.startsWith('../') ? item.image : `../${item.image}`) : '../assets/images/logo.png';
+        const price = item.price || '$XXX';
+        return `
+          <div class="fav-card" id="fav-card-${item.code}">
+            <div class="fav-card-img-wrap" onclick="window.location.href='catalogue.html?q=${encodeURIComponent(item.code)}'">
+              <span class="fav-card-badge">${item.tag || 'Handcrafted'}</span>
+              <span class="fav-card-code">${item.code}</span>
+              <img src="${imgPath}" alt="${item.name || item.code}" onerror="this.src='../assets/images/logo.png';" />
+            </div>
+            <div class="fav-card-body">
+              <h4 class="fav-card-title">${item.name || item.code}</h4>
+              <p class="fav-card-dims">${item.dimensions || 'Handcrafted Solid Wood'}</p>
+              <div class="fav-card-price-row">
+                <span class="fav-card-price">${price}</span>
+                <span class="fav-card-price-note">Trade / Wholesale</span>
+              </div>
+              <div class="fav-card-actions">
+                <button type="button" class="btn-fav-add-cart" onclick="addFavToCart('${item.code}')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Add to Cart
+                </button>
+                <button type="button" class="btn-fav-remove" onclick="removeFavourite('${item.code}')" title="Remove piece">
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function removeFavourite(code) {
+      let favs = [];
+      try {
+        favs = JSON.parse(localStorage.getItem('fhd_favourites') || '[]');
+      } catch(e) { favs = []; }
+      favs = favs.filter(item => (typeof item === 'string' ? item : item.code) !== code);
+      localStorage.setItem('fhd_favourites', JSON.stringify(favs));
+      renderAccountFavourites();
+    }
+
+    function addFavToCart(code) {
+      let favs = [];
+      try {
+        favs = JSON.parse(localStorage.getItem('fhd_favourites') || '[]');
+      } catch(e) { favs = []; }
+      const item = favs.find(f => (typeof f === 'string' ? f : f.code) === code);
+      if (!item) return;
+
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
+      } catch(e) { cart = []; }
+
+      const existingIndex = cart.findIndex(p => p.code === code);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+      } else {
+        cart.push({
+          code: item.code,
+          name: item.name || item.code,
+          dimensions: item.dimensions || '',
+          material: item.material || '',
+          tag: item.tag || '',
+          image: item.image || '',
+          price: item.price || '$XXX',
+          quantity: 1,
+          addedAt: new Date().toISOString()
+        });
+      }
+      localStorage.setItem('fhd_cart', JSON.stringify(cart));
+      
+      const count = cart.reduce((sum, i) => sum + (i.quantity || 1), 0);
+      document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+      alert(`Added "${item.name || item.code}" to your shopping cart!`);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const hash = window.location.hash.replace('#', '');
       if (hash && ['login', 'track', 'favourites', 'b2b'].includes(hash)) {

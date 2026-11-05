@@ -539,6 +539,284 @@
       border-bottom-color: #FFFFFF;
     }
 
+    .holiday-pill-badge {
+      background: #D96A28;
+      color: #FFFFFF;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 6px;
+      vertical-align: middle;
+      display: inline-block;
+      line-height: 1.2;
+    }
+
+    /* ========================================================
+       HOLIDAY COLLECTION SHOWCASE SECTION
+       ======================================================== */
+    .holiday-section {
+      max-width: 1440px;
+      margin: 0 auto 36px;
+      padding: 0 48px;
+    }
+
+    .holiday-section-inner {
+      background: linear-gradient(135deg, #1E271D 0%, #2A3828 50%, #1D261C 100%);
+      border: 1px solid #3F4E39;
+      border-radius: 12px;
+      padding: 38px 36px 42px;
+      box-shadow: 0 16px 48px rgba(27, 36, 24, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .holiday-section-inner::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(212, 175, 122, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .holiday-banner-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 30px;
+    }
+
+    .holiday-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #E2CEAD;
+      margin-bottom: 8px;
+    }
+
+    .holiday-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.4vw, 2.75rem);
+      font-weight: 400;
+      color: #FAF8F5;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+
+    .holiday-subtitle {
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.82);
+      line-height: 1.6;
+    }
+
+    .holiday-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .holiday-card {
+      background: #FFFFFF;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+      position: relative;
+    }
+
+    .holiday-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+    }
+
+    .holiday-img-wrap {
+      height: 220px;
+      background: #F4EFE6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 12px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .holiday-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+
+    .holiday-card:hover .holiday-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .holiday-badge-festive {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #1E271D;
+      color: #E2CEAD;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid #3F4E39;
+      z-index: 2;
+    }
+
+    .holiday-card-body {
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .holiday-code-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--color-sage-dark);
+      margin-bottom: 4px;
+    }
+
+    .holiday-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .holiday-card-desc {
+      font-size: 0.74rem;
+      color: rgba(43, 37, 32, 0.68);
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .holiday-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    /* Prompt / Invitation Card for Upcoming Holiday Uploads */
+    .holiday-prompt-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px dashed rgba(226, 206, 173, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #FAF8F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    .holiday-prompt-card:hover {
+      border-color: #E2CEAD;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .holiday-prompt-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      max-width: 260px;
+    }
+
+    .holiday-prompt-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(226, 206, 173, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #E2CEAD;
+    }
+
+    .holiday-prompt-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E2CEAD;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .holiday-prompt-inner h4 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #FFFFFF;
+      line-height: 1.25;
+    }
+
+    .holiday-prompt-inner p {
+      font-size: 0.76rem;
+      color: rgba(250, 248, 245, 0.82);
+      line-height: 1.5;
+    }
+
+    .btn-holiday-inquire {
+      margin-top: 6px;
+      padding: 9px 18px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1E271D;
+      background: #E2CEAD;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-holiday-inquire:hover {
+      background: #FFFFFF;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1200px) {
+      .holiday-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .holiday-section { padding: 0 18px; margin-bottom: 24px; }
+      .holiday-section-inner { padding: 24px 18px 28px; }
+      .holiday-cards-grid { grid-template-columns: 1fr; }
+    }
+
     /* ========================================================
        Subcategory Feature Showcase (4 Cards as in design reference)
        ======================================================== */
@@ -625,17 +903,40 @@
       width: 100%;
       background: var(--color-white);
       border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 12px 18px;
+      border-radius: 8px;
+      padding: 13px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--color-dark);
       box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all var(--transition);
     }
-    .btn-toggle-mobile-filters svg { color: var(--color-sage); }
+    .btn-toggle-mobile-filters:hover {
+      border-color: var(--color-sage);
+      box-shadow: 0 4px 16px rgba(43,37,32,0.1);
+    }
+    .btn-toggle-mobile-filters svg { color: var(--color-sage-dark); }
+
+    /* Filter Drawer Backdrop Overlay */
+    .filter-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(43, 37, 32, 0.58);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 450;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .filter-drawer-overlay.open {
+      display: block;
+      opacity: 1;
+    }
 
     /* ========================================================
        Main Catalogue Area (Sidebar + Grid)
@@ -661,7 +962,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .filter-header {
+    .filter-drawer-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -670,11 +971,55 @@
       margin-bottom: 20px;
     }
 
-    .filter-header h3 {
+    .filter-drawer-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .filter-drawer-header h3 {
       font-family: var(--font-serif);
       font-size: 1.5rem;
       font-weight: 500;
       color: var(--color-dark);
+    }
+
+    .filter-drawer-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      background: var(--color-cream);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .btn-close-filter-drawer {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #F0ECE4;
+      color: var(--color-dark);
+      font-size: 1.25rem;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .btn-close-filter-drawer:hover {
+      background: #E2DBD0;
+      transform: scale(1.05);
+    }
+
+    .filter-drawer-body {
+      display: contents;
+    }
+
+    .filter-drawer-footer {
+      display: none;
     }
 
     .btn-clear-filters {
@@ -922,8 +1267,8 @@
 
     .product-badge-subcat {
       position: absolute;
-      top: 12px;
-      left: 12px;
+      top: 10px;
+      left: 10px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(4px);
       border: 1px solid var(--color-border);
@@ -934,12 +1279,13 @@
       color: var(--color-sage-dark);
       padding: 3px 8px;
       border-radius: 3px;
+      z-index: 2;
     }
 
     .product-badge-code {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      bottom: 10px;
+      left: 10px;
       background: var(--color-dark);
       color: #FFFFFF;
       font-size: 0.62rem;
@@ -947,6 +1293,50 @@
       letter-spacing: 0.08em;
       padding: 3px 7px;
       border-radius: 3px;
+      z-index: 2;
+    }
+
+    /* Floating Heart Favourite Button */
+    .btn-card-fav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: #6E6152;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .btn-card-fav:hover {
+      transform: scale(1.15);
+      background: #FFFFFF;
+      color: #B83B3B;
+      border-color: #B83B3B;
+    }
+    .btn-card-fav.is-fav {
+      color: #B83B3B;
+      background: #FFF5F5;
+      border-color: #E8A8A8;
+    }
+    .btn-card-fav.is-fav svg {
+      fill: #B83B3B;
+      stroke: #B83B3B;
+      animation: heartPop 0.35s ease;
+    }
+    @keyframes heartPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
     }
 
     /* Hover overlay quick view button */
@@ -1038,6 +1428,32 @@
       gap: 10px;
     }
 
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .product-price-val {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .product-price-note {
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      background: #EDE8DE;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
     .card-actions-left {
       display: flex;
       align-items: center;
@@ -1067,12 +1483,13 @@
       gap: 6px;
     }
 
-    .btn-buy-now {
+    .btn-buy-now,
+    .btn-add-cart {
       background: var(--color-sage-dark);
       color: #FFFFFF;
       font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 8px 14px;
       border-radius: 4px;
@@ -1085,7 +1502,8 @@
       cursor: pointer;
     }
 
-    .btn-buy-now:hover {
+    .btn-buy-now:hover,
+    .btn-add-cart:hover {
       background: var(--color-dark);
       color: #FFFFFF;
       transform: scale(1.06);
@@ -1723,6 +2141,64 @@
       flex-wrap: wrap;
     }
 
+    .modal-price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .modal-price-val {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: 0.02em;
+    }
+
+    .modal-price-note {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      background: var(--color-cream);
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    .btn-modal-fav {
+      background: #FFFFFF;
+      color: var(--color-dark);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 13px 18px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-modal-fav:hover {
+      background: #FFF5F5;
+      color: #B83B3B;
+      border-color: #E8A8A8;
+    }
+    .btn-modal-fav.is-fav {
+      background: #FFF5F5;
+      color: #B83B3B;
+      border-color: #E8A8A8;
+    }
+    .btn-modal-fav.is-fav svg {
+      fill: #B83B3B;
+      stroke: #B83B3B;
+    }
+
     .btn-modal-buynow {
       flex: 1.2;
       background: var(--color-sage-dark);
@@ -1910,6 +2386,7 @@
       .brand-logo img { height: 56px; }
       .nav-menu-links { gap: 16px; }
       .nav-menu-links a { font-size: 0.68rem; }
+      .catalogue-container { grid-template-columns: 1fr; padding: 0 24px 60px; }
     }
 
     /* Small Tablets & Large Phones (600px - 768px) */
@@ -1929,22 +2406,100 @@
       .showcase-content { padding: 10px; }
       .showcase-content h4 { font-size: 0.96rem; }
 
-      /* Make filter collapsible on mobile */
-      .mobile-filter-header { display: block; }
-      .filter-sidebar {
-        display: none; /* toggled via JS */
-        position: static;
-        margin-bottom: 20px;
-        box-shadow: none;
-      }
-      .filter-sidebar.mobile-open {
-        display: block;
-        animation: fadeIn 0.25s ease;
-      }
+      .catalogue-container { grid-template-columns: 1fr; padding: 0 18px 50px; }
+    }
 
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-8px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* Mobile & Tablet Slide-Over Filter Drawer (< 1024px) */
+    @media (max-width: 1023px) {
+      .mobile-filter-header {
+        display: block;
+        margin-bottom: 20px;
+      }
+      .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(340px, 86vw);
+        height: 100vh;
+        z-index: 460;
+        background: #FAF8F5;
+        box-shadow: 8px 0 32px rgba(43, 37, 32, 0.25);
+        transform: translateX(-100%);
+        transition: transform 0.32s cubic-bezier(0.33, 1, 0.68, 1);
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        overflow: hidden;
+      }
+      .filter-sidebar.open {
+        transform: translateX(0);
+      }
+      .filter-drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 22px;
+        background: #FFFFFF;
+        border-bottom: 1px solid var(--color-border);
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .btn-close-filter-drawer {
+        display: flex;
+      }
+      .filter-drawer-body {
+        display: block;
+        overflow-y: auto;
+        padding: 22px;
+        flex: 1;
+        -webkit-overflow-scrolling: touch;
+      }
+      .filter-drawer-footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 22px;
+        background: #FFFFFF;
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 16px rgba(43, 37, 32, 0.06);
+        flex-shrink: 0;
+      }
+      .btn-drawer-reset {
+        padding: 11px 18px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-brown);
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .btn-drawer-reset:hover {
+        background: #F0ECE4;
+      }
+      .btn-drawer-apply {
+        flex: 1;
+        padding: 11px 20px;
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        background: var(--color-sage-dark);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+      .btn-drawer-apply:hover {
+        background: var(--color-dark);
       }
 
       .catalogue-container { grid-template-columns: 1fr; padding: 0 18px 50px; }
@@ -2110,6 +2665,7 @@
   <nav class="category-ribbon">
     <div class="category-ribbon-inner">
       <div class="ribbon-item active" data-dept="all" onclick="selectDepartment('all', this)">All Pieces (439)</div>
+      <div class="ribbon-item" data-dept="holiday" onclick="selectDepartment('holiday', this)">🎄 Holiday Collection <span class="holiday-pill-badge">New</span></div>
       <div class="ribbon-item" data-dept="furnishing" onclick="selectDepartment('furnishing', this)">Furnishing (423)</div>
       <div class="ribbon-item" data-dept="lighting" onclick="selectDepartment('lighting', this)">Lighting</div>
       <div class="ribbon-item" data-dept="seating" onclick="selectDepartment('seating', this)">Seating</div>
@@ -2167,45 +2723,190 @@
   </section>
 
   <!-- ==========================================
+       HOLIDAY COLLECTION SHOWCASE SECTION
+       ========================================== -->
+  <section class="holiday-section" id="holidaySection">
+    <div class="holiday-section-inner">
+      <div class="holiday-banner-header">
+        <div class="holiday-eyebrow">
+          <span>🎄</span>
+          <span>Festive Curation & Holiday Accents</span>
+        </div>
+        <h2 class="holiday-title">The Holiday Collection</h2>
+        <p class="holiday-subtitle">
+          Handcrafted festive candle centerpieces, sculpted holiday decor, and heirloom entertaining accents designed to bring warm ambiance and elegance to winter celebrations.
+        </p>
+      </div>
+
+      <div class="holiday-cards-grid">
+        <!-- Holiday Card 1: Silver Star Arch -->
+        <div class="holiday-card">
+          <div class="holiday-img-wrap" onclick="openQuickView('FHD-HD-1002')">
+            <span class="holiday-badge-festive">Festive Centerpiece</span>
+            <button type="button" class="btn-card-fav" data-code="FHD-HD-1002" onclick="event.stopPropagation(); toggleFavourite('FHD-HD-1002')" title="Save to Favourites" aria-label="Favourite">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <img src="../assets/images/landing/new-arrival-star-arch.jpg" alt="Silver Star Arch Candle Centrepiece" onerror="this.src='../assets/images/logo.png';" />
+            <div class="quick-view-overlay">
+              <button type="button" class="btn-quick-view" onclick="event.stopPropagation(); openQuickView('FHD-HD-1002')">Quick View</button>
+            </div>
+          </div>
+          <div class="holiday-card-body">
+            <span class="holiday-code-pill">FHD-HD-1002</span>
+            <h3 class="holiday-card-title">Silver Star Arch Candle Centrepiece</h3>
+            <div class="product-dimensions-box">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <span>20 x 6 x 18 in</span>
+            </div>
+            <p class="holiday-card-desc">Statement Christmas holiday centerpiece featuring sculpted five-point stars arched above a textured metal tray with 3 crackle glass votive holders.</p>
+            <div class="product-price-row">
+              <span class="product-price-val">$XXX</span>
+              <span class="product-price-note">Trade / Wholesale</span>
+            </div>
+            <div class="holiday-card-footer">
+              <button type="button" class="btn-add-cart" onclick="addToCart('FHD-HD-1002')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn-card-quickview-alt" onclick="openQuickView('FHD-HD-1002')">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday Card 2: Reindeer Sleigh Pair -->
+        <div class="holiday-card">
+          <div class="holiday-img-wrap" onclick="openQuickView('FHD-HD-1003')">
+            <span class="holiday-badge-festive">Festive Pair</span>
+            <button type="button" class="btn-card-fav" data-code="FHD-HD-1003" onclick="event.stopPropagation(); toggleFavourite('FHD-HD-1003')" title="Save to Favourites" aria-label="Favourite">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <img src="../assets/images/landing/new-arrival-reindeer-sleigh.jpg" alt="Reindeer Sleigh Candle Holders Pair" onerror="this.src='../assets/images/logo.png';" />
+            <div class="quick-view-overlay">
+              <button type="button" class="btn-quick-view" onclick="event.stopPropagation(); openQuickView('FHD-HD-1003')">Quick View</button>
+            </div>
+          </div>
+          <div class="holiday-card-body">
+            <span class="holiday-code-pill">FHD-HD-1003</span>
+            <h3 class="holiday-card-title">Reindeer Sleigh Candle Holders Pair</h3>
+            <div class="product-dimensions-box">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <span>Pair (Each 12 x 4 x 9 in)</span>
+            </div>
+            <p class="holiday-card-desc">Set of two elegant Christmas reindeer leaping sleigh candle holders in gold and silver metallic finishes with mercury glass votives.</p>
+            <div class="product-price-row">
+              <span class="product-price-val">$XXX</span>
+              <span class="product-price-note">Trade / Wholesale</span>
+            </div>
+            <div class="holiday-card-footer">
+              <button type="button" class="btn-add-cart" onclick="addToCart('FHD-HD-1003')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn-card-quickview-alt" onclick="openQuickView('FHD-HD-1003')">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday Card 3: Silver Reindeer Centerpiece -->
+        <div class="holiday-card">
+          <div class="holiday-img-wrap" onclick="openQuickView('FHD-HD-1001')">
+            <span class="holiday-badge-festive">Festive Centerpiece</span>
+            <button type="button" class="btn-card-fav" data-code="FHD-HD-1001" onclick="event.stopPropagation(); toggleFavourite('FHD-HD-1001')" title="Save to Favourites" aria-label="Favourite">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <img src="../assets/images/landing/reindeer-candle-centrepiece.jpg" alt="Silver Reindeer Candle Centrepiece" onerror="this.src='../assets/images/logo.png';" />
+            <div class="quick-view-overlay">
+              <button type="button" class="btn-quick-view" onclick="event.stopPropagation(); openQuickView('FHD-HD-1001')">Quick View</button>
+            </div>
+          </div>
+          <div class="holiday-card-body">
+            <span class="holiday-code-pill">FHD-HD-1001</span>
+            <h3 class="holiday-card-title">Silver Reindeer Candle Centrepiece</h3>
+            <div class="product-dimensions-box">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <span>14 x 5 x 16 in</span>
+            </div>
+            <p class="holiday-card-desc">Festive sculpted reindeer candle centerpiece on stepped champagne silver platform holding three crackle glass votive candle holders.</p>
+            <div class="product-price-row">
+              <span class="product-price-val">$XXX</span>
+              <span class="product-price-note">Trade / Wholesale</span>
+            </div>
+            <div class="holiday-card-footer">
+              <button type="button" class="btn-add-cart" onclick="addToCart('FHD-HD-1001')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn-card-quickview-alt" onclick="openQuickView('FHD-HD-1001')">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday Card 4: Uploads in Progress / Custom Invitation -->
+        <div class="holiday-card holiday-prompt-card">
+          <div class="holiday-prompt-inner">
+            <div class="holiday-prompt-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span class="holiday-prompt-badge">Uploads In Progress</span>
+            <h4>More Festive Pieces Arriving</h4>
+            <p>We are adding additional handcrafted holiday pieces, brass candelabras, and festive tableware to this collection soon.</p>
+            <a href="#holidaySection" class="btn-holiday-inquire" onclick="alert('Holiday collection section is active! You can upload new holiday items at any time.');">
+              Uploads Welcome
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Drawer Backdrop Overlay (Mobile/Tablet) -->
+  <div class="filter-drawer-overlay" id="filterDrawerOverlay" onclick="closeFilterDrawer()"></div>
+
+  <!-- ==========================================
        MAIN CATALOGUE SECTION (SIDEBAR + GRID)
        ========================================== -->
   <div class="catalogue-container">
 
     <!-- Mobile Filter & Sort Drawer Toggle -->
     <div class="mobile-filter-header">
-      <button type="button" class="btn-toggle-mobile-filters" onclick="toggleMobileFilterDrawer()">
+      <button type="button" class="btn-toggle-mobile-filters" onclick="openFilterDrawer()">
         <span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle; margin-right:6px;"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-          Filter & Sort (<span id="mobileCountBadge">439</span> items)
+          Filter &amp; Refine (<span id="mobileCountBadge">439</span> pieces)
         </span>
-        <span id="mobileFilterToggleIcon" style="font-size:1.1rem; color:var(--color-sage);">&#9662;</span>
+        <span style="font-size:0.76rem; font-weight:700; color:var(--color-sage-dark); letter-spacing:0.05em; text-transform:uppercase;">Adjust &rarr;</span>
       </button>
     </div>
 
-    <!-- LEFT FILTER SIDEBAR -->
+    <!-- LEFT FILTER SIDEBAR / MOBILE SLIDE-OVER DRAWER -->
     <aside class="filter-sidebar" id="filterSidebar">
-      <div class="filter-header">
-        <h3>Filters</h3>
-        <button class="btn-clear-filters" onclick="resetFilters()">Reset All</button>
+      <div class="filter-drawer-header">
+        <div class="filter-drawer-title-wrap">
+          <h3>Filters</h3>
+          <span class="filter-drawer-badge" id="drawerCountBadge">439 pieces</span>
+        </div>
+        <button type="button" class="btn-close-filter-drawer" onclick="closeFilterDrawer()" aria-label="Close filters">&times;</button>
+        <button type="button" class="btn-clear-filters" onclick="resetFilters()">Reset All</button>
       </div>
 
-      <!-- In Stock & Availability Toggles -->
-      <div class="toggle-group">
-        <label class="toggle-label">
-          <span>In Stock / Ready to Ship</span>
-          <span class="switch">
-            <input type="checkbox" id="toggleInStock" onchange="applyFilters()" checked />
-            <span class="slider"></span>
-          </span>
-        </label>
-        <label class="toggle-label">
-          <span>Container Load (HC40)</span>
-          <span class="switch">
-            <input type="checkbox" id="toggleContainer" onchange="applyFilters()" checked />
-            <span class="slider"></span>
-          </span>
-        </label>
-      </div>
+      <div class="filter-drawer-body">
+        <!-- In Stock & Availability Toggles -->
+        <div class="toggle-group">
+          <label class="toggle-label">
+            <span>In Stock / Ready to Ship</span>
+            <span class="switch">
+              <input type="checkbox" id="toggleInStock" onchange="applyFilters()" checked />
+              <span class="slider"></span>
+            </span>
+          </label>
+          <label class="toggle-label">
+            <span>Container Load (HC40)</span>
+            <span class="switch">
+              <input type="checkbox" id="toggleContainer" onchange="applyFilters()" checked />
+              <span class="slider"></span>
+            </span>
+          </label>
+        </div>
 
       <!-- Sort Filter -->
       <div class="filter-section">
@@ -2230,6 +2931,10 @@
           <li class="filter-option">
             <label><input type="radio" name="deptOption" value="all" checked onchange="handleDeptChange('all')" /> All Departments</label>
             <span class="filter-count">439</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="deptOption" value="holiday" onchange="handleDeptChange('holiday')" /> 🎄 Holiday Collection</label>
+            <span class="filter-count" style="color:var(--color-sage-dark); font-weight:700;">4</span>
           </li>
           <li class="filter-option">
             <label><input type="radio" name="deptOption" value="furnishing" onchange="handleDeptChange('furnishing')" /> Furnishing</label>
@@ -2263,6 +2968,10 @@
             <span class="filter-count">439</span>
           </li>
           <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="candle-holders" onchange="applyFilters()" /> 🎄 Holiday &amp; Candle Decor</label>
+            <span class="filter-count">4</span>
+          </li>
+          <li class="filter-option">
             <label><input type="radio" name="subcatOption" value="round-tables" onchange="applyFilters()" /> Round Tables</label>
             <span class="filter-count">80</span>
           </li>
@@ -2294,6 +3003,14 @@
             <label><input type="radio" name="subcatOption" value="photo-frames" onchange="applyFilters()" /> Wooden Photo Frames</label>
             <span class="filter-count">16</span>
           </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="cushions" onchange="applyFilters()" /> Cushion Covers &amp; Textiles</label>
+            <span class="filter-count">1</span>
+          </li>
+          <li class="filter-option">
+            <label><input type="radio" name="subcatOption" value="vanity-sets" onchange="applyFilters()" /> Vanity Decor Sets</label>
+            <span class="filter-count">1</span>
+          </li>
         </ul>
       </div>
 
@@ -2310,14 +3027,20 @@
             <span class="filter-count" style="color:var(--color-sage-dark); font-weight:700;">In Stock</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="materialOption" value="metal" onchange="handleMaterialChange('metal')" /> Brass, Copper & Iron</label>
+            <label><input type="radio" name="materialOption" value="metal" onchange="handleMaterialChange('metal')" /> Brass, Copper &amp; Iron</label>
             <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="materialOption" value="stone" onchange="handleMaterialChange('stone')" /> Marble & Stones</label>
+            <label><input type="radio" name="materialOption" value="stone" onchange="handleMaterialChange('stone')" /> Marble &amp; Stones</label>
             <span class="filter-count" style="opacity:0.7;">Soon</span>
           </li>
         </ul>
+      </div>
+      </div><!-- /.filter-drawer-body -->
+
+      <div class="filter-drawer-footer">
+        <button type="button" class="btn-drawer-reset" onclick="resetFilters()">Reset All</button>
+        <button type="button" class="btn-drawer-apply" onclick="applyFiltersAndCloseDrawer()">Apply Filters</button>
       </div>
     </aside>
 
@@ -2545,6 +3268,11 @@
       <div class="modal-details">
         <span class="modal-badge" id="modalBadge">Accent Cabinet</span>
         <h2 class="modal-title" id="modalTitle">Accent Cabinet FHD-AF-1001</h2>
+
+        <div class="modal-price-box">
+          <span class="modal-price-val">$XXX</span>
+          <span class="modal-price-note">Trade / Wholesale Pricing</span>
+        </div>
         
         <div class="modal-specs-table">
           <div class="spec-row">
@@ -2572,9 +3300,13 @@
         <p class="modal-desc" id="modalDesc"></p>
 
         <div class="modal-actions">
-          <button type="button" id="modalBuyNowBtn" class="btn-modal-buynow" onclick="buyNowFromModal()">
+          <button type="button" id="modalBuyNowBtn" class="btn-modal-buynow" onclick="addToCartFromModal()">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-            Buy Now
+            Add to Cart
+          </button>
+          <button type="button" id="modalFavBtn" class="btn-modal-fav" onclick="toggleFavouriteFromModal()" title="Save to Favourites">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span id="modalFavText">Save to Favourites</span>
           </button>
           <a href="#" id="modalEnquireBtn" class="btn-modal-enquire">Inquire / Custom Order</a>
         </div>
@@ -2604,7 +3336,7 @@
 
     let currentModalCode = '';
 
-    // Department grouping map (Furnishing, Lighting, Seating, Accessories & Decor, Art & Sculpture)
+    // Department grouping map (Furnishing, Holiday, Lighting, Seating, Accessories & Decor, Art & Sculpture)
     const DEPT_MAP = {
       furnishing: [
         'round-tables',
@@ -2615,6 +3347,10 @@
         'accent-cabinets',
         'bookshelves',
         'cushions'
+      ],
+      holiday: [
+        'candle-holders',
+        'holiday-decor'
       ],
       accessories: ['photo-frames', 'candle-holders', 'vanity-sets'],
       seating: [],
@@ -2701,19 +3437,41 @@
       applyFilters();
     }
 
-    // Toggle Mobile Filter Drawer
-    function toggleMobileFilterDrawer() {
+    // Mobile / Tablet Filter Drawer Controls
+    function openFilterDrawer() {
       const sidebar = document.getElementById('filterSidebar');
-      const icon = document.getElementById('mobileFilterToggleIcon');
-      sidebar.classList.toggle('mobile-open');
-      const isOpen = sidebar.classList.contains('mobile-open');
-      icon.innerHTML = isOpen ? '&#9652;' : '&#9662;';
+      const overlay = document.getElementById('filterDrawerOverlay');
+      if (sidebar) sidebar.classList.add('open');
+      if (overlay) overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFilterDrawer() {
+      const sidebar = document.getElementById('filterSidebar');
+      const overlay = document.getElementById('filterDrawerOverlay');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function applyFiltersAndCloseDrawer() {
+      applyFilters();
+      closeFilterDrawer();
+      const mainView = document.querySelector('.main-catalogue-view');
+      if (mainView) {
+        mainView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     // Select Department from Ribbon or Sidebar
     function selectDepartment(dept, element) {
       document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
-      if (element) element.classList.add('active');
+      if (element) {
+        element.classList.add('active');
+      } else {
+        const item = document.querySelector(`.ribbon-item[data-dept="${dept}"]`);
+        if (item) item.classList.add('active');
+      }
 
       state.selectedDepartment = dept;
       state.selectedMaterial = 'all';
@@ -2728,6 +3486,11 @@
 
       state.currentPage = 1;
       applyFilters();
+
+      if (dept === 'holiday') {
+        const hSec = document.getElementById('holidaySection');
+        if (hSec) hSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function handleDeptChange(dept) {
@@ -2740,6 +3503,11 @@
       if (subAll) subAll.checked = true;
       state.currentPage = 1;
       applyFilters();
+
+      if (dept === 'holiday') {
+        const hSec = document.getElementById('holidaySection');
+        if (hSec) hSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     // Select Material from Ribbon or Sidebar
@@ -2783,11 +3551,7 @@
       document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
 
       applyFilters();
-
-      const sidebar = document.getElementById('filterSidebar');
-      if (sidebar) sidebar.classList.remove('mobile-open');
-      const icon = document.getElementById('mobileFilterToggleIcon');
-      if (icon) icon.innerHTML = '&#9662;';
+      closeFilterDrawer();
 
       document.querySelector('.main-catalogue-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -2829,6 +3593,7 @@
     function formatDeptName(key) {
       const map = {
         furnishing: 'Furnishing',
+        holiday: '🎄 Holiday Collection',
         lighting: 'Lighting',
         seating: 'Seating',
         accessories: 'Accessories & Decor',
@@ -2962,7 +3727,146 @@
     }
 
     function formatSubcatName(key) {
+      const map = {
+        'candle-holders': 'Holiday & Candle Decor',
+        'cushions': 'Cushion Covers',
+        'vanity-sets': 'Vanity Decor Sets',
+        'round-tables': 'Round Tables',
+        'side-tables': 'Side Tables',
+        'bedside-tables': 'Bedside Tables',
+        'study-tables': 'Study Desks',
+        'console-tables': 'Console Tables',
+        'accent-cabinets': 'Accent Cabinets',
+        'bookshelves': 'Bookshelves',
+        'photo-frames': 'Wooden Photo Frames'
+      };
+      if (map[key]) return map[key];
       return key.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    // ── FAVOURITES LOGIC ───────────────────────────────────
+    function getFavourites() {
+      try {
+        return JSON.parse(localStorage.getItem('fhd_favourites') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function isFavourite(code) {
+      const favs = getFavourites();
+      return favs.some(item => (typeof item === 'string' ? item : item.code) === code);
+    }
+
+    function toggleFavourite(code) {
+      let favs = getFavourites();
+      const existingIndex = favs.findIndex(item => (typeof item === 'string' ? item : item.code) === code);
+      const item = state.allProducts.find(p => p.code === code);
+      let added = false;
+
+      if (existingIndex > -1) {
+        favs.splice(existingIndex, 1);
+        added = false;
+      } else {
+        if (item) {
+          favs.push({
+            code: item.code,
+            name: item.name,
+            dimensions: item.dimensions,
+            material: item.material,
+            tag: item.tag,
+            image: item.image,
+            price: '$XXX',
+            addedAt: new Date().toISOString()
+          });
+        } else {
+          favs.push({
+            code: code,
+            name: code,
+            price: '$XXX',
+            addedAt: new Date().toISOString()
+          });
+        }
+        added = true;
+      }
+
+      localStorage.setItem('fhd_favourites', JSON.stringify(favs));
+
+      // Update all heart buttons on page matching this code
+      document.querySelectorAll(`.btn-card-fav[data-code="${code}"]`).forEach(btn => {
+        btn.classList.toggle('is-fav', added);
+        btn.title = added ? 'Remove from Favourites' : 'Save to Favourites';
+        btn.setAttribute('aria-label', added ? 'Remove from Favourites' : 'Save to Favourites');
+        const svg = btn.querySelector('svg');
+        if (svg) {
+          svg.setAttribute('fill', added ? '#B83B3B' : 'none');
+          svg.setAttribute('stroke', added ? '#B83B3B' : 'currentColor');
+        }
+      });
+
+      updateModalFavButton(code);
+      showFavToast(item ? item.name : code, added);
+    }
+
+    function updateModalFavButton(code) {
+      const btn = document.getElementById('modalFavBtn');
+      const txt = document.getElementById('modalFavText');
+      if (!btn || !txt) return;
+      const fav = isFavourite(code);
+      btn.classList.toggle('is-fav', fav);
+      const svg = btn.querySelector('svg');
+      if (svg) {
+        svg.setAttribute('fill', fav ? '#B83B3B' : 'none');
+        svg.setAttribute('stroke', fav ? '#B83B3B' : 'currentColor');
+      }
+      txt.textContent = fav ? 'Saved in Favourites' : 'Save to Favourites';
+    }
+
+    function toggleFavouriteFromModal() {
+      if (currentModalCode) {
+        toggleFavourite(currentModalCode);
+      }
+    }
+
+    // ── FUNCTIONAL CART LOGIC (No Checkout Navigation) ──
+    function addToCart(code) {
+      const item = state.allProducts.find(p => p.code === code);
+      if (!item) return;
+
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
+      } catch (e) {
+        cart = [];
+      }
+
+      const existingIndex = cart.findIndex(p => p.code === code);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+      } else {
+        cart.push({
+          code: item.code,
+          name: item.name,
+          dimensions: item.dimensions,
+          material: item.material,
+          tag: item.tag,
+          image: item.image,
+          price: '$XXX',
+          quantity: 1,
+          addedAt: new Date().toISOString()
+        });
+      }
+
+      localStorage.setItem('fhd_cart', JSON.stringify(cart));
+      updateCartCounters();
+      showCartToast(item.name);
+      // NOTE: Functional without navigating away from the page!
+    }
+
+    function addToCartFromModal() {
+      if (currentModalCode) {
+        addToCart(currentModalCode);
+      }
     }
 
     // Render product cards and pagination
@@ -2974,6 +3878,8 @@
       document.getElementById('totalCount').textContent = total;
       const mobBadge = document.getElementById('mobileCountBadge');
       if (mobBadge) mobBadge.textContent = total;
+      const drawerBadge = document.getElementById('drawerCountBadge');
+      if (drawerBadge) drawerBadge.textContent = `${total} pieces`;
 
       // Handle blank / upcoming category selection
       if (state.isBlankCategory && state.blankInfo) {
@@ -3024,11 +3930,17 @@
 
       grid.innerHTML = pageItems.map(item => {
         const imgPath = item.image.startsWith('../') ? item.image : `../${item.image}`;
+        const fav = isFavourite(item.code);
         return `
           <div class="product-card">
             <div class="product-image-wrap" onclick="openQuickView('${item.code}')">
               <span class="product-badge-subcat">${item.tag}</span>
               <span class="product-badge-code">${item.code}</span>
+
+              <button type="button" class="btn-card-fav ${fav ? 'is-fav' : ''}" data-code="${item.code}" onclick="event.stopPropagation(); toggleFavourite('${item.code}')" title="${fav ? 'Remove from Favourites' : 'Save to Favourites'}" aria-label="Favourite">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="${fav ? '#B83B3B' : 'none'}" stroke="${fav ? '#B83B3B' : 'currentColor'}" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+
               <img src="${imgPath}" alt="${item.name}" loading="lazy" onerror="this.src='../assets/images/logo.png';" />
               
               <div class="quick-view-overlay">
@@ -3044,6 +3956,11 @@
                 <span>${item.dimensions}</span>
               </div>
 
+              <div class="product-price-row">
+                <span class="product-price-val">$XXX</span>
+                <span class="product-price-note">Trade / Wholesale</span>
+              </div>
+
               <p class="product-card-desc">${item.description}</p>
 
               <div class="product-card-footer">
@@ -3054,9 +3971,9 @@
                   </button>
                 </div>
                 <div class="card-btn-group">
-                  <button type="button" class="btn-buy-now" onclick="buyNow('${item.code}')">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                    Buy Now
+                  <button type="button" class="btn-add-cart" onclick="addToCart('${item.code}')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Add to Cart
                   </button>
                   <a href="contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}" class="btn-enquire-card">
                     Inquire
@@ -3130,8 +4047,6 @@
     }
 
     // Quick View Modal
-    let currentModalCode = null;
-
     function openQuickView(code) {
       const item = state.allProducts.find(p => p.code === code);
       if (!item) return;
@@ -3140,57 +4055,21 @@
       const imgPath = item.image.startsWith('../') ? item.image : `../${item.image}`;
 
       document.getElementById('modalImg').src = imgPath;
-      document.getElementById('modalBadge').textContent = `${item.subcatTitle} · Item Number`;
+      document.getElementById('modalBadge').textContent = `${item.subcatTitle || item.tag} · Item Number`;
       document.getElementById('modalTitle').textContent = item.name;
       document.getElementById('modalCode').textContent = item.code;
       document.getElementById('modalDims').textContent = item.dimensions;
-      document.getElementById('modalMaterial').textContent = item.material;
-      document.getElementById('modalFinish').textContent = item.finish;
+      document.getElementById('modalMaterial').textContent = item.material || 'Solid Wood · Handcrafted';
+      document.getElementById('modalFinish').textContent = item.finish || 'Natural / Walnut / Stains';
       document.getElementById('modalDesc').textContent = item.description;
+
+      updateModalFavButton(code);
 
       const enquireBtn = document.getElementById('modalEnquireBtn');
       enquireBtn.href = `contact.html?product=${encodeURIComponent(item.code)}&dim=${encodeURIComponent(item.dimensions)}`;
 
       document.getElementById('quickViewModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
-    }
-
-    function buyNowFromModal() {
-      if (currentModalCode) {
-        buyNow(currentModalCode);
-      }
-    }
-
-    function buyNow(code) {
-      const item = state.allProducts.find(p => p.code === code);
-      if (!item) return;
-
-      let cart = [];
-      try {
-        cart = JSON.parse(localStorage.getItem('fhd_cart') || '[]');
-      } catch (e) {
-        cart = [];
-      }
-
-      const existingIndex = cart.findIndex(p => p.code === code);
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
-      } else {
-        cart.push({
-          code: item.code,
-          name: item.name,
-          dimensions: item.dimensions,
-          material: item.material,
-          tag: item.tag,
-          image: item.image,
-          quantity: 1,
-          addedAt: new Date().toISOString()
-        });
-      }
-
-      localStorage.setItem('fhd_cart', JSON.stringify(cart));
-      updateCartCounters();
-      showCartToast(item.name);
     }
 
     function showCartToast(itemName) {
@@ -3201,12 +4080,36 @@
         toast.className = 'cart-toast';
         document.body.appendChild(toast);
       }
+      toast.style.borderLeftColor = 'var(--color-sage)';
       toast.innerHTML = `
         <div class="cart-toast-content">
-          <strong>Added to Cart</strong>
-          <span>${itemName} has been added to your selection.</span>
+          <strong>Added to Cart ✓</strong>
+          <span>${itemName} has been added to your trade selection.</span>
         </div>
         <a href="cart.html" class="cart-toast-btn">View Cart</a>
+      `;
+      toast.classList.add('show');
+      if (window.toastTimeout) clearTimeout(window.toastTimeout);
+      window.toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    function showFavToast(itemName, isAdded) {
+      let toast = document.getElementById('cartToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cartToast';
+        toast.className = 'cart-toast';
+        document.body.appendChild(toast);
+      }
+      toast.style.borderLeftColor = isAdded ? '#B83B3B' : 'var(--color-sage)';
+      toast.innerHTML = `
+        <div class="cart-toast-content">
+          <strong>${isAdded ? 'Saved to Favourites ♥' : 'Removed from Favourites'}</strong>
+          <span>${itemName} ${isAdded ? 'has been saved to your wishlist.' : 'has been removed from your wishlist.'}</span>
+        </div>
+        <a href="account.html#favourites" class="cart-toast-btn" style="background:#5C4B3A;">View Saved</a>
       `;
       toast.classList.add('show');
       if (window.toastTimeout) clearTimeout(window.toastTimeout);
