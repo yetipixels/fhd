@@ -2964,51 +2964,51 @@
         <div class="filter-section-title">Product Subcategory</div>
         <ul class="radio-list" id="subcatFilterList">
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="all" checked onchange="applyFilters()" /> All Subcategories</label>
-            <span class="filter-count">439</span>
+            <label><input type="radio" name="subcatOption" value="all" checked onchange="handleSubcatChange('all')" /> All Subcategories</label>
+            <span class="filter-count">447</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="candle-holders" onchange="applyFilters()" /> 🎄 Holiday &amp; Candle Decor</label>
+            <label><input type="radio" name="subcatOption" value="candle-holders" onchange="handleSubcatChange('candle-holders')" /> 🎄 Holiday &amp; Candle Decor</label>
             <span class="filter-count">4</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="round-tables" onchange="applyFilters()" /> Round Tables</label>
+            <label><input type="radio" name="subcatOption" value="round-tables" onchange="handleSubcatChange('round-tables')" /> Round Tables</label>
             <span class="filter-count">80</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="side-tables" onchange="applyFilters()" /> Side Tables</label>
-            <span class="filter-count">111</span>
+            <label><input type="radio" name="subcatOption" value="side-tables" onchange="handleSubcatChange('side-tables')" /> Side Tables</label>
+            <span class="filter-count">112</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="bedside-tables" onchange="applyFilters()" /> Bedside Tables</label>
+            <label><input type="radio" name="subcatOption" value="bedside-tables" onchange="handleSubcatChange('bedside-tables')" /> Bedside Tables</label>
             <span class="filter-count">64</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="study-tables" onchange="applyFilters()" /> Study Desks</label>
+            <label><input type="radio" name="subcatOption" value="study-tables" onchange="handleSubcatChange('study-tables')" /> Study Desks</label>
             <span class="filter-count">48</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="console-tables" onchange="applyFilters()" /> Console Tables</label>
+            <label><input type="radio" name="subcatOption" value="console-tables" onchange="handleSubcatChange('console-tables')" /> Console Tables</label>
             <span class="filter-count">30</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="accent-cabinets" onchange="applyFilters()" /> Accent Cabinets</label>
-            <span class="filter-count">30</span>
+            <label><input type="radio" name="subcatOption" value="accent-cabinets" onchange="handleSubcatChange('accent-cabinets')" /> Accent Cabinets</label>
+            <span class="filter-count">31</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="bookshelves" onchange="applyFilters()" /> Bookshelves</label>
+            <label><input type="radio" name="subcatOption" value="bookshelves" onchange="handleSubcatChange('bookshelves')" /> Bookshelves</label>
             <span class="filter-count">60</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="photo-frames" onchange="applyFilters()" /> Wooden Photo Frames</label>
+            <label><input type="radio" name="subcatOption" value="photo-frames" onchange="handleSubcatChange('photo-frames')" /> Wooden Photo Frames</label>
             <span class="filter-count">16</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="cushions" onchange="applyFilters()" /> Cushion Covers &amp; Textiles</label>
+            <label><input type="radio" name="subcatOption" value="cushions" onchange="handleSubcatChange('cushions')" /> Cushion Covers &amp; Textiles</label>
             <span class="filter-count">1</span>
           </li>
           <li class="filter-option">
-            <label><input type="radio" name="subcatOption" value="vanity-sets" onchange="applyFilters()" /> Vanity Decor Sets</label>
+            <label><input type="radio" name="subcatOption" value="vanity-sets" onchange="handleSubcatChange('vanity-sets')" /> Vanity Decor Sets</label>
             <span class="filter-count">1</span>
           </li>
         </ul>
@@ -3539,21 +3539,65 @@
       applyFilters();
     }
 
-    // Filter by Subcategory directly
+    // Find which department owns a given subcategory
+    function findDeptForSubcat(subcat) {
+      if (subcat === 'all') return 'all';
+      for (const [dept, subcats] of Object.entries(DEPT_MAP)) {
+        if (subcats.includes(subcat)) return dept;
+      }
+      return 'all';
+    }
+
+    // Handle Subcategory Selection from Sidebar
+    function handleSubcatChange(subcat) {
+      state.selectedSubcat = subcat;
+      state.currentPage = 1;
+
+      // Sync radio button in DOM
+      const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcat}"]`);
+      if (subRadio) subRadio.checked = true;
+
+      // If user selected a specific subcategory that doesn't belong to the active department,
+      // smartly realign the active department so the items are displayed immediately!
+      if (subcat !== 'all' && state.selectedDepartment !== 'all') {
+        const validSubcats = DEPT_MAP[state.selectedDepartment] || [];
+        if (!validSubcats.includes(subcat)) {
+          const parentDept = findDeptForSubcat(subcat);
+          state.selectedDepartment = parentDept;
+          const deptRadio = document.querySelector(`input[name="deptOption"][value="${parentDept}"]`);
+          if (deptRadio) deptRadio.checked = true;
+          document.querySelectorAll('.ribbon-item').forEach(el => {
+            el.classList.toggle('active', el.dataset.dept === parentDept);
+          });
+        }
+      }
+
+      applyFilters();
+    }
+
+    // Filter by Subcategory directly (e.g. from Showcase cards)
     function filterBySubcat(subcatKey) {
       state.selectedSubcat = subcatKey;
-      state.selectedDepartment = 'all';
       state.currentPage = 1;
 
       const subRadio = document.querySelector(`input[name="subcatOption"][value="${subcatKey}"]`);
       if (subRadio) subRadio.checked = true;
 
-      document.querySelectorAll('.ribbon-item').forEach(el => el.classList.remove('active'));
+      const parentDept = findDeptForSubcat(subcatKey);
+      state.selectedDepartment = parentDept;
+      const deptRadio = document.querySelector(`input[name="deptOption"][value="${parentDept}"]`);
+      if (deptRadio) deptRadio.checked = true;
+      document.querySelectorAll('.ribbon-item').forEach(el => {
+        el.classList.toggle('active', el.dataset.dept === parentDept);
+      });
 
       applyFilters();
       closeFilterDrawer();
 
-      document.querySelector('.main-catalogue-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const mainView = document.querySelector('.main-catalogue-view');
+      if (mainView) {
+        mainView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     // Reset All Filters
@@ -3604,6 +3648,12 @@
 
     // Apply active filters & sorting
     function applyFilters() {
+      // 1. Sync subcategory directly from checked radio if present
+      const checkedSubcat = document.querySelector('input[name="subcatOption"]:checked');
+      if (checkedSubcat) {
+        state.selectedSubcat = checkedSubcat.value;
+      }
+
       // Check for blank / coming soon category selections
       state.isBlankCategory = false;
       state.blankInfo = null;
