@@ -26,4 +26,25 @@ node_modules/
 toyota-lc300v2.webp
 Budhanilkantha Blue Wave Banner.png
 img-20240512-wa0015.jpg
+Red_Hilux_in_Mustang_Mountains_cleaned.png
+01 (98).png
+pngegg.png
+images.jpeg
+CUSHION COVERS/
+christmas decor/
+UNMAPPED_*.jpg
+Candle_*.jpg
+A100*.jpg
+Elegant *.png
+Gold and Silver *.png
+Mid-Century *.png
+Ornate Golden *.png
+Silver Reindeer *.png
+Silver Star *.png
 
+
+
+# Next.js build output & environment
+.next/
+out/
+.env*.local

@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fair Home Decor Warm Palette in HSL */
+    --background: 40 33% 97%;       /* #FAF8F5 */
+    --foreground: 24 15% 15%;       /* #2B2520 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 15% 15%;
+
+    --popover: 40 33% 97%;
+    --popover-foreground: 24 15% 15%;
+
+    --primary: 24 15% 15%;          /* #2B2520 */
+    --primary-foreground: 40 33% 97%;
+
+    --secondary: 37 32% 93%;        /* #F5F0E8 cream */
+    --secondary-foreground: 24 15% 15%;
+
+    --muted: 37 20% 90%;            /* #E8DFD0 warm tan */
+    --muted-foreground: 25 10% 40%;
+
+    --accent: 91 14% 49%;           /* #7C8C6E sage */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 38 24% 82%;           /* #DDD5C5 */
+    --input: 38 24% 82%;
+    --ring: 91 14% 49%;             /* Sage ring */
+
+    --radius: 0.5rem;
+  }
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #2B2520;
+  font-family: var(--font-montserrat), sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #DDD5C5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C8C6E;
+}
+
