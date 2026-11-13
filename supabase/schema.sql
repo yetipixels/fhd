@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     company_name TEXT,
     tax_vat_number TEXT,
     phone TEXT,
-    role TEXT NOT NULL DEFAULT 'buyer' CHECK (role IN ('admin', 'buyer')),
+    role TEXT NOT NULL DEFAULT 'buyer' CHECK (role IN ('admin', 'buyer', 'member')),
     is_approved BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT TIMEZONE('utc', NOW()),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT TIMEZONE('utc', NOW())
@@ -34,12 +34,16 @@ CREATE TABLE IF NOT EXISTS public.categories (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
+    department TEXT NOT NULL DEFAULT 'furnishing',
     image_url TEXT,
     description TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT TIMEZONE('utc', NOW())
 );
 
+ALTER TABLE public.categories ADD COLUMN IF NOT EXISTS department TEXT NOT NULL DEFAULT 'furnishing';
+
 CREATE INDEX IF NOT EXISTS idx_categories_slug ON public.categories(slug);
+CREATE INDEX IF NOT EXISTS idx_categories_dept ON public.categories(department);
 
 -- -----------------------------------------------------------------------------
 -- 3. PRODUCTS TABLE
@@ -141,17 +145,19 @@ CREATE POLICY "Users can update their own profile"
 -- CATEGORIES POLICIES
 DROP POLICY IF EXISTS "Public can view categories" ON public.categories;
 DROP POLICY IF EXISTS "Admins have full access on categories" ON public.categories;
+DROP POLICY IF EXISTS "Enable read categories" ON public.categories;
+DROP POLICY IF EXISTS "Enable full access for categories" ON public.categories;
 
-CREATE POLICY "Public can view categories"
+CREATE POLICY "Enable read categories"
     ON public.categories FOR SELECT
     TO public
     USING (true);
 
-CREATE POLICY "Admins have full access on categories"
+CREATE POLICY "Enable full access for categories"
     ON public.categories FOR ALL
-    TO authenticated
-    USING (public.is_admin())
-    WITH CHECK (public.is_admin());
+    TO anon, authenticated
+    USING (true)
+    WITH CHECK (true);
 
 -- PRODUCTS POLICIES
 DROP POLICY IF EXISTS "Public can view products" ON public.products;
@@ -213,17 +219,23 @@ BEGIN
     )
     VALUES (
         NEW.id,
-        NEW.email,
+        COALESCE(NEW.email, ''),
         COALESCE(NEW.raw_user_meta_data->>'company_name', ''),
         COALESCE(NEW.raw_user_meta_data->>'tax_vat_number', ''),
         COALESCE(NEW.raw_user_meta_data->>'phone', ''),
-        COALESCE(NEW.raw_user_meta_data->>'role', 'buyer'),
-        -- If user signed up with admin metadata, check if this is the very first profile or approve default
+        CASE 
+            WHEN (NEW.raw_user_meta_data->>'role') IN ('admin', 'buyer', 'member') THEN (NEW.raw_user_meta_data->>'role')
+            ELSE 'buyer'
+        END,
         CASE 
             WHEN (NEW.raw_user_meta_data->>'role') = 'admin' THEN TRUE
             ELSE FALSE
         END
-    );
+    )
+    ON CONFLICT (id) DO UPDATE SET
+        email = EXCLUDED.email;
+    RETURN NEW;
+EXCEPTION WHEN OTHERS THEN
     RETURN NEW;
 END;
 $$;

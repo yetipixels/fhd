@@ -15,6 +15,27 @@ export function formatCurrency(amount: number): string {
 }
 
 /**
+ * Designated Super-Administrator Emails.
+ * Accounts matching these emails or @fairhomedecor.com domains are granted full administrative operational privileges.
+ */
+export const ADMIN_EMAILS = [
+  "yetipixels.gd@gmail.com",
+  "info@fairhomedecor.com",
+  "admin@fairhomedecor.com",
+];
+
+export function isAdminEmail(email?: string | null): boolean {
+  if (!email) return false;
+  const normalized = email.trim().toLowerCase();
+  return (
+    ADMIN_EMAILS.includes(normalized) ||
+    normalized.endsWith("@fairhomedecor.com") ||
+    (typeof process !== "undefined" &&
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL?.toLowerCase() === normalized)
+  );
+}
+
+/**
  * Calculates the applicable wholesale unit price based on ordered quantity
  * and the product's bulk pricing tiers.
  */

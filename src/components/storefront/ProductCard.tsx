@@ -67,11 +67,18 @@ export function ProductCard({ product }: ProductCardProps) {
           <span className="text-[10px] uppercase tracking-widest text-fhd-sage font-semibold block mb-1">
             {product.category?.name || "Handcrafted Timber"}
           </span>
-          <Link href={`/products/${product.slug}`}>
+          <Link href={`/products/${product.sku || product.slug}`}>
             <h3 className="font-serif text-lg text-fhd-dark group-hover:text-fhd-sage transition-colors line-clamp-1 font-normal">
               {product.name}
             </h3>
           </Link>
+
+          {/* Clean Dimensions Pill */}
+          <div className="my-2 inline-flex items-center gap-1.5 px-2 py-0.5 bg-stone-100 rounded text-[11px] text-stone-600 font-sans">
+            <span className="text-stone-400">◫</span>
+            <span>{product.specifications?.Dimensions || product.specifications?.Dimension || "30 x 14 x 30 in"}</span>
+          </div>
+
           <p className="text-xs text-stone-500 line-clamp-2 mt-1 leading-relaxed">
             {product.description}
           </p>

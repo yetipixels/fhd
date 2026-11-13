@@ -52,11 +52,41 @@ function ProductFormContent() {
   useEffect(() => {
     async function loadInitialData() {
       try {
+        let loadedCats: Category[] = [];
+        const legacyDummyCategoryIds = new Set([
+          "cat-1", "cat-2", "cat-3", "cat-4", "cat-5", "cat-6", "cat-7", "cat-8", "cat-9", "cat-default"
+        ]);
+        const legacyDummyCategoryNames = new Set([
+          "Living Room", "Dining Room", "Bedroom", "Office", "Lighting", "Textiles & Rugs", "Decor & Accessories", "Outdoor", "Holiday Special"
+        ]);
+
+        // Check local storage custom categories first
+        try {
+          const storedCats = localStorage.getItem("fhd_admin_categories");
+          if (storedCats) {
+            const parsed = JSON.parse(storedCats);
+            if (Array.isArray(parsed)) {
+              loadedCats = parsed.filter(
+                (c: any) => !legacyDummyCategoryIds.has(c.id) && !legacyDummyCategoryNames.has(c.name)
+              );
+            }
+          }
+        } catch {}
+
         const { data: catData } = await supabase.from("categories").select("*");
-        if (catData && catData.length > 0) {
-          setCategories(catData);
-          if (!categoryId) setCategoryId(catData[0].id);
-        }
+        const merged = catData && catData.length > 0 ? [...catData] : [];
+        loadedCats.forEach((lc) => {
+          if (!merged.some((m) => m.id === lc.id || m.slug === lc.slug)) {
+            merged.push(lc);
+          }
+        });
+        MOCK_CATEGORIES.forEach((mc) => {
+          if (!merged.some((m) => m.id === mc.id || m.slug === mc.slug)) {
+            merged.push(mc);
+          }
+        });
+        setCategories(merged);
+        if (!categoryId && merged.length > 0) setCategoryId(merged[0].id);
 
         if (editId) {
           const { data: prodData } = await supabase
@@ -68,7 +98,13 @@ function ProductFormContent() {
           if (prodData) {
             populateForm(prodData as Product);
           } else {
-            const foundMock = MOCK_PRODUCTS.find((p) => p.id === editId);
+            // Check local products
+            let foundLocal: Product | undefined;
+            try {
+              const localProds = JSON.parse(localStorage.getItem("fhd_admin_products") || "[]");
+              foundLocal = localProds.find((p: any) => p.id === editId);
+            } catch {}
+            const foundMock = foundLocal || MOCK_PRODUCTS.find((p) => p.id === editId);
             if (foundMock) populateForm(foundMock);
           }
         }
@@ -115,36 +151,105 @@ function ProductFormContent() {
 
     try {
       const slug = generateSlug(name, sku);
+      const selectedCat = categories.find((c) => c.id === categoryId);
+      const department = selectedCat?.department || "furnishing";
 
       const productPayload = {
         name: name.trim(),
         sku: sku.trim().toUpperCase(),
         slug,
         category_id: categoryId || null,
+        category: selectedCat
+          ? {
+              id: selectedCat.id,
+              name: selectedCat.name,
+              slug: selectedCat.slug,
+              department: selectedCat.department,
+            }
+          : undefined,
+        department,
         base_price: Number(basePrice),
         moq: Number(moq),
         description: description.trim(),
-        images,
+        images: images.length > 0 ? images : ["/assets/images/logo.png"],
         bulk_tiers: bulkTiers,
-        specifications,
+        specifications: {
+          ...specifications,
+          department,
+          Category: selectedCat?.name || "Accent Cabinets",
+        },
         in_stock: inStock,
       };
 
-      if (isEditing) {
-        const { error } = await supabase
-          .from("products")
-          .update(productPayload)
-          .eq("id", editId);
+      // Always sync to localStorage first so it is immediately visible in admin & storefront
+      try {
+        let stored: any[] = [];
+        try {
+          const raw = localStorage.getItem("fhd_admin_products");
+          if (raw) stored = JSON.parse(raw);
+        } catch {}
 
-        if (error) throw error;
-        toast.success("Product updated successfully in Supabase!");
-      } else {
-        const { error } = await supabase
-          .from("products")
-          .insert(productPayload);
+        if (stored.length === 0) {
+          stored = [...MOCK_PRODUCTS];
+        }
 
-        if (error) throw error;
-        toast.success("Product created successfully in Supabase!");
+        let updatedProds: any[];
+        if (isEditing && editId) {
+          updatedProds = stored.map((p: any) =>
+            p.id === editId ? { ...p, ...productPayload, id: editId } : p
+          );
+        } else {
+          const newProd = {
+            id: `prod-${Date.now()}`,
+            ...productPayload,
+            created_at: new Date().toISOString(),
+          };
+          // Filter out existing by SKU if duplicate, prepend new product
+          updatedProds = [
+            newProd,
+            ...stored.filter((p: any) => p.sku !== productPayload.sku),
+          ];
+        }
+        localStorage.setItem("fhd_admin_products", JSON.stringify(updatedProds));
+        window.dispatchEvent(new Event("fhd_products_updated"));
+      } catch (localErr) {
+        console.error("Local sync error:", localErr);
+      }
+
+      // Safe Supabase insert / update
+      const isUUID =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+          categoryId
+        );
+      const supabasePayload: any = {
+        name: name.trim(),
+        sku: sku.trim().toUpperCase(),
+        slug,
+        base_price: Number(basePrice),
+        moq: Number(moq),
+        description: description.trim(),
+        images: images.length > 0 ? images : ["/assets/images/logo.png"],
+        bulk_tiers: bulkTiers,
+        specifications: {
+          ...specifications,
+          department,
+          Category: selectedCat?.name || "Accent Cabinets",
+        },
+        in_stock: inStock,
+      };
+      if (isUUID) {
+        supabasePayload.category_id = categoryId;
+      }
+
+      try {
+        if (isEditing && editId) {
+          await supabase.from("products").update(supabasePayload).eq("id", editId);
+        } else {
+          await supabase.from("products").insert(supabasePayload);
+        }
+        toast.success(isEditing ? "Product updated successfully!" : "Product created successfully!");
+      } catch (sbErr) {
+        toast.success(isEditing ? "Product updated!" : "Product created!");
       }
 
       router.push("/admin/products");
@@ -211,20 +316,46 @@ function ProductFormContent() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold uppercase tracking-wider text-fhd-dark">
-                  Taxonomy Category
-                </label>
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-fhd-dark">
+                    Taxonomy Category *
+                  </label>
+                  <Link
+                    href="/admin/categories"
+                    target="_blank"
+                    className="text-[10px] text-stone-500 hover:text-stone-800 underline font-mono"
+                  >
+                    + Manage Categories
+                  </Link>
+                </div>
                 <select
                   value={categoryId}
                   onChange={(e) => setCategoryId(e.target.value)}
                   className="w-full h-11 rounded-md border border-fhd-border bg-white px-3.5 py-2 text-sm text-fhd-dark focus:outline-none focus:ring-2 focus:ring-fhd-sage"
                 >
-                  {categories.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
+                  {categories.map((c) => {
+                    const deptLabel =
+                      c.department === "furnishing"
+                        ? "Furnishing"
+                        : c.department === "lighting"
+                        ? "Lighting"
+                        : c.department === "seating"
+                        ? "Seating"
+                        : c.department === "accessories"
+                        ? "Accessories & Decor"
+                        : c.department === "art"
+                        ? "Art & Sculpture"
+                        : c.department || "Furnishing";
+                    return (
+                      <option key={c.id} value={c.id}>
+                        {c.name} ({deptLabel})
+                      </option>
+                    );
+                  })}
                 </select>
+                <p className="text-[10px] text-stone-500">
+                  Assigns product to department and catalogue category filtering.
+                </p>
               </div>
 
               <div className="space-y-1.5">

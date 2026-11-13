@@ -71,8 +71,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        sans: ["var(--font-montserrat)", "sans-serif"],
+        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        sans: ["'Montserrat'", "sans-serif"],
       },
     },
   },

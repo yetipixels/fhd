@@ -48,3 +48,9 @@ Silver Star *.png
 .next/
 out/
 .env*.local
+tsconfig.tsbuildinfo
+
+# Raw PPTX extraction staging (images already optimized & uploaded to Cloudinary)
+raw_furniture_uploads/
+raw_lighting_uploads/
+extracted_lighting_metadata.json

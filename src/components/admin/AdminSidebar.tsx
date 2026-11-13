@@ -13,10 +13,15 @@ import {
   ExternalLink,
   LogOut,
   Shield,
+  Megaphone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function AdminSidebar() {
+interface AdminSidebarProps {
+  onNavigate?: () => void;
+}
+
+export function AdminSidebar({ onNavigate }: AdminSidebarProps = {}) {
   const pathname = usePathname();
   const { user, profile, signOut } = useAuth();
 
@@ -47,6 +52,11 @@ export function AdminSidebar() {
       href: "/admin/buyers",
       icon: Users,
     },
+    {
+      label: "Banner and Offer",
+      href: "/admin/banners",
+      icon: Megaphone,
+    },
   ];
 
   return (
@@ -76,6 +86,7 @@ export function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onNavigate}
               className={`flex items-center space-x-3 px-3.5 py-2.5 rounded-md text-xs uppercase tracking-wider font-medium transition-all ${
                 isActive
                   ? "bg-fhd-sage text-white font-semibold shadow-xs"
@@ -105,13 +116,25 @@ export function AdminSidebar() {
 
         <div className="pt-2 px-1 flex items-center justify-between text-xs">
           <div className="space-y-0.5 truncate pr-2">
-            <p className="font-semibold text-white truncate text-[11px]">
-              {profile?.company_name || user?.email || "Super Administrator"}
+            <p className="font-semibold text-white truncate text-[11px]" title={user?.email || "Super Administrator"}>
+              {user?.email || "info@fairhomedecor.com"}
             </p>
-            <span className="inline-flex items-center text-[10px] text-fhd-sage font-mono">
-              <Shield className="w-3 h-3 mr-1" />
-              role: admin
-            </span>
+            <div className="flex items-center space-x-1.5 text-[10px] text-stone-400 font-mono">
+              <span className="inline-flex items-center text-fhd-sage">
+                <Shield className="w-3 h-3 mr-1" />
+                role: admin
+              </span>
+              {profile?.company_name &&
+                profile.company_name !== user?.email &&
+                profile.company_name !== "Unspecified Entity" && (
+                  <>
+                    <span className="text-stone-600">•</span>
+                    <span className="truncate max-w-[85px] text-stone-400" title={profile.company_name}>
+                      {profile.company_name}
+                    </span>
+                  </>
+                )}
+            </div>
           </div>
 
           <button

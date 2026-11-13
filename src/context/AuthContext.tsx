@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/client";
 import { Profile } from "@/lib/types";
+import { isAdminEmail } from "@/lib/utils";
 
 interface AuthContextType {
   user: User | null;
@@ -32,15 +33,50 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .single();
 
       if (!error && data) {
-        setProfile(data as Profile);
+        const isSuperAdmin = isAdminEmail(data.email || user?.email);
+        const isOfficialFHD = (data.email || user?.email || "").toLowerCase().endsWith("@fairhomedecor.com");
+        const companyName = isOfficialFHD && data.company_name === "Yeti Pixels"
+          ? "Fair Home Decor HQ"
+          : data.company_name || (isSuperAdmin ? "Fair Home Decor HQ" : "");
+
+        const resolvedProfile: Profile = isSuperAdmin
+          ? { ...(data as Profile), company_name: companyName, role: "admin", is_approved: true }
+          : (data as Profile);
+
+        setProfile(resolvedProfile);
+
+        // Self-heal in Supabase if not yet stamped as admin or has mismatch company name
+        if (isSuperAdmin && (data.role !== "admin" || (isOfficialFHD && data.company_name === "Yeti Pixels"))) {
+          supabase
+            .from("profiles")
+            .update({ role: "admin", is_approved: true, company_name: companyName })
+            .eq("id", userId)
+            .then(() => {});
+        }
       } else {
         // Fallback profile if row is not created yet
+        const isSuperAdmin = isAdminEmail(user?.email);
+        const isOfficialFHD = (user?.email || "").toLowerCase().endsWith("@fairhomedecor.com");
         setProfile({
           id: userId,
           email: user?.email || "",
-          role: "buyer",
-          is_approved: false,
+          company_name: isOfficialFHD || isSuperAdmin ? "Fair Home Decor HQ" : "",
+          role: isSuperAdmin ? "admin" : "buyer",
+          is_approved: isSuperAdmin,
         });
+
+        if (isSuperAdmin) {
+          supabase
+            .from("profiles")
+            .upsert({
+              id: userId,
+              email: user?.email || "",
+              company_name: "Fair Home Decor HQ",
+              role: "admin",
+              is_approved: true,
+            })
+            .then(() => {});
+        }
       }
     } catch (err) {
       console.warn("Could not fetch profile from Supabase:", err);
@@ -101,8 +137,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     window.location.href = "/";
   };
 
-  const isAdmin = profile?.role === "admin";
-  const isApprovedBuyer = Boolean(profile?.is_approved || profile?.role === "admin");
+  const isAdmin = Boolean(profile?.role === "admin" || isAdminEmail(user?.email));
+  const isApprovedBuyer = Boolean(profile?.is_approved || profile?.role === "admin" || isAdminEmail(user?.email));
 
   return (
     <AuthContext.Provider

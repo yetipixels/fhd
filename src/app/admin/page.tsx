@@ -6,6 +6,7 @@ import { AdminHeader } from "@/components/admin/AdminHeader";
 import { createClient } from "@/lib/supabase/client";
 import { formatCurrency } from "@/lib/utils";
 import { QuoteRequest, Product, Profile } from "@/lib/types";
+import { MOCK_PRODUCTS } from "@/lib/mock-data";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -29,7 +30,7 @@ import {
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
-  const [productsCount, setProductsCount] = useState<number>(6);
+  const [productsCount, setProductsCount] = useState<number>(MOCK_PRODUCTS.length);
   const [pendingQuotesCount, setPendingQuotesCount] = useState<number>(0);
   const [approvedBuyersCount, setApprovedBuyersCount] = useState<number>(0);
   const [pipelineTotal, setPipelineTotal] = useState<number>(0);
@@ -42,33 +43,104 @@ export default function AdminDashboardPage() {
     async function loadStats() {
       try {
         // Products count
+        let totalCount = MOCK_PRODUCTS.length;
+        try {
+          const stored = localStorage.getItem("fhd_admin_products");
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              totalCount = parsed.length;
+            }
+          }
+        } catch {}
+
         const { count: pCount } = await supabase
           .from("products")
           .select("*", { count: "exact", head: true });
-        if (pCount !== null) setProductsCount(pCount);
+        if (pCount !== null && pCount > totalCount) {
+          totalCount = pCount;
+        }
+        setProductsCount(totalCount);
 
-        // Quotes
+        // Quotes - fetch directly from Supabase and deduplicate
         const { data: qData } = await supabase
           .from("quote_requests")
           .select("*")
           .order("created_at", { ascending: false });
 
         if (qData) {
-          setRecentQuotes(qData as QuoteRequest[]);
-          const pending = qData.filter((q) => q.status === "pending").length;
+          const uniqueQuotes: QuoteRequest[] = [];
+          const seen = new Set<string>();
+
+          (qData as QuoteRequest[]).forEach((q) => {
+            const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q.id);
+            if (!isUuid) return;
+            const timeBucket = Math.floor(new Date(q.created_at).getTime() / (30 * 1000));
+            const fp = `${(q.contact_email || "").toLowerCase()}_${q.items?.length || 0}_${timeBucket}`;
+            if (!seen.has(fp)) {
+              seen.add(fp);
+              uniqueQuotes.push(q);
+            }
+          });
+
+          setRecentQuotes(uniqueQuotes);
+          const pending = uniqueQuotes.filter((q) => q.status === "pending").length;
           setPendingQuotesCount(pending);
-          const totalVal = qData.reduce((acc, q) => acc + Number(q.estimated_total || 0), 0);
+          const totalVal = uniqueQuotes.reduce((acc, q) => acc + Number(q.estimated_total || 0), 0);
           setPipelineTotal(totalVal);
         }
 
-        // Buyers
+        // Clean local storage cache
+        try {
+          const stored = localStorage.getItem("fhd_admin_quotes");
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed)) {
+              const valid = parsed.filter((q: any) =>
+                q.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q.id)
+              );
+              localStorage.setItem("fhd_admin_quotes", JSON.stringify(valid));
+            }
+          }
+        } catch {}
+
+        // 3. Verified Trade Buyers (Deduplicated by Email & Synchronized with Admin Approvals)
+        let deletedBuyerIds = new Set<string>();
+        try {
+          const storedDeleted = localStorage.getItem("fhd_deleted_buyers");
+          if (storedDeleted) deletedBuyerIds = new Set(JSON.parse(storedDeleted));
+        } catch {}
+
         const { data: bData } = await supabase
           .from("profiles")
-          .select("is_approved")
+          .select("id, email, is_approved")
           .eq("role", "buyer");
-        if (bData) {
-          const approved = bData.filter((b) => b.is_approved).length;
+
+        if (bData && bData.length > 0) {
+          const uniqueBuyers = new Map<string, boolean>();
+          for (const b of bData) {
+            if (deletedBuyerIds.has(b.id)) continue;
+            const normEmail = (b.email || "").trim().toLowerCase();
+            if (normEmail) {
+              const current = uniqueBuyers.get(normEmail) || false;
+              uniqueBuyers.set(normEmail, current || Boolean(b.is_approved));
+            }
+          }
+          const approved = Array.from(uniqueBuyers.values()).filter(Boolean).length;
           setApprovedBuyersCount(approved);
+        } else {
+          // Check cached admin buyers
+          try {
+            const cached = localStorage.getItem("fhd_admin_buyers");
+            if (cached) {
+              const parsed = JSON.parse(cached);
+              if (Array.isArray(parsed)) {
+                const active = parsed.filter((b: any) => !deletedBuyerIds.has(b.id));
+                const approved = active.filter((b: any) => b.is_approved).length;
+                setApprovedBuyersCount(approved);
+              }
+            }
+          } catch {}
         }
       } catch (err) {
         console.warn("Could not load admin stats from Supabase:", err);
@@ -78,6 +150,12 @@ export default function AdminDashboardPage() {
     }
 
     loadStats();
+    window.addEventListener("fhd_quotes_updated", loadStats);
+    window.addEventListener("fhd_buyers_updated", loadStats);
+    return () => {
+      window.removeEventListener("fhd_quotes_updated", loadStats);
+      window.removeEventListener("fhd_buyers_updated", loadStats);
+    };
   }, []);
 
   return (
@@ -183,6 +261,11 @@ export default function AdminDashboardPage() {
           <Link href="/admin/categories">
             <Button variant="outline" size="sm">
               Taxonomy Categories
+            </Button>
+          </Link>
+          <Link href="/admin/banners">
+            <Button variant="outline" size="sm" className="space-x-1.5">
+              <span>Banner &amp; Offer</span>
             </Button>
           </Link>
         </div>

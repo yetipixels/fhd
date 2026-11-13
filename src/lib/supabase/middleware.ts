@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import { isAdminEmail } from "@/lib/utils";
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({
@@ -64,16 +65,45 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
-  // Protect all /admin routes
+  // Allow /admin/login freely (or redirect to /admin if already an admin)
+  if (pathname === "/admin/login") {
+    if (user) {
+      if (isAdminEmail(user.email)) {
+        return NextResponse.redirect(new URL("/admin", request.url));
+      }
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user.id)
+        .single();
+      if (profile?.role === "admin") {
+        return NextResponse.redirect(new URL("/admin", request.url));
+      }
+    }
+    return response;
+  }
+
+  // Redirect legacy /login to /admin/login
+  if (pathname === "/login") {
+    return NextResponse.redirect(new URL("/admin/login", request.url));
+  }
+
+  // Protect all other /admin routes
   if (pathname.startsWith("/admin")) {
     if (!user) {
-      const redirectUrl = new URL("/login", request.url);
+      const redirectUrl = new URL("/admin/login", request.url);
       redirectUrl.searchParams.set("redirect", pathname);
-      redirectUrl.searchParams.set("error", "admin_required");
       return NextResponse.redirect(redirectUrl);
     }
 
-    // Check user role in profiles table
+    // Check user role in profiles table or designated super-admin email list
+    const isSuperAdminEmail = isAdminEmail(user.email);
+
+    if (isSuperAdminEmail) {
+      // User is verified super-administrator
+      return response;
+    }
+
     const { data: profile } = await supabase
       .from("profiles")
       .select("role")
@@ -81,8 +111,8 @@ export async function updateSession(request: NextRequest) {
       .single();
 
     if (!profile || profile.role !== "admin") {
-      const redirectUrl = new URL("/", request.url);
-      redirectUrl.searchParams.set("error", "unauthorized");
+      const redirectUrl = new URL("/admin/login", request.url);
+      redirectUrl.searchParams.set("error", "admin_required");
       return NextResponse.redirect(redirectUrl);
     }
   }

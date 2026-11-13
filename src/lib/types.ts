@@ -8,7 +8,9 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
+  department?: string; // "furnishing" | "lighting" | "seating" | "accessories" | "art"
   image_url?: string | null;
+  image?: string | null;
   description?: string | null;
   created_at?: string;
 }
@@ -17,6 +19,7 @@ export interface Product {
   id: string;
   category_id?: string;
   category?: Category;
+  department?: string;
   name: string;
   slug: string;
   sku: string;
